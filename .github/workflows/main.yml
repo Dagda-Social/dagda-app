@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
-        with:
-          channel: 'dev'
-      - run: flutter config --enable-web
       - run: flutter pub get
       - run: flutter build web --release
       - run: |
@@ -23,7 +20,6 @@ jobs:
           git config --global user.email david@d4viddf.com
           git config --global user.name dagda
           git status
-          # change this remote url for examle your remote url is https://github.com/onatcipli/flutter_web.git then the following:
           git remote add origin https://${{secrets.commit_secret}}@github.com/Dagda-Social/Dagda-app.git
           git checkout -b gh-pages
           git add --all
