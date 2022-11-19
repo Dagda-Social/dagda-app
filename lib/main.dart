@@ -33,29 +33,33 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text(widget.title,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 44)),
-        ),
-        body: Center(
+      body: Stack(children: <Widget>[
+        Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                'Building the next generation of Social Network.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-              )
+            children: <Widget>[
+              Text(widget.title,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 72)),
             ],
           ),
-        ));
+        ),
+        Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const <Widget>[
+                SizedBox(
+                  height: 200,
+                ),
+                Text(
+                  'Building the next generation of Social Network',
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ]),
+        ),
+      ]),
+    );
   }
 }
