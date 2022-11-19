@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dagda BETA',
+      title: 'Dagda',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -22,9 +22,11 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.cyan,
+        fontFamily: 'Comfortaa',
+        colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: Colors.white, primary: Colors.blue),
       ),
-      home: const MyHomePage(title: 'Dagda Social Network'),
+      home: const MyHomePage(title: 'dagda'),
     );
   }
 }
@@ -71,9 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        backgroundColor: Colors.white,
+        title: Text(widget.title,
+            style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 32)),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -108,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add, color: Colors.blue),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
