@@ -4,8 +4,8 @@
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#0175C2",
-    "description": "A new Social Network.",
+    "theme_color": "#ffffff",
+    "description": "Building the next Social Network",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
