@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -13,9 +15,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Comfortaa',
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: Colors.white, primary: Colors.blue),
+            .copyWith(secondary: Colors.white, primary: Colors.white),
       ),
       home: const MyHomePage(title: 'dagda'),
+      routes: {
+        '/': (context) => const MyHomePage(title: 'dagda'),
+        '/login': (context) => Login(),
+      },
     );
   }
 }
