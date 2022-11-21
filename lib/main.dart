@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: Colors.white, primary: Colors.white),
       ),
-      home: const MyHomePage(title: 'dagda'),
+      initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(title: 'dagda'),
         '/login': (context) => Login(),
