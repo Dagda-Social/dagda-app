@@ -23,5 +23,6 @@ RUN ["/etc/init.d/nginx","restart"]
 
 # Document the exposed port and start serser
 EXPOSE 8080
+EXPOSE 80
 RUN ["chmod", "+x", "/usr/local/bin/app/server/server.sh"]
 ENTRYPOINT [ "sh", "/usr/local/bin/app/server/server.sh" ]
