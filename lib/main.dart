@@ -1,8 +1,11 @@
+import 'package:dagda/register.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'login.dart';
 
 void main() {
+  usePathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -20,7 +23,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(title: 'dagda'),
-        '/login': (context) => Login(),
+        '/login': (context) => const Login(),
+        '/register': (context) => const Register(),
       },
     );
   }

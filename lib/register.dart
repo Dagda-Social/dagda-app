@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatefulWidget {
+  const Register({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +39,7 @@ class _LoginState extends State<Login> {
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
                   child: const Text(
-                    'Login screen',
+                    'Register screen',
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 24,
