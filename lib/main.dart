@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Text(
                   'Building the next generation of Social Network',
-                  style: TextStyle(color: Colors.black, fontSize: 16),
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               ]),
         ),
