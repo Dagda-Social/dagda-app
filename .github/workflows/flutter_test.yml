@@ -1,0 +1,18 @@
+name: Build Web
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Flutter tests
+    env:
+      my_secret: ${{secrets.commit_token}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter pub get
+      - run: flutter test --platform chrome
