@@ -7,7 +7,7 @@ jobs:
   build:
     name: Build Web
     env:
-      my_secret: ${{secrets.commit_secret}}
+      my_secret: ${{secrets.commit_token}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -20,7 +20,7 @@ jobs:
           git config --global user.email david@d4viddf.com
           git config --global user.name dagda
           git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/Dagda-Social/Dagda-app.git
+          git remote add origin https://${{secrets.commit_token}}@github.com/Dagda-Social/Dagda-app.git
           git checkout -b release
           git add --all
           git commit -m "update"
