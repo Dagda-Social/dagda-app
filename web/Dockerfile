@@ -10,11 +10,12 @@ WORKDIR /usr/local/bin/app
 
 # Copy build to nginx
 RUN  ["cp","-a", "/usr/local/bin/app", "/usr/share/nginx/html"]
-RUN ["cp", "nginx.conf", "/etc/nginx/conf.d/beta.dagda.social.conf"]
+# RUN ["cp", "nginx.conf", "/etc/nginx/conf.d/beta.dagda.social.conf"]
+RUN ["cp", "nginx.conf", "/etc/nginx/conf.d/default.conf"]
 RUN ["/etc/init.d/nginx","restart"]
 
 # Document the exposed port and start serser
 EXPOSE 8080
 EXPOSE 80
-RUN ["chmod", "+x", "/usr/local/bin/app/server/server.sh"]
-ENTRYPOINT [ "sh", "/usr/local/bin/app/server/server.sh" ]
+RUN ["chmod", "+x", "/usr/share/nginx/html/app/server/server.sh"]
+ENTRYPOINT [ "sh", "/usr/share/nginx/html/app/server/server.sh" ]

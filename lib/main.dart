@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
             .copyWith(secondary: Colors.white, primary: Colors.white),
       ),
       routerConfig: _router,
+      
     );
   }
 }
