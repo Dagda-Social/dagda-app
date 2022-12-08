@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
             .copyWith(secondary: Colors.white, primary: Colors.white),
       ),
       routerConfig: _router,
-      
     );
   }
 }
@@ -46,6 +45,13 @@ final _router = GoRouter(
         child: Login(),
       ),
     ),
+    GoRoute(
+      name: 'profile',
+      path: '@:idProfile',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        child: Profile(id: state.params['idProfile'].toString()),
+      ),
+    )
   ],
   errorBuilder: (context, state) => const NotFound(),
 );
