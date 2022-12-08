@@ -47,7 +47,7 @@ final _router = GoRouter(
     ),
     GoRoute(
       name: 'profile',
-      path: '@:idProfile',
+      path: '/@:idProfile',
       pageBuilder: (context, state) => MaterialPage<void>(
         child: Profile(id: state.params['idProfile'].toString()),
       ),
