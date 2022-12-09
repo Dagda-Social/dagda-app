@@ -12,7 +12,10 @@ class _NotFoundState extends State<NotFound> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('404 - Not Found'),
+        child: Text(
+          '404 - Not Found',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+        ),
       ),
     );
   }
