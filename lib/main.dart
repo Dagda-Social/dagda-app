@@ -51,7 +51,13 @@ final _router = GoRouter(
       pageBuilder: (context, state) => MaterialPage<void>(
         child: Profile(id: state.params['idProfile'].toString()),
       ),
-    )
+    ),
+    GoRoute(
+      path: '/privacy-policy',
+      pageBuilder: (context, state) => MaterialPage<void>(
+        child: PrivacyPolicy(),
+      ),
+    ),
   ],
   errorBuilder: (context, state) => const NotFound(),
 );
