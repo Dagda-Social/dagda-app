@@ -1,17 +1,13 @@
 import 'package:dagda/screens/screens.dart';
 import 'package:flutter/material.dart';
-import 'package:seo_renderer/helpers/robot_detector_web.dart';
 import './urlStrategy/nonweb_rul_strategy.dart'
     if (dart.library.html) './urlStrategy/web_url_strategy.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meta_seo/meta_seo.dart';
 
 void main() {
   configureUrl();
-  runApp(const RobotDetector(
-      child: MaterialApp(
-    home: MyApp(),
-    navigatorObservers: [],
-  )));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +27,8 @@ class MyApp extends StatelessWidget {
           trackBorderColor: MaterialStateProperty.all(Colors.grey),
         ),
       ),
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
       routerConfig: _router,
     );
   }
@@ -38,11 +36,26 @@ class MyApp extends StatelessWidget {
 
 final _router = GoRouter(routes: [
   GoRoute(
-    path: '/',
-    pageBuilder: (context, state) => const MaterialPage(
-      child: MyHomePage(title: 'dagda'),
-    ),
-  ),
+      path: '/',
+      pageBuilder: (context, state) {
+        MetaSEO metaSEO = MetaSEO(
+          ogTitle: 'dagda - Social Network',
+          description:
+              'Building the next generation of Social Network. Join us now!',
+          ogImage: 'https://dagda.social/assets/images/logo.png',
+          keywords:
+              'dagda, social network, social media, social, network, dagda social network',
+        );
+
+        metaSEO.seoOGImage();
+        metaSEO.seoDescription();
+        metaSEO.seoOGTitle();
+        metaSEO.seoKeywords();
+        
+        return const MaterialPage(
+          child: MyHomePage(),
+        );
+      }),
   GoRoute(
     path: '/register',
     pageBuilder: (context, state) => const MaterialPage<void>(
@@ -71,9 +84,7 @@ final _router = GoRouter(routes: [
 ], errorBuilder: (context, state) => const NotFound(), initialLocation: '/');
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -88,9 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(widget.title,
-                  style: const TextStyle(
+            children: const <Widget>[
+              Text('dagda',
+                  style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 72)),
