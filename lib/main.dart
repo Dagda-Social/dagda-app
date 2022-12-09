@@ -27,61 +27,122 @@ class MyApp extends StatelessWidget {
           trackBorderColor: MaterialStateProperty.all(Colors.grey),
         ),
       ),
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
       routerConfig: _router,
     );
   }
 }
 
-final _router = GoRouter(routes: [
-  GoRoute(
-      path: '/',
-      pageBuilder: (context, state) {
-        MetaSEO metaSEO = MetaSEO(
-          ogTitle: 'dagda - Social Network',
-          description:
-              'Building the next generation of Social Network. Join us now!',
-          ogImage: 'https://dagda.social/assets/images/logo.png',
-          keywords:
-              'dagda, social network, social media, social, network, dagda social network',
-        );
+final _router = GoRouter(
+    routes: [
+      GoRoute(
+          path: '/',
+          pageBuilder: (context, state) {
+            MetaSEO metaSEO = MetaSEO(
+              ogTitle: 'dagda - Social Network',
+              description:
+                  'Building the next generation of Social Network. Join us now!',
+              ogImage: 'https://dagda.social/assets/images/logo.png',
+              keywords:
+                  'dagda, social network, social media, social, network, dagda social network',
+            );
 
-        metaSEO.seoOGImage();
-        metaSEO.seoDescription();
-        metaSEO.seoOGTitle();
-        metaSEO.seoKeywords();
-        
-        return const MaterialPage(
-          child: MyHomePage(),
-        );
-      }),
-  GoRoute(
-    path: '/register',
-    pageBuilder: (context, state) => const MaterialPage<void>(
-      child: Register(),
-    ),
-  ),
-  GoRoute(
-    path: '/login',
-    pageBuilder: (context, state) => const MaterialPage<void>(
-      child: Login(),
-    ),
-  ),
-  GoRoute(
-    name: 'profile',
-    path: '/@:idProfile',
-    pageBuilder: (context, state) => MaterialPage<void>(
-      child: Profile(id: state.params['idProfile'].toString()),
-    ),
-  ),
-  GoRoute(
-    path: '/privacy-policy',
-    pageBuilder: (context, state) => const MaterialPage<void>(
-      child: PrivacyPolicy(),
-    ),
-  ),
-], errorBuilder: (context, state) => const NotFound(), initialLocation: '/');
+            metaSEO.seoOGImage();
+            metaSEO.seoDescription();
+            metaSEO.seoOGTitle();
+            metaSEO.seoKeywords();
+
+            return const MaterialPage(
+              child: MyHomePage(),
+            );
+          }),
+      GoRoute(
+          path: '/register',
+          pageBuilder: (context, state) {
+            MetaSEO metaSEO = MetaSEO(
+              ogTitle: 'dagda - Register',
+              description:
+                  'Building the next generation of Social Network. Join us now!',
+              ogImage: 'https://dagda.social/assets/images/logo.png',
+              keywords:
+                  'dagda, social network, social media, social, network, dagda social network, register',
+            );
+
+            metaSEO.seoOGImage();
+            metaSEO.seoDescription();
+            metaSEO.seoOGTitle();
+            metaSEO.seoKeywords();
+
+            return const MaterialPage<void>(
+              child: Register(),
+            );
+          }),
+      GoRoute(
+          path: '/login',
+          pageBuilder: (context, state) {
+            MetaSEO metaSEO = MetaSEO(
+              ogTitle: 'dagda - Login',
+              description:
+                  'Building the next generation of Social Network. Join us now!',
+              ogImage: 'https://dagda.social/assets/images/logo.png',
+              keywords:
+                  'dagda, social network, social media, social, network, dagda social network, login',
+            );
+
+            metaSEO.seoOGImage();
+            metaSEO.seoDescription();
+            metaSEO.seoOGTitle();
+            metaSEO.seoKeywords();
+
+            return const MaterialPage<void>(
+              child: Login(),
+            );
+          }),
+      GoRoute(
+          name: 'profile',
+          path: '/@:idProfile',
+          pageBuilder: (context, state) {
+            MetaSEO metaSEO = MetaSEO(
+              ogTitle: state.params['idProfile'].toString(),
+              keywords:
+                  'dagda, social network, social media, social, network, dagda social network, ${state.params['idProfile'].toString()}',
+            );
+            return MaterialPage<void>(
+              child: Title(
+                  title: state.params['idProfile'].toString(),
+                  color: Colors.black,
+                  child: Profile(id: state.params['idProfile'].toString())),
+            );
+          }),
+      GoRoute(
+        path: '/privacy-policy',
+        pageBuilder: (context, state) {
+          MetaSEO metaSEO = MetaSEO(
+            ogTitle: 'dagda - Privacy Policy',
+            description:
+                'Building the next generation of Social Network. Join us now!',
+            ogImage: 'https://dagda.social/assets/images/logo.png',
+            keywords:
+                'dagda, social network, social media, social, network, dagda social network, privacy policy, privacy, policy',
+          );
+
+          metaSEO.seoOGImage();
+          metaSEO.seoDescription();
+          metaSEO.seoOGTitle();
+          metaSEO.seoKeywords();
+
+          return const MaterialPage<void>(
+            child: PrivacyPolicy(),
+          );
+        },
+      ),
+    ],
+    errorBuilder: (context, state) {
+      return Title(
+          title: '404 - Not Found',
+          color: Colors.black,
+          child: const NotFound());
+    },
+    initialLocation: '/');
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
