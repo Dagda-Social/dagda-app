@@ -11,73 +11,77 @@ class PrivacyPolicy extends StatefulWidget {
 class _PrivacyPolicyState extends State<PrivacyPolicy> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 60,
-        centerTitle: false,
-        titleSpacing: 80.0,
-        title: const Text('dagda',
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 42)),
-        shadowColor: const Color.fromARGB(0, 0, 0, 0),
-        actions: <Widget>[
-          Center(
-            child: TextButton(
-              onPressed: () => context.go('/login'),
-              child: const Text(
-                'Login',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 40,
-          ),
-          Center(
-            child: TextButton(
-              onPressed: () => context.go('/register'),
-              child: const Text(
-                'Register',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 40,
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SizedBox(
-                  width: 800,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Content(),
-                      Footer(),
-                    ],
-                  ),
+    return Title(
+      title: 'dagda - Privacy Policy',
+      color: Colors.black,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          toolbarHeight: 60,
+          centerTitle: false,
+          titleSpacing: 80.0,
+          title: const Text('dagda',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 42)),
+          shadowColor: const Color.fromARGB(0, 0, 0, 0),
+          actions: <Widget>[
+            Center(
+              child: TextButton(
+                onPressed: () => context.go('/login'),
+                child: const Text(
+                  'Login',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
                 ),
-              ],
+              ),
+            ),
+            const SizedBox(
+              width: 40,
+            ),
+            Center(
+              child: TextButton(
+                onPressed: () => context.go('/register'),
+                child: const Text(
+                  'Register',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 40,
             ),
           ],
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 60,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SizedBox(
+                    width: 800,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const <Widget>[
+                        Content(),
+                        Footer(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
