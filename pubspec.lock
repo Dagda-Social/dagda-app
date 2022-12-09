@@ -128,6 +128,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  seo_renderer:
+    dependency: "direct main"
+    description:
+      name: seo_renderer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.0"
   sky_engine:
     dependency: transitive
     description: flutter

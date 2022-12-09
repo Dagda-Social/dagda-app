@@ -1,12 +1,17 @@
 import 'package:dagda/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/helpers/robot_detector_web.dart';
 import './urlStrategy/nonweb_rul_strategy.dart'
     if (dart.library.html) './urlStrategy/web_url_strategy.dart';
 import 'package:go_router/go_router.dart';
 
 void main() {
   configureUrl();
-  runApp(const MyApp());
+  runApp(const RobotDetector(
+      child: MaterialApp(
+    home: MyApp(),
+    navigatorObservers: [],
+  )));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,48 +24,51 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Comfortaa',
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: Colors.white, primary: Colors.white),
+        scrollbarTheme: ScrollbarThemeData(
+          thumbColor: MaterialStateProperty.all(Colors.black),
+          radius: const Radius.circular(10),
+          trackColor: MaterialStateProperty.all(Colors.grey),
+          trackBorderColor: MaterialStateProperty.all(Colors.grey),
+        ),
       ),
       routerConfig: _router,
     );
   }
 }
 
-final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      pageBuilder: (context, state) => const MaterialPage(
-        child: MyHomePage(title: 'dagda'),
-      ),
+final _router = GoRouter(routes: [
+  GoRoute(
+    path: '/',
+    pageBuilder: (context, state) => const MaterialPage(
+      child: MyHomePage(title: 'dagda'),
     ),
-    GoRoute(
-      path: '/register',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        child: Register(),
-      ),
+  ),
+  GoRoute(
+    path: '/register',
+    pageBuilder: (context, state) => const MaterialPage<void>(
+      child: Register(),
     ),
-    GoRoute(
-      path: '/login',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        child: Login(),
-      ),
+  ),
+  GoRoute(
+    path: '/login',
+    pageBuilder: (context, state) => const MaterialPage<void>(
+      child: Login(),
     ),
-    GoRoute(
-      name: 'profile',
-      path: '/@:idProfile',
-      pageBuilder: (context, state) => MaterialPage<void>(
-        child: Profile(id: state.params['idProfile'].toString()),
-      ),
+  ),
+  GoRoute(
+    name: 'profile',
+    path: '/@:idProfile',
+    pageBuilder: (context, state) => MaterialPage<void>(
+      child: Profile(id: state.params['idProfile'].toString()),
     ),
-    GoRoute(
-      path: '/privacy-policy',
-      pageBuilder: (context, state) => MaterialPage<void>(
-        child: PrivacyPolicy(),
-      ),
+  ),
+  GoRoute(
+    path: '/privacy-policy',
+    pageBuilder: (context, state) => const MaterialPage<void>(
+      child: PrivacyPolicy(),
     ),
-  ],
-  errorBuilder: (context, state) => const NotFound(),
-);
+  ),
+], errorBuilder: (context, state) => const NotFound(), initialLocation: '/');
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
