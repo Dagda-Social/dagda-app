@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class PrivacyPolicy extends StatefulWidget {
   const PrivacyPolicy({Key? key}) : super(key: key);
 
@@ -16,7 +15,6 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
     return Title(
       title:
           '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).privacyPolicy}',
-
       color: Colors.black,
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -26,7 +24,6 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
           titleSpacing: 80.0,
           title: Text(AppLocalizations.of(context).appName,
               style: const TextStyle(
-
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 42)),
@@ -38,7 +35,6 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 child: Text(
                   AppLocalizations.of(context).login,
                   style: const TextStyle(
-
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
@@ -54,7 +50,6 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                 child: Text(
                   AppLocalizations.of(context).register,
                   style: const TextStyle(
-
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
@@ -101,7 +96,7 @@ class Content extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-  children: <Widget>[
+      children: <Widget>[
         Text(
           AppLocalizations.of(context).privacyPolicy,
           style: const TextStyle(
@@ -112,7 +107,6 @@ class Content extends StatelessWidget {
           height: 40,
         ),
         const Text(
-
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis tincidunt sodales. Sed sollicitudin nulla sed nulla sagittis, a scelerisque nulla pretium. Suspendisse imperdiet vestibulum dui in ullamcorper. Suspendisse venenatis nisl vel sem tincidunt vestibulum. Morbi leo mi, vestibulum a gravida et, consectetur ac nisi. Ut varius eros congue, auctor leo at, congue orci. Cras eget nulla accumsan, congue dui ac, pharetra urna. Ut quis magna ex. Mauris odio lacus, pretium vitae erat sit amet, tristique bibendum dolor. Phasellus ac viverra odio, in lacinia massa. Nam quis pellentesque tellus, id tempus arcu. Aenean in erat ac felis sollicitudin lobortis. Aenean at nibh posuere, cursus massa sit amet, commodo turpis.     \n\n     Nunc quis interdum quam. Donec venenatis aliquam facilisis. Nulla quis luctus urna. Nunc faucibus scelerisque est eu auctor. Praesent tempor nulla ut arcu ullamcorper gravida. Sed sollicitudin, ex vel maximus consequat, lorem erat tempor quam, et sagittis erat purus ac augue. Aliquam fermentum sollicitudin dignissim. Aenean nec nulla at augue ultricies congue in quis magna. Aenean maximus arcu erat, in dignissim magna posuere a. Nullam placerat eros eget interdum lacinia. Curabitur laoreet, felis id consectetur condimentum, tellus mauris fermentum mauris, nec venenatis metus lorem sed lorem. Etiam fringilla in ex id dapibus. Morbi sit amet nunc nec diam hendrerit semper. Mauris ut libero egestas, sodales erat vel, placerat nunc. Aenean maximus turpis et arcu pulvinar, nec vestibulum velit condimentum.     \n\n     In hac habitasse platea dictumst. Etiam rhoncus id massa sit amet gravida. Proin elementum orci quis tempor pharetra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque interdum molestie dapibus. Vivamus vel pulvinar magna. Aliquam erat volutpat. Suspendisse luctus pretium magna ut ullamcorper. Quisque vel gravida ante. Cras porttitor lacinia volutpat. Pellentesque cursus libero vitae odio volutpat, ac commodo sapien ullamcorper. Vestibulum viverra, dolor et interdum sagittis, lorem mauris scelerisque sapien, rutrum gravida sapien felis ut massa.     \n\n     Aenean fringilla tempor dui in facilisis. Etiam cursus odio in tempus rutrum. Proin pretium lectus sit amet dictum fermentum. Donec egestas, lacus quis scelerisque pellentesque, ex tortor viverra sem, eu rutrum est lectus eu sapien. Nulla malesuada placerat erat quis condimentum. Mauris id dui eu purus tincidunt rutrum sed vel quam. Sed rhoncus erat elit, et laoreet elit tempor sed. Curabitur vitae nisi neque.     \n\n     Etiam turpis tortor, bibendum eget augue vel, faucibus tristique justo. Duis consequat orci eros, ac porttitor lacus pellentesque id. Fusce in ante at odio tempus convallis ullamcorper pulvinar nisi. Ut bibendum ante in arcu ultricies pulvinar. Suspendisse potenti. Vivamus condimentum id dui vel sodales. Nunc varius pretium eros non tristique. Curabitur suscipit consectetur semper. Aenean sed lorem sagittis, egestas urna vel, eleifend nulla. Vestibulum consequat, erat vitae sagittis porta, magna lacus consequat nisl, nec ornare nisl risus eget libero. Donec id sem efficitur, sollicitudin magna sit amet, ullamcorper magna. Morbi interdum dui at convallis eleifend. Maecenas condimentum mattis diam, varius lacinia elit ultricies eu. Curabitur vehicula vitae leo sed tempor. Maecenas eu finibus libero. Fusce vel maximus libero.',
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.normal),

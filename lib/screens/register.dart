@@ -13,7 +13,6 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Title(
       title: AppLocalizations.of(context).register,
-
       color: Colors.black,
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -24,7 +23,6 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 Text(AppLocalizations.of(context).appName,
                     style: const TextStyle(
-
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 72)),
@@ -47,7 +45,6 @@ class _RegisterState extends State<Register> {
                     child: Text(
                       AppLocalizations.of(context).register,
                       style: const TextStyle(
-
                           color: Colors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.bold),

@@ -23,7 +23,6 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 Text(AppLocalizations.of(context).appName,
                     style: const TextStyle(
-
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 72)),
@@ -46,7 +45,6 @@ class _LoginState extends State<Login> {
                     child: Text(
                       AppLocalizations.of(context).login,
                       style: const TextStyle(
-
                           color: Colors.black,
                           fontSize: 24,
                           fontWeight: FontWeight.bold),
