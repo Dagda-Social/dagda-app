@@ -54,7 +54,7 @@ final _router = GoRouter(
     ),
     GoRoute(
       path: '/privacy-policy',
-      pageBuilder: (context, state) => MaterialPage<void>(
+      pageBuilder: (context, state) => const MaterialPage<void>(
         child: PrivacyPolicy(),
       ),
     ),
