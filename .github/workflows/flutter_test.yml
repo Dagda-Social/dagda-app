@@ -14,5 +14,5 @@ jobs:
         with:
           channel: 'stable'
       - run: flutter pub get
-      - run: flutter gen-l10n
+      - run: flutter gen-l10n --use-deferred-loading
       - run: flutter test
