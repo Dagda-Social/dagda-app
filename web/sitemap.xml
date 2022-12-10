@@ -1,0 +1,38 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://dagda.social</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://dagda.social"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://dagda.social/"/>
+        <xhtml:link rel="alternate" hreflang="gl" href="https://dagda.social/"/>
+        <lastmod>2022-12-10</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://dagda.social/login</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://dagda.social/login"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://dagda.social/login"/>
+        <xhtml:link rel="alternate" hreflang="gl" href="https://dagda.social/login"/>
+        <lastmod>2022-12-10</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://dagda.social/privacy-policy</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://dagda.social/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://dagda.social/privacy-policy"/>
+        <xhtml:link rel="alternate" hreflang="gl" href="https://dagda.social/privacy-policy"/>
+        <lastmod>2022-12-10</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://dagda.social/register</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://dagda.social/register"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://dagda.social/register"/>
+        <xhtml:link rel="alternate" hreflang="gl" href="https://dagda.social/register"/>
+        <lastmod>2022-12-10</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+</urlset>
