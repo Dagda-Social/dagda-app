@@ -51,6 +51,7 @@ final _router = GoRouter(
                 ogImage: 'https://dagda.social/assets/images/logo.png',
                 keywords: AppLocalizations.of(context).appKeywords);
 
+
             metaSEO.seoOGImage();
             metaSEO.seoDescription();
             metaSEO.seoOGTitle();
@@ -71,6 +72,7 @@ final _router = GoRouter(
                 ogImage: 'https://dagda.social/assets/images/logo.png',
                 keywords:
                     "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).register}");
+
 
             metaSEO.seoOGImage();
             metaSEO.seoDescription();
@@ -108,8 +110,7 @@ final _router = GoRouter(
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
               ogTitle: state.params['idProfile'].toString(),
-              keywords:
-                  '${AppLocalizations.of(context).appKeywords}, ${state.params['idProfile'].toString()}',
+              keywords:'${AppLocalizations.of(context).appKeywords}, ${state.params['idProfile'].toString()}',
             );
 
             metaSEO.seoOGTitle();
@@ -133,6 +134,7 @@ final _router = GoRouter(
             ogImage: 'https://dagda.social/assets/images/logo.png',
             keywords:
                 "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).privacyPolicy}",
+
           );
 
           metaSEO.seoOGImage();
