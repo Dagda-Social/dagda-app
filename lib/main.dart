@@ -1,9 +1,11 @@
 import 'package:dagda/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import './urlStrategy/nonweb_rul_strategy.dart'
     if (dart.library.html) './urlStrategy/web_url_strategy.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meta_seo/meta_seo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   configureUrl();
@@ -16,6 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'dagda - Social Network',
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('es', ''),
+      ],
       theme: ThemeData(
         fontFamily: 'Comfortaa',
         colorScheme: ColorScheme.fromSwatch()
@@ -38,13 +45,11 @@ final _router = GoRouter(
           path: '/',
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
-              ogTitle: 'dagda - Social Network',
-              description:
-                  'Building the next generation of Social Network. Join us now!',
-              ogImage: 'https://dagda.social/assets/images/logo.png',
-              keywords:
-                  'dagda, social network, social media, social, network, dagda social network',
-            );
+                ogTitle: AppLocalizations.of(context).dagdaSocial,
+                description:
+                    '${AppLocalizations.of(context).buildingNextGeneration}, ${AppLocalizations.of(context).joinUs}',
+                ogImage: 'https://dagda.social/assets/images/logo.png',
+                keywords: AppLocalizations.of(context).appKeywords);
 
             metaSEO.seoOGImage();
             metaSEO.seoDescription();
@@ -59,13 +64,13 @@ final _router = GoRouter(
           path: '/register',
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
-              ogTitle: 'dagda - Register',
-              description:
-                  'Building the next generation of Social Network. Join us now!',
-              ogImage: 'https://dagda.social/assets/images/logo.png',
-              keywords:
-                  'dagda, social network, social media, social, network, dagda social network, register',
-            );
+                ogTitle:
+                    '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).register}',
+                description:
+                    '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
+                ogImage: 'https://dagda.social/assets/images/logo.png',
+                keywords:
+                    "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).register}");
 
             metaSEO.seoOGImage();
             metaSEO.seoDescription();
@@ -80,13 +85,13 @@ final _router = GoRouter(
           path: '/login',
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
-              ogTitle: 'dagda - Login',
-              description:
-                  'Building the next generation of Social Network. Join us now!',
-              ogImage: 'https://dagda.social/assets/images/logo.png',
-              keywords:
-                  'dagda, social network, social media, social, network, dagda social network, login',
-            );
+                ogTitle:
+                    '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).login}',
+                description:
+                    '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
+                ogImage: 'https://dagda.social/assets/images/logo.png',
+                keywords:
+                    "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).login}");
 
             metaSEO.seoOGImage();
             metaSEO.seoDescription();
@@ -104,8 +109,12 @@ final _router = GoRouter(
             MetaSEO metaSEO = MetaSEO(
               ogTitle: state.params['idProfile'].toString(),
               keywords:
-                  'dagda, social network, social media, social, network, dagda social network, ${state.params['idProfile'].toString()}',
+                  '${AppLocalizations.of(context).appKeywords}, ${state.params['idProfile'].toString()}',
             );
+
+            metaSEO.seoOGTitle();
+            metaSEO.seoKeywords();
+
             return MaterialPage<void>(
               child: Title(
                   title: state.params['idProfile'].toString(),
@@ -117,12 +126,13 @@ final _router = GoRouter(
         path: '/privacy-policy',
         pageBuilder: (context, state) {
           MetaSEO metaSEO = MetaSEO(
-            ogTitle: 'dagda - Privacy Policy',
+            ogTitle:
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).privacyPolicy}',
             description:
-                'Building the next generation of Social Network. Join us now!',
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
             ogImage: 'https://dagda.social/assets/images/logo.png',
             keywords:
-                'dagda, social network, social media, social, network, dagda social network, privacy policy, privacy, policy',
+                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).privacyPolicy}",
           );
 
           metaSEO.seoOGImage();
@@ -160,9 +170,9 @@ class _MyHomePageState extends State<MyHomePage> {
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text('dagda',
-                  style: TextStyle(
+            children: <Widget>[
+              Text(AppLocalizations.of(context).appName,
+                  style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 72)),
@@ -172,13 +182,13 @@ class _MyHomePageState extends State<MyHomePage> {
         Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const <Widget>[
-                SizedBox(
+              children: <Widget>[
+                const SizedBox(
                   height: 200,
                 ),
                 Text(
-                  'Building the next generation of Social Network',
-                  style: TextStyle(color: Colors.black, fontSize: 16),
+                  AppLocalizations.of(context).buildingNextGeneration,
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ]),
         ),
