@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en', ''),
         Locale('es', ''),
+        Locale('gl', '')
       ],
       theme: ThemeData(
         fontFamily: 'Comfortaa',
