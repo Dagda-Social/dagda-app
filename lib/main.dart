@@ -120,7 +120,7 @@ final _router = GoRouter(
 
             return MaterialPage<void>(
               child: Title(
-                  title: state.params['idProfile'].toString(),
+                  title: '${state.params['idProfile']} - dagda',
                   color: Colors.black,
                   child: Profile(id: state.params['idProfile'].toString())),
             );
