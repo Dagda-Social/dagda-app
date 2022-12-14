@@ -17,7 +17,7 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
-    expect(find.text('Building the next generation of Social Network'), findsOneWidget);
+    expect(find.text('Building the next generation of Social Network'), findsNothing);
     expect(find.text('0'), findsNothing);
 
   });
