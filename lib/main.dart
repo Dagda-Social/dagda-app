@@ -108,7 +108,9 @@ final _router = GoRouter(
           path: '/@:idProfile',
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
-              ogTitle: state.params['idProfile'].toString(),
+              ogTitle: '${state.params['idProfile']} - dagda',
+              description:
+                  '${state.params['idProfile']} ${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
               keywords:
                   '${AppLocalizations.of(context).appKeywords}, ${state.params['idProfile'].toString()}',
             );
@@ -148,6 +150,18 @@ final _router = GoRouter(
       ),
     ],
     errorBuilder: (context, state) {
+      MetaSEO metaSEO = MetaSEO(
+        ogTitle: '404 - Not Found',
+        description:
+            '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
+        ogImage: 'https://dagda.social/assets/images/logo.png',
+        keywords: "${AppLocalizations.of(context).appKeywords},404",
+      );
+      metaSEO.seoOGImage();
+      metaSEO.seoDescription();
+      metaSEO.seoOGTitle();
+      metaSEO.seoKeywords();
+
       return Title(
           title: '404 - Not Found',
           color: Colors.black,
