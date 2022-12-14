@@ -1,6 +1,11 @@
+import 'package:dagda/l10n/l10n.dart';
+import 'package:dagda/meta_strategy/non_web_meta_strategy.dart'
+    if (dart.library.html) 'package:dagda/meta_strategy/web_meta_strategy.dart';
+import 'package:dagda/provider/locale_provider.dart';
 import 'package:dagda/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:universal_io/io.dart';
 import './urlStrategy/nonweb_rul_strategy.dart'
     if (dart.library.html) './urlStrategy/web_url_strategy.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +13,8 @@ import 'package:meta_seo/meta_seo.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
+  configMeta(Locale.fromSubtags(languageCode: Platform.localeName));
+
   configureUrl();
   runApp(const MyApp());
 }
@@ -17,13 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'dagda - Social Network',
+      title: 'Dagda',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('es', ''),
-        Locale('gl', '')
-      ],
+      supportedLocales: L10n.all,
       theme: ThemeData(
         fontFamily: 'Comfortaa',
         colorScheme: ColorScheme.fromSwatch()
@@ -57,8 +60,11 @@ final _router = GoRouter(
             metaSEO.seoOGTitle();
             metaSEO.seoKeywords();
 
-            return const MaterialPage(
-              child: MyHomePage(),
+            return  MaterialPage(
+              child: Title(
+                  title: AppLocalizations.of(context).dagdaSocial,
+                  color: Colors.black,
+                  child: const MyHomePage()),
             );
           }),
       GoRoute(
@@ -78,8 +84,11 @@ final _router = GoRouter(
             metaSEO.seoOGTitle();
             metaSEO.seoKeywords();
 
-            return const MaterialPage<void>(
-              child: Register(),
+            return MaterialPage<void>(
+              child: Title(
+                  title: '${AppLocalizations.of(context).register} - dagda',
+                  color: Colors.black,
+                  child: const Register()),
             );
           }),
       GoRoute(
@@ -99,8 +108,11 @@ final _router = GoRouter(
             metaSEO.seoOGTitle();
             metaSEO.seoKeywords();
 
-            return const MaterialPage<void>(
-              child: Login(),
+            return MaterialPage<void>(
+              child: Title(
+                  title: '${AppLocalizations.of(context).login} - dagda',
+                  color: Colors.black,
+                  child: const Login()),
             );
           }),
       GoRoute(
