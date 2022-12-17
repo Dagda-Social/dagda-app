@@ -22,5 +22,9 @@
   "appKeywords": "dagda, rede social, social, rede, dagda rede social",
   "appOGTitle": "dagda - Rede Social",
   "phoneNumber": "Número de teléfono",
-  "username": "Identificador"
+  "username": "Identificador",
+  "alreadyHaveAnAccount": "Xa creaches unha conta?",
+  "byRegisteringYouAgreeTo": "Creando unha conta, aceptas os nosos",
+  "terms": "Térmos de uso",
+  "and": "e a nosa"
 }

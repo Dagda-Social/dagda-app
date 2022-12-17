@@ -1,20 +1,22 @@
+import 'package:dagda/firebase_options.dart';
 import 'package:dagda/l10n/l10n.dart';
 import 'package:dagda/meta_strategy/non_web_meta_strategy.dart'
     if (dart.library.html) 'package:dagda/meta_strategy/web_meta_strategy.dart';
-import 'package:dagda/provider/locale_provider.dart';
-import 'package:dagda/router_strategy/non_web_router_strategy.dart' if (dart.library.html) 'package:dagda/router_strategy/web_router_strategy.dart';
-import 'package:dagda/screens/screens.dart';
+import 'package:dagda/router_strategy/non_web_router_strategy.dart'
+    if (dart.library.html) 'package:dagda/router_strategy/web_router_strategy.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:universal_io/io.dart';
 import './urlStrategy/nonweb_rul_strategy.dart'
     if (dart.library.html) './urlStrategy/web_url_strategy.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+Future<void> main() async {
   configMeta(Locale.fromSubtags(languageCode: Platform.localeName));
   configureUrl();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Dagda',
+      title: 'dagda',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: L10n.all,
       theme: ThemeData(
@@ -41,4 +43,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
