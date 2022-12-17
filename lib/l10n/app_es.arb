@@ -22,5 +22,6 @@
   "appKeywords": "dagda, red social, social, red, dagda red social",
   "appOGTitle": "dagda - Red Social",
   "phoneNumber": "Número de teléfono",
-  "username": "Nombre de usuario"
+  "username": "Nombre de usuario",
+  "alreadyHaveAnAccount": "Ya tienes una cuenta?"
 }

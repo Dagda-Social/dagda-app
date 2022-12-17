@@ -22,5 +22,6 @@
   "appKeywords": "dagda, social network, social media, social, network, dagda social network",
   "appOGTitle": "dagda - Social Network",
   "phoneNumber": "Phone Number",
-  "username": "Username"
+  "username": "Username",
+  "alreadyHaveAnAccount": "Do you have an account?"
 }
