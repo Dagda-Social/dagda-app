@@ -23,5 +23,9 @@
   "appOGTitle": "dagda - Social Network",
   "phoneNumber": "Phone Number",
   "username": "Username",
-  "alreadyHaveAnAccount": "Do you have an account?"
+  "alreadyHaveAnAccount": "Do you have an account?",
+  "byRegisteringYouAgreeTo": "By creating an account, you are agreeing to our",
+  "terms": "Terms of Use",
+  "and": "and"
+
 }

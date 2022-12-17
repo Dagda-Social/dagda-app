@@ -1,10 +1,8 @@
 import 'package:dagda/screens/register/sizes/register_large.dart';
 import 'package:dagda/screens/register/sizes/register_medium.dart';
 import 'package:dagda/screens/register/sizes/register_small.dart';
-import 'package:dagda/widgets/buttons/outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);

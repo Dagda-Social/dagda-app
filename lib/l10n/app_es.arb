@@ -23,5 +23,8 @@
   "appOGTitle": "dagda - Red Social",
   "phoneNumber": "Número de teléfono",
   "username": "Nombre de usuario",
-  "alreadyHaveAnAccount": "Ya tienes una cuenta?"
+  "alreadyHaveAnAccount": "Ya tienes una cuenta?",
+  "byRegisteringYouAgreeTo": "Creando una cuenta, aceptas los",
+  "terms": "Términos de Uso",
+  "and": "y la"
 }
