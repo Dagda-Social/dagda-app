@@ -15,7 +15,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Title(
-      title: AppLocalizations.of(context).register,
+      title: '${AppLocalizations.of(context).register} - ${AppLocalizations.of(context).appName}',
       color: Colors.black,
       child: Scaffold(body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {

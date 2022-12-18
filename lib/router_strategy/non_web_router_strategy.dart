@@ -1,4 +1,4 @@
-import 'package:dagda/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,6 +19,12 @@ GoRouter router = GoRouter(
           }),
       GoRoute(
           path: '/register',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser != null) {
+              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             return MaterialPage<void>(
               child: Title(
@@ -29,6 +35,12 @@ GoRouter router = GoRouter(
           }),
       GoRoute(
           path: '/login',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser != null) {
+              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             return MaterialPage<void>(
               child: Title(
@@ -54,6 +66,21 @@ GoRouter router = GoRouter(
           return const MaterialPage<void>(
             child: PrivacyPolicy(),
           );
+        },
+      ),
+      GoRoute(
+        path: '/terms-of-service',
+        pageBuilder: (context, state) {
+          return MaterialPage<void>(
+            child: TermsOfService(),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/logout',
+        redirect: (context, state) {
+          FirebaseAuth.instance.signOut();
+          return '/';
         },
       ),
     ],
