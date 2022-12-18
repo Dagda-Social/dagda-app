@@ -19,6 +19,9 @@ class _RegisterState extends State<Register> {
       color: Colors.black,
       child: Scaffold(body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
+            // If the screen is smaller than 600px wide, we'll use the small
+            // layout. If it's wider than 600px, we'll use the medium layout.
+            // If it's wider than 1200px, we'll use the large layout.
         if (constraints.maxWidth < 600) {
           return const RegisterSmall();
         } else if (constraints.maxWidth < 1200) {
