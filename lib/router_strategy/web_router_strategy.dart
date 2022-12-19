@@ -130,8 +130,10 @@ GoRouter router = GoRouter(
           metaSEO.seoOGTitle();
           metaSEO.seoKeywords();
 
-          return const MaterialPage<void>(
-            child: PrivacyPolicy(),
+          return MaterialPage<void>(
+            child: BasePage(
+              content_type: 'privacy-policy',
+            ),
           );
         },
       ),
@@ -153,8 +155,10 @@ GoRouter router = GoRouter(
             metaSEO.seoOGTitle();
             metaSEO.seoKeywords();
 
-            return  MaterialPage<void>(
-              child: TermsOfService(),
+            return MaterialPage<void>(
+              child: BasePage(
+                content_type: "terms-of-service",
+              ),
             );
           }),
       GoRoute(
@@ -163,6 +167,31 @@ GoRouter router = GoRouter(
             FirebaseAuth.instance.signOut();
             return '/';
           }),
+      GoRoute(
+        path: '/about',
+        pageBuilder: (context, state) {
+          MetaSEO metaSEO = MetaSEO(
+            ogTitle:
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).about}',
+            description:
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
+            ogImage: 'https://dagda.social/assets/images/logo.png',
+            keywords:
+                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).about}",
+          );
+
+          metaSEO.seoOGImage();
+          metaSEO.seoDescription();
+          metaSEO.seoOGTitle();
+          metaSEO.seoKeywords();
+
+          return MaterialPage<void>(
+            child: BasePage(
+              content_type: "about",
+            ),
+          );
+        },
+      )
     ],
     errorBuilder: (context, state) {
       MetaSEO metaSEO = MetaSEO(

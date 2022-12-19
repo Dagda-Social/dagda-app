@@ -63,8 +63,10 @@ GoRouter router = GoRouter(
       GoRoute(
         path: '/privacy-policy',
         pageBuilder: (context, state) {
-          return const MaterialPage<void>(
-            child: PrivacyPolicy(),
+          return MaterialPage<void>(
+            child: BasePage(
+              content_type: 'privacy-policy',
+            ),
           );
         },
       ),
@@ -72,7 +74,19 @@ GoRouter router = GoRouter(
         path: '/terms-of-service',
         pageBuilder: (context, state) {
           return MaterialPage<void>(
-            child: TermsOfService(),
+            child: BasePage(
+              content_type: "terms-of-service",
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/about',
+        pageBuilder: (context, state) {
+          return MaterialPage<void>(
+            child: BasePage(
+              content_type: "about",
+            ),
           );
         },
       ),
