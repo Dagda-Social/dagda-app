@@ -25,8 +25,15 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
+    if (FirebaseAuth.instance.currentUser != null) {
+      print('idTokenResult');
+      print(FirebaseAuth.instance.currentUser?.getIdTokenResult());
+      print('idToken');
+      print(FirebaseAuth.instance.currentUser?.getIdToken());
+    }
     return MaterialApp.router(
       title: 'dagda',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
