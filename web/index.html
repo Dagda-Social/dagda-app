@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <base href="$FLUTTER_BASE_HREF">
 
@@ -25,6 +25,11 @@
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
+
+  <!-- This script preload canvaskit-->
+  <script src="https://unpkg.com/canvaskit-wasm@0.33.0/bin/canvaskit.js"></script>
+  <link rel="preload" href="https://unpkg.com/canvaskit-wasm@0.33.0/bin/canvaskit.wasm" as="fetch" crossOrigin="anonymous">
+
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
