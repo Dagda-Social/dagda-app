@@ -58,6 +58,13 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  deferred-components:
+      - name: home
+        libraries:
+          # Only one library from the loading unit is necessary.
+          - package:dagda/screens/home/home_page.dart
+        assets:
+          - fonts/Comfortaa.ttf
   generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
