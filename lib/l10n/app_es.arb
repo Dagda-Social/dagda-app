@@ -26,5 +26,15 @@
   "alreadyHaveAnAccount": "Ya tienes una cuenta?",
   "byRegisteringYouAgreeTo": "Creando una cuenta, aceptas los",
   "terms": "Términos de Uso",
-  "and": "y la"
+  "and": "y la",
+  "about": "Sobre nosotros",
+  "enterEmail":"Ingresa tu correo electrónico",
+  "enterPassword":"Ingresa tu contraseña",
+  "enterConfirmPassword":"Confirma tu contraseña",
+  "error":"Error",
+  "errorEmail":"Por favor ingresa un correo electrónico válido",
+  "errorPassword":"La contraseña debe tener al menos 8 caracteres",
+  "errorConfirmPassword":"Las contraseñas no coinciden",
+  "errorUsername":"Por favor ingresa un nombre de usuario válido",
+  "errorPasswordWithSpecialCharacters":"La contraseña debe contener al menos un caracter especial"
 }

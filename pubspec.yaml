@@ -38,6 +38,9 @@ dependencies:
   universal_io: ^2.0.4
   firebase_core: ^2.4.0
   firebase_auth: ^4.2.1
+  firebase_dynamic_links: ^5.0.9
+  flutter_markdown: ^0.6.13
+  url_launcher: ^6.1.7
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +58,13 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  deferred-components:
+      - name: home
+        libraries:
+          # Only one library from the loading unit is necessary.
+          - package:dagda/screens/home/home_page.dart
+        assets:
+          - fonts/Comfortaa.ttf
   generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

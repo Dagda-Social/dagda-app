@@ -1,9 +1,14 @@
+import 'package:dagda/screens/home/home_page.dart' deferred as home;
+import 'package:dagda/screens/login.dart' deferred as login;
+import 'package:dagda/screens/profile/profile.dart' deferred as profile;
+import 'package:dagda/screens/register/register.dart' deferred as register;
+import 'package:dagda/screens/base_page/base_page.dart' deferred as base;
+import 'package:dagda/screens/not_found.dart' deferred as notFound;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:meta_seo/meta_seo.dart';
-
-import '../screens/screens.dart';
 
 GoRouter router = GoRouter(
     routes: [
@@ -26,11 +31,26 @@ GoRouter router = GoRouter(
               child: Title(
                   title: AppLocalizations.of(context).dagdaSocial,
                   color: Colors.black,
-                  child: const MyHomePage()),
+                  child: FutureBuilder(
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return home.MyHomePage();
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                    future: home.loadLibrary(),
+                  )),
             );
           }),
       GoRoute(
           path: '/register',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser != null) {
+              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
                 ogTitle:
@@ -50,11 +70,26 @@ GoRouter router = GoRouter(
               child: Title(
                   title: '${AppLocalizations.of(context).register} - dagda',
                   color: Colors.black,
-                  child: const Register()),
+                  child: FutureBuilder(
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return register.Register();
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                    future: register.loadLibrary(),
+                  )),
             );
           }),
       GoRoute(
           path: '/login',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser != null) {
+              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
                 ogTitle:
@@ -74,7 +109,16 @@ GoRouter router = GoRouter(
               child: Title(
                   title: '${AppLocalizations.of(context).login} - dagda',
                   color: Colors.black,
-                  child: const Login()),
+                  child: FutureBuilder(
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return login.Login();
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                    future: login.loadLibrary(),
+                  )),
             );
           }),
       GoRoute(
@@ -96,7 +140,18 @@ GoRouter router = GoRouter(
               child: Title(
                   title: '${state.params['idProfile']} - dagda',
                   color: Colors.black,
-                  child: Profile(id: state.params['idProfile'].toString())),
+                  child: FutureBuilder(
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        return profile.Profile(
+                          id: state.params['idProfile'].toString(),
+                        );
+                      } else {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    },
+                    future: profile.loadLibrary(),
+                  )),
             );
           }),
       GoRoute(
@@ -117,11 +172,88 @@ GoRouter router = GoRouter(
           metaSEO.seoOGTitle();
           metaSEO.seoKeywords();
 
-          return const MaterialPage<void>(
-            child: PrivacyPolicy(),
-          );
+          return MaterialPage<void>(
+              child: FutureBuilder(
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return base.BasePage(content_type: 'privacy-policy');
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+            future: base.loadLibrary(),
+          ));
         },
       ),
+      GoRoute(
+          path: '/terms-of-service',
+          pageBuilder: (context, state) {
+            MetaSEO metaSEO = MetaSEO(
+              ogTitle:
+                  '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).termsOfService}',
+              description:
+                  '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
+              ogImage: 'https://dagda.social/assets/images/logo.png',
+              keywords:
+                  "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).termsOfService}",
+            );
+
+            metaSEO.seoOGImage();
+            metaSEO.seoDescription();
+            metaSEO.seoOGTitle();
+            metaSEO.seoKeywords();
+
+            return MaterialPage<void>(
+              child: FutureBuilder(
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return base.BasePage(content_type: 'terms-of-service');
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
+                future: base.loadLibrary(),
+              ),
+            );
+          }),
+      GoRoute(
+          path: '/logout',
+          redirect: (context, state) {
+            FirebaseAuth.instance.signOut();
+            return '/';
+          }),
+      GoRoute(
+        path: '/about',
+        pageBuilder: (context, state) {
+          MetaSEO metaSEO = MetaSEO(
+            ogTitle:
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).about}',
+            description:
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
+            ogImage: 'https://dagda.social/assets/images/logo.png',
+            keywords:
+                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).about}",
+          );
+
+          metaSEO.seoOGImage();
+          metaSEO.seoDescription();
+          metaSEO.seoOGTitle();
+          metaSEO.seoKeywords();
+
+          return MaterialPage<void>(
+            child: FutureBuilder(
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return base.BasePage(content_type: 'about');
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
+              future: base.loadLibrary(),
+            ),
+          );
+        },
+      )
     ],
     errorBuilder: (context, state) {
       MetaSEO metaSEO = MetaSEO(
@@ -137,8 +269,18 @@ GoRouter router = GoRouter(
       metaSEO.seoKeywords();
 
       return Title(
-          title: '404 - Not Found',
-          color: Colors.black,
-          child: const NotFound());
+        title: '404 - Not Found',
+        color: Colors.black,
+        child: FutureBuilder(
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return notFound.NotFound();
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          },
+          future: notFound.loadLibrary(),
+        ),
+      );
     },
     initialLocation: '/');
