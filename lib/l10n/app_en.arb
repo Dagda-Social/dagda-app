@@ -27,6 +27,14 @@
   "byRegisteringYouAgreeTo": "By creating an account, you are agreeing to our",
   "terms": "Terms of Use",
   "and": "and",
-  "about": "About Us"
-
+  "about": "About Us",
+  "enterEmail":"Enter your email",
+  "enterPassword":"Enter your password",
+  "enterConfirmPassword":"Confirm your password",
+  "error":"Error",
+  "errorEmail":"Please enter a valid email",
+  "errorPassword":"Password must be at least 8 characters",
+  "errorConfirmPassword":"Passwords do not match",
+  "errorUsername":"Please enter a valid username",
+  "errorPasswordWithSpecialCharacters":"Password must contain at least one special character"
 }

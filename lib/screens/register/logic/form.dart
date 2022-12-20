@@ -1,33 +1,36 @@
-checkMail(String mail) {
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+checkMail(String mail, BuildContext context) {
   if (mail.isEmpty || mail == null) {
-    return 'Please enter your email';
+    return AppLocalizations.of(context)!.enterEmail;
   } else if (!mail.contains('@')) {
-    return 'Please enter a valid email';
+    return AppLocalizations.of(context)!.errorEmail;
   } else {
     return null;
   }
 }
 
-checkPasswordWithSpecialCharacters(String password) {
+checkPasswordWithSpecialCharacters(String password, BuildContext context) {
   if (password.isEmpty || password == null) {
-    return 'Please enter your password';
+    return AppLocalizations.of(context)!.enterPassword;
   } else if (password.length < 8) {
-    return 'Password must be at least 8 characters';
+    return AppLocalizations.of(context)!.errorPassword;
   } else if (!password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-    return 'Password must contain at least one special character';
+    return AppLocalizations.of(context)!.errorPasswordWithSpecialCharacters;
   } else {
     return null;
   }
 }
 
-checkSamePassword(String password, String passwordConfirm) {
+checkSamePassword(String password, String passwordConfirm, BuildContext context) {
   if (passwordConfirm.isEmpty || passwordConfirm == null) {
-    return 'Please confirm your password';
-  } else if(checkPasswordWithSpecialCharacters(password)!=null){
-    return checkPasswordWithSpecialCharacters(password);
+    return AppLocalizations.of(context)!.enterConfirmPassword;
+  } else if(checkPasswordWithSpecialCharacters(password, context)!=null){
+    return checkPasswordWithSpecialCharacters(password, context);
   }
    else if (password != passwordConfirm) {
-    return 'Passwords do not match';
+    return AppLocalizations.of(context)!.errorConfirmPassword;
   } else {
     return null;
   }

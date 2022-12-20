@@ -98,7 +98,8 @@ class _RegisterMediumState extends State<RegisterMedium> {
                                 ),
                               ),
                               validator: (value) {
-                                String? _value = checkMail(value.toString());
+                                String? _value =
+                                    checkMail(value.toString(), context);
                                 if (value == null) {
                                   setState(() {
                                     _mailHeight = 50.0;
@@ -167,7 +168,7 @@ class _RegisterMediumState extends State<RegisterMedium> {
                               validator: (value) {
                                 String? _value =
                                     checkPasswordWithSpecialCharacters(
-                                        value.toString());
+                                        value.toString(), context);
                                 if (_value == null) {
                                   setState(() {
                                     _passHeight = 50.0;
@@ -235,7 +236,9 @@ class _RegisterMediumState extends State<RegisterMedium> {
                                           })),
                                   validator: (value) {
                                     String? _value = checkSamePassword(
-                                        value.toString(), _passController.text);
+                                        value.toString(),
+                                        _passController.text,
+                                        context);
                                     if (_value == null) {
                                       setState(() {
                                         _pass2Height = 50.0;

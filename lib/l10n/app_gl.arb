@@ -27,5 +27,14 @@
   "byRegisteringYouAgreeTo": "Creando unha conta, aceptas os nosos",
   "terms": "Térmos de uso",
   "and": "e a nosa",
-    "about": "Sobre nos"
+    "about": "Sobre nos",
+  "enterEmail":"Introduce o teu correo electrónico",
+  "enterPassword":"Introduce o teu contrasinal",
+  "enterConfirmPassword":"Confirma o teu contrasinal",
+  "error":"Erro",
+  "errorEmail":"Por favor introduce un correo electrónico válido",
+  "errorPassword":"O contrasinal debe ter polo menos 8 caracteres",
+  "errorConfirmPassword":"Os contrasinais non coinciden",
+  "errorUsername":"Por favor introduce un identificador válido",
+  "errorPasswordWithSpecialCharacters":"O contrasinal debe conter polo menos un carácter especial"
 }
