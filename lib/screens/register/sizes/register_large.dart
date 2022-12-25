@@ -83,7 +83,14 @@ class _RegisterLargeState extends State<RegisterLarge> {
                         width: 350,
                         child: Center(
                           child: TextFormField(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             controller: _emailController,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (value) {
+                              FocusScope.of(context).nextFocus();
+                            },
+                            keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               errorMaxLines: 3,
                               errorBorder: const OutlineInputBorder(
@@ -111,20 +118,8 @@ class _RegisterLargeState extends State<RegisterLarge> {
                                 color: Colors.black,
                               ),
                             ),
-                            validator: (value) {
-                              String? _value =
-                                  checkMail(value.toString(), context);
-                              if (value == null) {
-                                setState(() {
-                                  _mailHeight = 50.0;
-                                });
-                              } else {
-                                setState(() {
-                                  _mailHeight = 70.0;
-                                });
-                              }
-                              return _value;
-                            },
+                            validator: (value) =>
+                                checkMail(value.toString(), context),
                           ),
                         ),
                       ),
@@ -137,6 +132,24 @@ class _RegisterLargeState extends State<RegisterLarge> {
                         child: Center(
                           child: TextFormField(
                             obscureText: _isObscure,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (value) {
+                              FocusScope.of(context).nextFocus();
+                            },
+                            onChanged: (value) {
+                              if (value.isEmpty) {
+                                setState(() {
+                                  _passHeight = 50.0;
+                                });
+                              } else {
+                                setState(() {
+                                  _passHeight = 70.0;
+                                });
+                              }
+                              return checkPasswordWithSpecialCharacters(
+                                  value.toString(), context);
+                            },
+                            keyboardType: TextInputType.visiblePassword,
                             enableSuggestions: false,
                             autocorrect: false,
                             controller: _passController,
@@ -206,9 +219,27 @@ class _RegisterLargeState extends State<RegisterLarge> {
                             child: Center(
                               child: TextFormField(
                                 obscureText: _isObscure2,
+                                textInputAction: TextInputAction.done,
+                                onFieldSubmitted: (value) {
+                                  FocusScope.of(context).unfocus();
+                                },
+                                keyboardType: TextInputType.visiblePassword,
                                 enableSuggestions: false,
                                 autocorrect: false,
                                 controller: _pass2Controller,
+                                onChanged: (value) {
+                                  if (value.isEmpty) {
+                                    setState(() {
+                                      _pass2Height = 50.0;
+                                    });
+                                  } else {
+                                    setState(() {
+                                      _pass2Height = 70.0;
+                                    });
+                                  }
+                                  return checkSamePassword(value.toString(),
+                                      _passController.text, context);
+                                },
                                 decoration: InputDecoration(
                                     errorMaxLines: 3,
                                     errorBorder: const OutlineInputBorder(

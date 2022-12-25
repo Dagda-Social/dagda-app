@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 checkMail(String mail, BuildContext context) {
-  if (mail.isEmpty || mail == null) {
+  if (mail.isEmpty) {
     return AppLocalizations.of(context).enterEmail;
   } else if (!mail.contains('@')) {
     return AppLocalizations.of(context).errorEmail;
@@ -12,7 +12,7 @@ checkMail(String mail, BuildContext context) {
 }
 
 checkPasswordWithSpecialCharacters(String password, BuildContext context) {
-  if (password.isEmpty || password == null) {
+  if (password.isEmpty) {
     return AppLocalizations.of(context).enterPassword;
   } else if (password.length < 8) {
     return AppLocalizations.of(context).errorPassword;
@@ -25,7 +25,7 @@ checkPasswordWithSpecialCharacters(String password, BuildContext context) {
 
 checkSamePassword(
     String password, String passwordConfirm, BuildContext context) {
-  if (passwordConfirm.isEmpty || passwordConfirm == null) {
+  if (passwordConfirm.isEmpty) {
     return AppLocalizations.of(context).enterConfirmPassword;
   } else if (checkPasswordWithSpecialCharacters(password, context) != null) {
     return checkPasswordWithSpecialCharacters(password, context);

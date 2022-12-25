@@ -70,6 +70,20 @@ class _RegisterMediumState extends State<RegisterMedium> {
                           child: Center(
                             child: TextFormField(
                               controller: _emailController,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.emailAddress,
+                               onChanged: (value) {
+                              if (value.isEmpty) {
+                                setState(() {
+                                  _mailHeight = 50.0;
+                                });
+                              } else {
+                                setState(() {
+                                  _mailHeight = 70.0;
+                                });
+                              }
+                              return checkMail(value.toString(), context);
+                            },
                               decoration: InputDecoration(
                                 errorMaxLines: 3,
                                 errorBorder: const OutlineInputBorder(
@@ -123,9 +137,23 @@ class _RegisterMediumState extends State<RegisterMedium> {
                           child: Center(
                             child: TextFormField(
                               obscureText: _isObscure,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.visiblePassword,
                               enableSuggestions: false,
                               autocorrect: false,
                               controller: _passController,
+                              onChanged: (value) {
+                                if (value.isEmpty) {
+                                  setState(() {
+                                    _passHeight = 50.0;
+                                  });
+                                } else {
+                                  setState(() {
+                                    _passHeight = 70.0;
+                                  });
+                                }
+                                return checkPasswordWithSpecialCharacters(value.toString(), context);
+                              },
                               decoration: InputDecoration(
                                   errorMaxLines: 3,
                                   errorBorder: const OutlineInputBorder(
@@ -192,9 +220,23 @@ class _RegisterMediumState extends State<RegisterMedium> {
                               child: Center(
                                 child: TextFormField(
                                   obscureText: _isObscure2,
+                                  textInputAction: TextInputAction.done,
+                                  keyboardType: TextInputType.visiblePassword,
                                   enableSuggestions: false,
                                   autocorrect: false,
                                   controller: _pass2Controller,
+                                  onChanged: (value) {
+                                    if (value.isEmpty) {
+                                      setState(() {
+                                        _pass2Height = 50.0;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        _pass2Height = 70.0;
+                                      });
+                                    }
+                                    return checkSamePassword(value.toString(),_passController.text, context);
+                                  },
                                   decoration: InputDecoration(
                                       errorMaxLines: 3,
                                       errorBorder: const OutlineInputBorder(

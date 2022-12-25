@@ -1,15 +1,21 @@
 import 'package:dagda/screens/base_page/sizes/base_page_large.dart';
 import 'package:dagda/screens/base_page/sizes/base_page_medium.dart';
 import 'package:dagda/screens/base_page/sizes/base_page_small.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BasePage extends StatefulWidget {
-  BasePage({Key? key, required this.content_type}) : super(key: key);
+  const BasePage({Key? key, required this.content_type}) : super(key: key);
   final content_type;
 
   @override
   State<BasePage> createState() => _BasePageState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('content_type', content_type));
+  }
 }
 
 class _BasePageState extends State<BasePage> {
