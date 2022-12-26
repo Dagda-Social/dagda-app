@@ -48,5 +48,12 @@
   "errorLoading":"Error loading",
   "weakPassword": "The password provided is too weak.",
   "emailAlreadyInUse": "The email address is already in use by another account.",
-  "attention": "Attention"
+  "attention": "Attention",
+  "emailNotVerified": "Your email is not verified. Please check your email and verify your account.",
+  "emailVerified": "Your email is verified. You can now login to your account.",
+  "emailVerificationSent": "An email verification link has been sent to your email address. Please check your email and verify your account.",
+  "emailVerificationSentAgain": "An email verification link has been sent to your email address. Please check your email and verify your account.",
+  "userNotFound": "No user found for that email.",
+  "wrongPassword": "Wrong password provided for that user."
+
 }

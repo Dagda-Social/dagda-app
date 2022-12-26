@@ -48,5 +48,11 @@
   "errorLoading":"Erro ao cargar",
   "weakPassword": "O contrasinal introducido é demasiado débil.",
   "emailAlreadyInUse": "O correo electrónico xa está en uso por outra conta.",
-  "attention": "Atención"
+  "attention": "Atención",
+  "emailNotVerified": "O teu correo electrónico non está verificado.",
+  "emailVerificationSent": "Enviouse un correo electrónico de verificación.",
+  "emailVerified": "O teu correo electrónico foi verificado.",
+  "emailVerificationSentAgain": "Enviouse un novo correo electrónico de verificación.",
+  "userNotFound": "Non se atopou ningún usuario co correo electrónico indicado.",
+  "wrongPassword": "O contrasinal introducido non é correcto."
 }

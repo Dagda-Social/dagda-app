@@ -48,5 +48,11 @@
   "errorLoading":"Error al cargar",
   "weakPassword": "La contraseña proporcionada es muy débil.",
   "emailAlreadyInUse": "La dirección de correo electrónico ya está en uso por otra cuenta.",
-  "attention": "Atención"
+  "attention": "Atención",
+  "emailNotVerified": "El correo electrónico no ha sido verificado",
+  "emailVerified": "El correo electrónico ha sido verificado",
+  "emailVerificationSent": "Se ha enviado un correo electrónico de verificación",
+  "emailVerificationSentAgain": "Se ha enviado un correo electrónico de verificación nuevamente",
+  "userNotFound": "No se encontró ningún usuario con ese correo electrónico.",
+  "wrongPassword": "La contraseña no es válida o el usuario no tiene una contraseña."
 }
