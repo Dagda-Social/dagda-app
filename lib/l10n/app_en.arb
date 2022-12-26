@@ -36,5 +36,17 @@
   "errorPassword":"Password must be at least 8 characters",
   "errorConfirmPassword":"Passwords do not match",
   "errorUsername":"Please enter a valid username",
-  "errorPasswordWithSpecialCharacters":"Password must contain at least one special character"
+  "errorPasswordWithSpecialCharacters":"Password must contain at least one special character",
+  "loading":"Loading...",
+  "loadingPleaseWait":"Loading, please wait...",
+  "loadingPleaseWaitLong":"Loading, please wait... This may take a few minutes",
+  "loadingPleaseWaitLonger":"Loading, please wait... This may take a few minutes",
+  "ok":"Ok",
+  "cancel":"Cancel",
+  "yes":"Yes",
+  "no":"No",
+  "errorLoading":"Error loading",
+  "weakPassword": "The password provided is too weak.",
+  "emailAlreadyInUse": "The email address is already in use by another account.",
+  "attention": "Attention"
 }

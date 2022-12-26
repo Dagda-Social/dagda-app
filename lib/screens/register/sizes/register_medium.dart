@@ -22,10 +22,6 @@ class _RegisterMediumState extends State<RegisterMedium> {
   bool _isObscure = true;
   bool _isObscure2 = true;
 
-  double _mailHeight = 50.0;
-  double _passHeight = 50.0;
-  double _pass2Height = 50.0;
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -65,95 +61,61 @@ class _RegisterMediumState extends State<RegisterMedium> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 6.0),
                         child: SizedBox(
-                          height: _mailHeight,
                           width: 350,
                           child: Center(
-                            child: TextFormField(
-                              controller: _emailController,
-                              textInputAction: TextInputAction.next,
-                              keyboardType: TextInputType.emailAddress,
-                               onChanged: (value) {
-                              if (value.isEmpty) {
-                                setState(() {
-                                  _mailHeight = 50.0;
-                                });
-                              } else {
-                                setState(() {
-                                  _mailHeight = 70.0;
-                                });
-                              }
-                              return checkMail(value.toString(), context);
-                            },
-                              decoration: InputDecoration(
-                                errorMaxLines: 3,
-                                errorBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.red, width: 1.5),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.black, width: 1.5),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.black, width: 1.5),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                border: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.black, width: 1.5),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                labelText: AppLocalizations.of(context).email,
-                                labelStyle: const TextStyle(
-                                  color: Colors.black,
-                                ),
+                              child: TextFormField(
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            controller: _emailController,
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.emailAddress,
+                            maxLines: 1,
+                            decoration: InputDecoration(
+                              errorMaxLines: 3,
+                              errorBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.red, width: 1.5),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.black, width: 1.5),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.black, width: 1.5),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              border: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Colors.black, width: 1.5),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              labelText: AppLocalizations.of(context).email,
+                              labelStyle: const TextStyle(
+                                color: Colors.black,
                               ),
-                              validator: (value) {
-                                String? _value =
-                                    checkMail(value.toString(), context);
-                                if (value == null) {
-                                  setState(() {
-                                    _mailHeight = 50.0;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _mailHeight = 70.0;
-                                  });
-                                }
-                                return _value;
-                              },
                             ),
-                          ),
+                            validator: (value) =>
+                                checkMail(value.toString(), context),
+                          )),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0, bottom: 6.0),
                         child: SizedBox(
-                          height: _passHeight,
                           width: 350,
                           child: Center(
                             child: TextFormField(
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               obscureText: _isObscure,
                               textInputAction: TextInputAction.next,
                               keyboardType: TextInputType.visiblePassword,
-                              enableSuggestions: false,
                               autocorrect: false,
                               controller: _passController,
-                              onChanged: (value) {
-                                if (value.isEmpty) {
-                                  setState(() {
-                                    _passHeight = 50.0;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _passHeight = 70.0;
-                                  });
-                                }
-                                return checkPasswordWithSpecialCharacters(value.toString(), context);
-                              },
+                              maxLines: 1,
                               decoration: InputDecoration(
                                   errorMaxLines: 3,
                                   errorBorder: const OutlineInputBorder(
@@ -193,21 +155,9 @@ class _RegisterMediumState extends State<RegisterMedium> {
                                           _isObscure = !_isObscure;
                                         });
                                       })),
-                              validator: (value) {
-                                String? _value =
-                                    checkPasswordWithSpecialCharacters(
-                                        value.toString(), context);
-                                if (_value == null) {
-                                  setState(() {
-                                    _passHeight = 50.0;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _passHeight = 80.0;
-                                  });
-                                }
-                                return _value;
-                              },
+                              validator: (value) =>
+                                  checkPasswordWithSpecialCharacters(
+                                      value.toString(), context),
                             ),
                           ),
                         ),
@@ -215,28 +165,17 @@ class _RegisterMediumState extends State<RegisterMedium> {
                       Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: SizedBox(
-                              height: _pass2Height,
                               width: 350,
                               child: Center(
                                 child: TextFormField(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
                                   obscureText: _isObscure2,
                                   textInputAction: TextInputAction.done,
                                   keyboardType: TextInputType.visiblePassword,
-                                  enableSuggestions: false,
                                   autocorrect: false,
                                   controller: _pass2Controller,
-                                  onChanged: (value) {
-                                    if (value.isEmpty) {
-                                      setState(() {
-                                        _pass2Height = 50.0;
-                                      });
-                                    } else {
-                                      setState(() {
-                                        _pass2Height = 70.0;
-                                      });
-                                    }
-                                    return checkSamePassword(value.toString(),_passController.text, context);
-                                  },
+                                  maxLines: 1,
                                   decoration: InputDecoration(
                                       errorMaxLines: 3,
                                       errorBorder: const OutlineInputBorder(
@@ -276,22 +215,10 @@ class _RegisterMediumState extends State<RegisterMedium> {
                                               _isObscure2 = !_isObscure2;
                                             });
                                           })),
-                                  validator: (value) {
-                                    String? _value = checkSamePassword(
-                                        value.toString(),
-                                        _passController.text,
-                                        context);
-                                    if (_value == null) {
-                                      setState(() {
-                                        _pass2Height = 50.0;
-                                      });
-                                    } else {
-                                      setState(() {
-                                        _pass2Height = 80.0;
-                                      });
-                                    }
-                                    return _value;
-                                  },
+                                  validator: (value) => checkSamePassword(
+                                      value.toString(),
+                                      _passController.text,
+                                      context),
                                 ),
                               ))),
                     ],
@@ -345,6 +272,7 @@ class _RegisterMediumState extends State<RegisterMedium> {
                         register(
                           _emailController.text,
                           _passController.text,
+                          context
                         );
                       }
                     },

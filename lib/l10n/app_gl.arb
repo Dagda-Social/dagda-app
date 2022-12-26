@@ -36,5 +36,17 @@
   "errorPassword":"O contrasinal debe ter polo menos 8 caracteres",
   "errorConfirmPassword":"Os contrasinais non coinciden",
   "errorUsername":"Por favor introduce un identificador válido",
-  "errorPasswordWithSpecialCharacters":"O contrasinal debe conter polo menos un carácter especial"
+  "errorPasswordWithSpecialCharacters":"O contrasinal debe conter polo menos un carácter especial",
+  "loading":"Cargando...",
+  "loadingPleaseWait":"Cargando, por favor espera...",
+  "loadingPleaseWaitLong":"Cargando, por favor espera un momento...",
+  "loadingPleaseWaitLonger":"Cargando, por favor espera un pouco máis...",
+  "ok":"Ok",
+  "cancel":"Cancelar",
+  "yes":"Sí",
+  "no":"Non",
+  "errorLoading":"Erro ao cargar",
+  "weakPassword": "O contrasinal introducido é demasiado débil.",
+  "emailAlreadyInUse": "O correo electrónico xa está en uso por outra conta.",
+  "attention": "Atención"
 }

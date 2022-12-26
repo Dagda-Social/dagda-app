@@ -36,5 +36,17 @@
   "errorPassword":"La contraseña debe tener al menos 8 caracteres",
   "errorConfirmPassword":"Las contraseñas no coinciden",
   "errorUsername":"Por favor ingresa un nombre de usuario válido",
-  "errorPasswordWithSpecialCharacters":"La contraseña debe contener al menos un caracter especial"
+  "errorPasswordWithSpecialCharacters":"La contraseña debe contener al menos un caracter especial",
+  "loading":"Cargando...",
+  "loadingPleaseWait":"Cargando, por favor espera...",
+  "loadingPleaseWaitLong":"Cargando, por favor espera un momento...",
+  "loadingPleaseWaitLonger":"Cargando, por favor espera un poco más...",
+  "ok":"Ok",
+  "cancel":"Cancelar",
+  "yes":"Sí",
+  "no":"No",
+  "errorLoading":"Error al cargar",
+  "weakPassword": "La contraseña proporcionada es muy débil.",
+  "emailAlreadyInUse": "La dirección de correo electrónico ya está en uso por otra cuenta.",
+  "attention": "Atención"
 }

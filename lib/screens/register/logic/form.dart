@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 checkMail(String mail, BuildContext context) {
   if (mail.isEmpty) {
     return AppLocalizations.of(context).enterEmail;
-  } else if (!mail.contains('@')) {
+  } else if (!mail.contains(RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$'))) {
     return AppLocalizations.of(context).errorEmail;
   } else {
     return null;

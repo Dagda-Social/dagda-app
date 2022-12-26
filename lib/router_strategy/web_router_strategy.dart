@@ -253,7 +253,26 @@ GoRouter router = GoRouter(
             ),
           );
         },
-      )
+      ),
+      GoRoute(
+          path: '/profile-info',
+          pageBuilder: (context, state) {
+            return MaterialPage<void>(
+              child: FutureBuilder(
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (FirebaseAuth.instance.currentUser != null) {
+                      return base.BasePage(content_type: 'profile-info');
+                    }
+                    return base.BasePage(content_type: 'info');
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
+                future: base.loadLibrary(),
+              ),
+            );
+          }),
     ],
     errorBuilder: (context, state) {
       MetaSEO metaSEO = MetaSEO(
