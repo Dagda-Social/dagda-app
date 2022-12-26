@@ -3,7 +3,7 @@ import 'package:dagda/screens/login.dart' deferred as login;
 import 'package:dagda/screens/profile/profile.dart' deferred as profile;
 import 'package:dagda/screens/register/register.dart' deferred as register;
 import 'package:dagda/screens/base_page/base_page.dart' deferred as base;
-import 'package:dagda/screens/not_found.dart' deferred as notFound;
+import 'package:dagda/screens/not_found.dart' deferred as not_found;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -253,7 +253,26 @@ GoRouter router = GoRouter(
             ),
           );
         },
-      )
+      ),
+      GoRoute(
+          path: '/profile-info',
+          pageBuilder: (context, state) {
+            return MaterialPage<void>(
+              child: FutureBuilder(
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (FirebaseAuth.instance.currentUser != null) {
+                      return base.BasePage(content_type: 'profile-info');
+                    }
+                    return base.BasePage(content_type: 'info');
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
+                future: base.loadLibrary(),
+              ),
+            );
+          }),
     ],
     errorBuilder: (context, state) {
       MetaSEO metaSEO = MetaSEO(
@@ -274,12 +293,12 @@ GoRouter router = GoRouter(
         child: FutureBuilder(
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
-              return notFound.NotFound();
+              return not_found.NotFound();
             } else {
               return const Center(child: CircularProgressIndicator());
             }
           },
-          future: notFound.loadLibrary(),
+          future: not_found.loadLibrary(),
         ),
       );
     },

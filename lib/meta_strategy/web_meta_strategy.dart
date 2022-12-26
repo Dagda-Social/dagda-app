@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:html' show MetaElement, document;
 import 'dart:ui';
 
 void configMeta(Locale locale) {

@@ -12,7 +12,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    
+    if (FirebaseAuth.instance.currentUser != null) {
+      print('idTokenResult');
+      FirebaseAuth.instance.currentUser
+          ?.getIdTokenResult()
+          .then((value) => print(value.toString()));
+      print('idToken');
+      FirebaseAuth.instance.currentUser
+          ?.getIdToken()
+          .then((value) => print(value.toString()));
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(children: <Widget>[

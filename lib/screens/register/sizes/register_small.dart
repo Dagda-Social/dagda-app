@@ -22,10 +22,6 @@ class _RegisterSmallState extends State<RegisterSmall> {
   bool _isObscure = true;
   bool _isObscure2 = true;
 
-  double _mailHeight = 50.0;
-  double _passHeight = 50.0;
-  double _pass2Height = 50.0;
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -65,11 +61,15 @@ class _RegisterSmallState extends State<RegisterSmall> {
                       Padding(
                         padding: const EdgeInsets.all(6.0),
                         child: SizedBox(
-                          height: _mailHeight,
                           width: 350,
                           child: Center(
                             child: TextFormField(
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               controller: _emailController,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.emailAddress,
+                              maxLines: 1,
                               decoration: InputDecoration(
                                 errorMaxLines: 3,
                                 errorBorder: const OutlineInputBorder(
@@ -97,20 +97,8 @@ class _RegisterSmallState extends State<RegisterSmall> {
                                   color: Colors.black,
                                 ),
                               ),
-                              validator: (value) {
-                                String? _value =
-                                    checkMail(value.toString(), context);
-                                if (value == null) {
-                                  setState(() {
-                                    _mailHeight = 50.0;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _mailHeight = 70.0;
-                                  });
-                                }
-                                return _value;
-                              },
+                              validator: (value) =>
+                                  checkMail(value.toString(), context),
                             ),
                           ),
                         ),
@@ -118,14 +106,17 @@ class _RegisterSmallState extends State<RegisterSmall> {
                       Padding(
                         padding: const EdgeInsets.all(6.0),
                         child: SizedBox(
-                          height: _passHeight,
                           width: 350,
                           child: Center(
                             child: TextFormField(
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               obscureText: _isObscure,
-                              enableSuggestions: false,
+                              textInputAction: TextInputAction.next,
+                              keyboardType: TextInputType.visiblePassword,
                               autocorrect: false,
                               controller: _passController,
+                              maxLines: 1,
                               decoration: InputDecoration(
                                   errorMaxLines: 3,
                                   errorBorder: const OutlineInputBorder(
@@ -165,21 +156,9 @@ class _RegisterSmallState extends State<RegisterSmall> {
                                           _isObscure = !_isObscure;
                                         });
                                       })),
-                              validator: (value) {
-                                String? _value =
-                                    checkPasswordWithSpecialCharacters(
-                                        value.toString(), context);
-                                if (_value == null) {
-                                  setState(() {
-                                    _passHeight = 50.0;
-                                  });
-                                } else {
-                                  setState(() {
-                                    _passHeight = 80.0;
-                                  });
-                                }
-                                return _value;
-                              },
+                              validator: (value) =>
+                                  checkPasswordWithSpecialCharacters(
+                                      value.toString(), context),
                             ),
                           ),
                         ),
@@ -187,14 +166,17 @@ class _RegisterSmallState extends State<RegisterSmall> {
                       Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: SizedBox(
-                              height: _pass2Height,
                               width: 350,
                               child: Center(
                                 child: TextFormField(
+                                  autovalidateMode:
+                                      AutovalidateMode.onUserInteraction,
                                   obscureText: _isObscure2,
-                                  enableSuggestions: false,
+                                  textInputAction: TextInputAction.done,
+                                  keyboardType: TextInputType.visiblePassword,
                                   autocorrect: false,
                                   controller: _pass2Controller,
+                                  maxLines: 1,
                                   decoration: InputDecoration(
                                       errorMaxLines: 3,
                                       errorBorder: const OutlineInputBorder(
@@ -234,22 +216,10 @@ class _RegisterSmallState extends State<RegisterSmall> {
                                               _isObscure2 = !_isObscure2;
                                             });
                                           })),
-                                  validator: (value) {
-                                    String? _value = checkSamePassword(
-                                        value.toString(),
-                                        _passController.text,
-                                        context);
-                                    if (_value == null) {
-                                      setState(() {
-                                        _pass2Height = 50.0;
-                                      });
-                                    } else {
-                                      setState(() {
-                                        _pass2Height = 80.0;
-                                      });
-                                    }
-                                    return _value;
-                                  },
+                                  validator: (value) => checkSamePassword(
+                                      value.toString(),
+                                      _passController.text,
+                                      context),
                                 ),
                               ))),
                     ],
@@ -302,10 +272,8 @@ class _RegisterSmallState extends State<RegisterSmall> {
                     title: AppLocalizations.of(context).register,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        register(
-                          _emailController.text,
-                          _passController.text,
-                        );
+                        register(_emailController.text, _passController.text,
+                            context);
                       }
                     },
                     fontSize: 14,
