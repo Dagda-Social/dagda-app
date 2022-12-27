@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 passwordResetDialog(BuildContext context) {
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
-  final _emailController = TextEditingController();
+  final emailController = TextEditingController();
 
   Dialog alert = Dialog(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10.0),
     ),
     child: SingleChildScrollView(
-      child: Container(
-        height: 400,
+      child: SizedBox(
+        height: 360,
         width: 400,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +25,7 @@ passwordResetDialog(BuildContext context) {
             Text(AppLocalizations.of(context).appName,
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 60,
+                    fontSize: 36,
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 30.0),
             Text(
@@ -47,18 +47,14 @@ passwordResetDialog(BuildContext context) {
             ),
             const SizedBox(height: 20.0),
             Form(
-              key: _formKey,
+              key: formKey,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: SizedBox(
                   width: 350,
                   child: TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: _emailController,
-                    textInputAction: TextInputAction.next,
-                    onFieldSubmitted: (value) {
-                      FocusScope.of(context).nextFocus();
-                    },
+                    controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     maxLines: 1,
                     decoration: InputDecoration(
@@ -88,25 +84,36 @@ passwordResetDialog(BuildContext context) {
                 ),
               ),
             ),
-            const SizedBox(height: 10.0),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
+            const SizedBox(height: 10.0),Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: DagdaOutlinedButton(
-                      colour: Colors.black,
-                      title: AppLocalizations.of(context).send,
-                      onPressed: () {
-                        if (_formKey.currentState!.validate())
-                          senPasswordResetEmail(_emailController.text, context);
-                      },
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      borderRadius: 10,
-                      borderWidth: 2),
-                ),
-              ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      DagdaOutlinedButton(
+                          colour: Colors.black,
+                          title: AppLocalizations.of(context).cancel,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          borderRadius: 10,
+                          borderWidth: 2),
+                      DagdaOutlinedButton(
+                          colour: Colors.black,
+                          title: AppLocalizations.of(context).send,
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              senPasswordResetEmail(emailController.text, context);
+                            }
+                          },
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          borderRadius: 10,
+                          borderWidth: 2),
+                    ],
+                  ),
+                
             ),
           ],
         ),
