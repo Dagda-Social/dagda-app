@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:dagda/widgets/dialogs/dialogs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,25 @@ void login(String email, String password, BuildContext context) async {
       Navigator.pop(context);
       infoDialog(context, AppLocalizations.of(context).attention,
           AppLocalizations.of(context).wrongPassword);
+    }
+  }
+}
+
+void senPasswordResetEmail(String email, BuildContext context) async {
+  try {
+    loadingDialog(context);
+    await FirebaseAuth.instance
+        .setLanguageCode(Platform.localeName.substring(0, 2));
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    // ignore: use_build_context_synchronously
+    Navigator.pop(context);
+    infoDialog(context, AppLocalizations.of(context).attention,
+        AppLocalizations.of(context).forgotPasswordEmailSent);
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      Navigator.pop(context);
+      infoDialog(context, AppLocalizations.of(context).attention,
+          AppLocalizations.of(context).userNotFound);
     }
   }
 }

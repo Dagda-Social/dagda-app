@@ -12,7 +12,7 @@
   "email": "Correo electrónico",
   "password": "Contraseña",
   "confirmPassword": "Confirmar Contraseña",
-  "forgotPassword": "Contraseña perdida",
+  "forgotPassword": "Contraseña perdida?",
   "alreadyHaveAccount": "Ya tienes una cuenta?",
   "dontHaveAccount": "No tienes una cuenta?",
   "createAccount": "Crear cuenta",
@@ -54,5 +54,9 @@
   "emailVerificationSent": "Se ha enviado un correo electrónico de verificación",
   "emailVerificationSentAgain": "Se ha enviado un correo electrónico de verificación nuevamente",
   "userNotFound": "No se encontró ningún usuario con ese correo electrónico.",
-  "wrongPassword": "La contraseña no es válida o el usuario no tiene una contraseña."
+  "wrongPassword": "La contraseña no es válida o el usuario no tiene una contraseña.",
+  "forgotPasswordEmailSent": "Se ha enviado un correo electrónico para restablecer la contraseña",
+  "forgotPasswordEmailSentAgain": "Se ha enviado un correo electrónico para restablecer la contraseña nuevamente",
+  "send":"Enviar",
+  "enterYourEmailForPasswordReset":"Ingresa tu correo electrónico para restablecer tu contraseña"
 }

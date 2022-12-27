@@ -12,7 +12,7 @@
   "email": "Email",
   "password": "Password",
   "confirmPassword": "Confirm Password",
-  "forgotPassword": "Forgot Password",
+  "forgotPassword": "Forgot Password?",
   "alreadyHaveAccount": "Already have an account?",
   "dontHaveAccount": "Don't have an account?",
   "createAccount": "Create an account",
@@ -54,6 +54,9 @@
   "emailVerificationSent": "An email verification link has been sent to your email address. Please check your email and verify your account.",
   "emailVerificationSentAgain": "An email verification link has been sent to your email address. Please check your email and verify your account.",
   "userNotFound": "No user found for that email.",
-  "wrongPassword": "Wrong password provided for that user."
-
+  "wrongPassword": "Wrong password provided for that user.",
+  "forgotPasswordEmailSent": "An email has been sent to your email address. Please check your email and follow the instructions to reset your password.",
+  "forgotPasswordEmailSentAgain": "An email has been sent to your email address. Please check your email and follow the instructions to reset your password.",
+  "send": "Send",
+  "enterYourEmailForPasswordReset": "Enter your email address to receive a password reset link."
 }

@@ -1,4 +1,5 @@
 import 'package:dagda/screens/login/logic/login.dart';
+import 'package:dagda/screens/login/widgets/dialog.dart';
 import 'package:dagda/screens/register/logic/form.dart';
 import 'package:dagda/screens/register/logic/register.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
@@ -194,6 +195,7 @@ class _LoginLargeState extends State<LoginLarge> {
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: <Widget>[
+                    
                     Text(AppLocalizations.of(context).byRegisteringYouAgreeTo,
                         style: const TextStyle(
                             color: Colors.black,
@@ -244,6 +246,18 @@ class _LoginLargeState extends State<LoginLarge> {
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: <Widget>[
+                  TextButton(
+                      onPressed: () {
+                        passwordResetDialog(context);
+                      },
+                      child: Text(
+                        AppLocalizations.of(context).forgotPassword,
+                        style: const TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12),
+                      ),
+                    ),
                   Text(AppLocalizations.of(context).dontHaveAccount,
                       style: const TextStyle(
                           color: Colors.black,

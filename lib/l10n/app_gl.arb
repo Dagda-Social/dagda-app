@@ -12,7 +12,7 @@
   "email": "Correo electrónico",
   "password": "Contrasinal",
   "confirmPassword": "Confirmar contrasinal",
-  "forgotPassword": "Contrasinal perdido",
+  "forgotPassword": "Contrasinal perdido?",
   "alreadyHaveAccount": "Xa tes unha conta?",
   "dontHaveAccount": "Non tes unha conta?",
   "createAccount": "Crear unha conta",
@@ -54,5 +54,9 @@
   "emailVerified": "O teu correo electrónico foi verificado.",
   "emailVerificationSentAgain": "Enviouse un novo correo electrónico de verificación.",
   "userNotFound": "Non se atopou ningún usuario co correo electrónico indicado.",
-  "wrongPassword": "O contrasinal introducido non é correcto."
+  "wrongPassword": "O contrasinal introducido non é correcto.",
+  "forgotPasswordEmailSent": "Enviouse un correo electrónico para restablecer o contrasinal.",
+  "forgotPasswordEmailSentAgain": "Enviouse un novo correo electrónico para restablecer o contrasinal.",
+  "send":"Enviar",
+  "enterYourEmailForPasswordReset":"Introduce o teu correo electrónico para restablecer o contrasinal"
 }
