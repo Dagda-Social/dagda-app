@@ -1,5 +1,5 @@
 import 'package:dagda/screens/home/home_page.dart' deferred as home;
-import 'package:dagda/screens/login.dart' deferred as login;
+import 'package:dagda/screens/login/login.dart' deferred as login;
 import 'package:dagda/screens/profile/profile.dart' deferred as profile;
 import 'package:dagda/screens/register/register.dart' deferred as register;
 import 'package:dagda/screens/base_page/base_page.dart' deferred as base;
