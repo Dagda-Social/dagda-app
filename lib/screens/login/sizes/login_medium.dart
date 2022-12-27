@@ -1,5 +1,5 @@
 import 'package:dagda/screens/login/logic/login.dart';
-import 'package:dagda/screens/login/widgets/dialog.dart';
+import 'package:dagda/widgets/dialogs/password_reset_dialog.dart';
 import 'package:dagda/screens/register/logic/form.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
 import 'package:flutter/material.dart';
@@ -204,18 +204,13 @@ class _LoginMediumState extends State<LoginMedium> {
                   height: 10,
                 ),
                 DagdaOutlinedButton(
-                    colour: Colors.black,
                     title: AppLocalizations.of(context).login,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         login(_emailController.text, _passController.text,
                             context);
                       }
-                    },
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 10,
-                    borderWidth: 2),
+                    }),
                 const SizedBox(
                   height: 10,
                 ),

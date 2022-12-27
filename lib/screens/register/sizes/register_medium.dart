@@ -265,7 +265,6 @@ class _RegisterMediumState extends State<RegisterMedium> {
                   height: 10,
                 ),
                 DagdaOutlinedButton(
-                    colour: Colors.black,
                     title: AppLocalizations.of(context).register,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -275,11 +274,7 @@ class _RegisterMediumState extends State<RegisterMedium> {
                           context
                         );
                       }
-                    },
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 10,
-                    borderWidth: 2),
+                    }),
                 const SizedBox(
                   height: 10,
                 ),

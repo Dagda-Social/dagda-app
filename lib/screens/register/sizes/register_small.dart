@@ -268,18 +268,13 @@ class _RegisterSmallState extends State<RegisterSmall> {
                   height: 10,
                 ),
                 DagdaOutlinedButton(
-                    colour: Colors.black,
                     title: AppLocalizations.of(context).register,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         register(_emailController.text, _passController.text,
                             context);
                       }
-                    },
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 10,
-                    borderWidth: 2),
+                    }),
                 const SizedBox(
                   height: 10,
                 ),

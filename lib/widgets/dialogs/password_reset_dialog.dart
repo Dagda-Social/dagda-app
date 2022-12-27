@@ -1,5 +1,6 @@
 import 'package:dagda/screens/login/logic/login.dart';
 import 'package:dagda/screens/register/logic/form.dart';
+import 'package:dagda/widgets/buttons/filled_button.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -84,36 +85,27 @@ passwordResetDialog(BuildContext context) {
                 ),
               ),
             ),
-            const SizedBox(height: 10.0),Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      DagdaOutlinedButton(
-                          colour: Colors.black,
-                          title: AppLocalizations.of(context).cancel,
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          borderRadius: 10,
-                          borderWidth: 2),
-                      DagdaOutlinedButton(
-                          colour: Colors.black,
-                          title: AppLocalizations.of(context).send,
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              senPasswordResetEmail(emailController.text, context);
-                            }
-                          },
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          borderRadius: 10,
-                          borderWidth: 2),
-                    ],
-                  ),
-                
+            const SizedBox(height: 10.0),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  DagdaOutlinedButton(
+                      title: AppLocalizations.of(context).cancel,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                  const SizedBox(width: 10.0),
+                  DagdaButton(
+                      title: AppLocalizations.of(context).send,
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          senPasswordResetEmail(emailController.text, context);
+                        }
+                      }),
+                ],
+              ),
             ),
           ],
         ),
