@@ -1,9 +1,9 @@
 import 'package:dagda/screens/login/logic/login.dart';
 import 'package:dagda/widgets/dialogs/password_reset_dialog.dart';
 import 'package:dagda/screens/register/logic/form.dart';
-import 'package:dagda/screens/register/logic/register.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
 import 'package:dagda/widgets/dialogs/dialogs.dart';
+import 'package:dagda/widgets/textfield/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -77,47 +77,12 @@ class _LoginLargeState extends State<LoginLarge> {
                       child: SizedBox(
                         width: 350,
                         child: Center(
-                          child: TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            controller: _emailController,
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (value) {
-                              FocusScope.of(context).nextFocus();
-                            },
-                            keyboardType: TextInputType.emailAddress,
-                            maxLines: 1,
-                            decoration: InputDecoration(
-                              errorMaxLines: 3,
-                              errorBorder: const OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.red, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              border: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              labelText: AppLocalizations.of(context).email,
-                              labelStyle: const TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                            validator: (value) =>
-                                checkMail(value.toString(), context),
-                          ),
-                        ),
+                            child: DagdaTextField(
+                          content: AppLocalizations.of(context).email,
+                          controller: _emailController,
+                          validator: (value) =>
+                              checkMail(value.toString(), context),
+                        )),
                       ),
                     ),
                     Padding(
@@ -195,7 +160,6 @@ class _LoginLargeState extends State<LoginLarge> {
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: <Widget>[
-                    
                     Text(AppLocalizations.of(context).byRegisteringYouAgreeTo,
                         style: const TextStyle(
                             color: Colors.black,
@@ -242,17 +206,17 @@ class _LoginLargeState extends State<LoginLarge> {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: <Widget>[
                   TextButton(
-                      onPressed: () {
-                        passwordResetDialog(context);
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).forgotPassword,
-                        style: const TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12),
-                      ),
+                    onPressed: () {
+                      passwordResetDialog(context);
+                    },
+                    child: Text(
+                      AppLocalizations.of(context).forgotPassword,
+                      style: const TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12),
                     ),
+                  ),
                   Text(AppLocalizations.of(context).dontHaveAccount,
                       style: const TextStyle(
                           color: Colors.black,
