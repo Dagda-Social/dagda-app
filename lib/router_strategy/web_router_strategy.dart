@@ -14,6 +14,12 @@ GoRouter router = GoRouter(
     routes: [
       GoRoute(
           path: '/',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser == null) {
+              return '/login}';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
                 ogTitle: AppLocalizations.of(context).dagdaSocial,

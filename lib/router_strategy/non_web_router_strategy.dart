@@ -9,6 +9,12 @@ GoRouter router = GoRouter(
     routes: [
       GoRoute(
           path: '/',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser == null) {
+              return '/login}';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             return MaterialPage(
               child: Title(
