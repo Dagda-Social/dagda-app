@@ -11,7 +11,7 @@ GoRouter router = GoRouter(
           path: '/',
           redirect: (context, state) {
             if (FirebaseAuth.instance.currentUser == null) {
-              return '/login}';
+              return '/login';
             }
             return null;
           },
@@ -71,7 +71,7 @@ GoRouter router = GoRouter(
         pageBuilder: (context, state) {
           return MaterialPage<void>(
             child: BasePage(
-              content_type: 'privacy-policy',
+              contentType: 'privacy-policy',
             ),
           );
         },
@@ -81,7 +81,7 @@ GoRouter router = GoRouter(
         pageBuilder: (context, state) {
           return MaterialPage<void>(
             child: BasePage(
-              content_type: "terms-of-service",
+              contentType: "terms-of-service",
             ),
           );
         },
@@ -91,7 +91,7 @@ GoRouter router = GoRouter(
         pageBuilder: (context, state) {
           return MaterialPage<void>(
             child: BasePage(
-              content_type: "about",
+              contentType: "about",
             ),
           );
         },

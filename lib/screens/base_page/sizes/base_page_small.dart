@@ -1,8 +1,7 @@
+import 'package:dagda/widgets/markdown/markdown_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class BasePageSmall extends StatefulWidget {
   BasePageSmall({Key? key, required this.title, required this.content})
@@ -27,7 +26,7 @@ class _BasePageSmallState extends State<BasePageSmall> {
             style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 42)),
+                fontSize: 38)),
         shadowColor: const Color.fromARGB(0, 0, 0, 0),
         actions: <Widget>[
           Center(
@@ -37,7 +36,7 @@ class _BasePageSmallState extends State<BasePageSmall> {
                 AppLocalizations.of(context).login,
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -52,7 +51,7 @@ class _BasePageSmallState extends State<BasePageSmall> {
                 AppLocalizations.of(context).register,
                 style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 16,
+                    fontSize: 12,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -93,10 +92,10 @@ class _BasePageSmallState extends State<BasePageSmall> {
 }
 
 class BasePageContent extends StatelessWidget {
-  BasePageContent({Key? key, required this.title, required this.content})
+  const BasePageContent({Key? key, required this.title, required this.content})
       : super(key: key);
-  String title;
-  String content;
+  final String title;
+  final String content;
 
   @override
   Widget build(BuildContext context) {
@@ -114,73 +113,9 @@ class BasePageContent extends StatelessWidget {
         ConstrainedBox(
           constraints:
               BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8),
-          child: MarkdownBody(
-              onTapLink: (text, href, title) {
-                launchUrl(Uri.parse(href.toString()));
-              },
-              data: content,
-              selectable: false,
-              styleSheet: MarkdownStyleSheet(
-                p: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                h1: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold),
-                h2: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-                h3: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-                h4: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                h5: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
-                h6: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold),
-                em: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                strong: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                code: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                codeblockDecoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                codeblockPadding: const EdgeInsets.all(10),
-                codeblockAlign: WrapAlignment.start,
-                checkbox: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-                tableCellsDecoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                tableCellsPadding: const EdgeInsets.all(10),
-                tableBorder: TableBorder.all(
-                  color: Colors.black,
-                  width: 1,
-                ),
-              )),
+          child: DagdaMarkdownBody(
+            data: content,
+          ),
         )
       ],
     );
@@ -198,7 +133,7 @@ class BasePageFooter extends StatelessWidget {
           height: 40,
         ),
         Text(
-          'Last updated: 2022-12-09',
+          'Last updated: 2022-12-28',
           style: TextStyle(
               color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
           textAlign: TextAlign.start,
