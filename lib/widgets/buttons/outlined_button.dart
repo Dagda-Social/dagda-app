@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class DagdaOutlinedButton extends StatelessWidget {
   const DagdaOutlinedButton(
       {super.key,
-      required this.colour,
+      this.colour = Colors.black,
       required this.title,
       required this.onPressed,
-      required this.fontSize,
-      required this.fontWeight,
-      required this.borderRadius,
-      required this.borderWidth});
+      this.fontSize = 14,
+      this.fontWeight = FontWeight.bold,
+      this.borderRadius = 10,
+      this.borderWidth = 2});
 
   final Color colour;
   final String title;
@@ -21,19 +21,20 @@ class DagdaOutlinedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size(100, 50),
+        primary: colour,
+        side: BorderSide(color: colour, width: borderWidth),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
+      ),
       onPressed: onPressed as void Function()?,
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border.all(color: colour, width: borderWidth),
-          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-        ),
-        child: Text(
-          title,
-          style: TextStyle(
-              color: colour, fontSize: fontSize, fontWeight: fontWeight),
-        ),
+      child: Text(
+        title,
+        style: TextStyle(
+            color: colour, fontSize: fontSize, fontWeight: fontWeight),
       ),
     );
   }

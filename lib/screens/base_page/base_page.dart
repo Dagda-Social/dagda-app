@@ -1,3 +1,4 @@
+import 'package:dagda/screens/base_page/prephabs.dart';
 import 'package:dagda/screens/base_page/sizes/base_page_large.dart';
 import 'package:dagda/screens/base_page/sizes/base_page_medium.dart';
 import 'package:dagda/screens/base_page/sizes/base_page_small.dart';
@@ -7,31 +8,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BasePage extends StatefulWidget {
-  const BasePage({Key? key, required this.content_type}) : super(key: key);
-  final content_type;
+  const BasePage({Key? key, required this.contentType}) : super(key: key);
+  final String contentType;
 
   @override
   State<BasePage> createState() => _BasePageState();
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('content_type', content_type));
+    properties.add(DiagnosticsProperty('content_type', contentType));
   }
 }
 
 class _BasePageState extends State<BasePage> {
   String title = '';
-  String content_type = '';
+  String contentType = '';
   String content = '';
   @override
   void initState() {
-    content_type = widget.content_type;
+    contentType = widget.contentType;
     super.initState();
   }
 
   @override
   void dispose() {
-    content_type = '';
+    contentType = '';
     title = '';
     content = '';
     super.dispose();
@@ -39,36 +40,7 @@ class _BasePageState extends State<BasePage> {
 
   @override
   Widget build(BuildContext context) {
-    switch (content_type) {
-      case 'terms-of-service':
-        title = AppLocalizations.of(context).termsOfService;
-        content = """
-# Dagda-app
-
-A new Social Network
-
-""";
-        break;
-      case 'privacy-policy':
-        title = AppLocalizations.of(context).privacyPolicy;
-        break;
-      case 'about':
-        title = AppLocalizations.of(context).about;
-        break;
-      case 'profile-info':
-        title = "Profile Info";
-        String token = "";
-        FirebaseAuth.instance.currentUser?.getIdToken().then((value) {
-          token = value.toString();
-          setState(() {
-            content = token;
-          });
-        });
-
-        break;
-      default:
-        title = AppLocalizations.of(context).termsOfService;
-    }
+    getContent(context);
     return Title(
         title: '$title - ${AppLocalizations.of(context).appName}',
         color: Colors.black,
@@ -82,5 +54,35 @@ A new Social Network
             return BasePageLarge(title: title, content: content);
           }
         })));
+  }
+
+  void getContent(BuildContext context) {
+    switch (contentType) {
+      case 'terms-of-service':
+        title = AppLocalizations.of(context).termsOfService;
+        content = termsOfService;
+        break;
+      case 'privacy-policy':
+        title = AppLocalizations.of(context).privacyPolicy;
+        content = privacyPolicy;
+        break;
+      case 'about':
+        title = AppLocalizations.of(context).about;
+        content = about;
+        break;
+      case 'profile-info':
+        title = "Profile Info";
+        String token = "";
+        FirebaseAuth.instance.currentUser?.getIdToken().then((value) {
+          token = value.toString();
+          setState(() {
+            content = token;
+          });
+        });
+
+        break;
+      default:
+        title = AppLocalizations.of(context).appName;
+    }
   }
 }

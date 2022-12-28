@@ -14,6 +14,12 @@ GoRouter router = GoRouter(
     routes: [
       GoRoute(
           path: '/',
+          redirect: (context, state) {
+            if (FirebaseAuth.instance.currentUser == null) {
+              return '/login';
+            }
+            return null;
+          },
           pageBuilder: (context, state) {
             MetaSEO metaSEO = MetaSEO(
                 ogTitle: AppLocalizations.of(context).dagdaSocial,
@@ -176,7 +182,7 @@ GoRouter router = GoRouter(
               child: FutureBuilder(
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return base.BasePage(content_type: 'privacy-policy');
+                return base.BasePage(contentType: 'privacy-policy');
               } else {
                 return const Center(child: CircularProgressIndicator());
               }
@@ -207,7 +213,7 @@ GoRouter router = GoRouter(
               child: FutureBuilder(
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
-                    return base.BasePage(content_type: 'terms-of-service');
+                    return base.BasePage(contentType: 'terms-of-service');
                   } else {
                     return const Center(child: CircularProgressIndicator());
                   }
@@ -244,7 +250,7 @@ GoRouter router = GoRouter(
             child: FutureBuilder(
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
-                  return base.BasePage(content_type: 'about');
+                  return base.BasePage(contentType: 'about');
                 } else {
                   return const Center(child: CircularProgressIndicator());
                 }
@@ -262,9 +268,9 @@ GoRouter router = GoRouter(
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (FirebaseAuth.instance.currentUser != null) {
-                      return base.BasePage(content_type: 'profile-info');
+                      return base.BasePage(contentType: 'profile-info');
                     }
-                    return base.BasePage(content_type: 'info');
+                    return base.BasePage(contentType: 'info');
                   } else {
                     return const Center(child: CircularProgressIndicator());
                   }

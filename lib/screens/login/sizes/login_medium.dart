@@ -1,7 +1,9 @@
 import 'package:dagda/screens/login/logic/login.dart';
-import 'package:dagda/screens/login/widgets/dialog.dart';
+import 'package:dagda/widgets/dialogs/password_reset_dialog.dart';
 import 'package:dagda/screens/register/logic/form.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
+import 'package:dagda/widgets/textfield/obscured_text_field.dart';
+import 'package:dagda/widgets/textfield/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
@@ -18,8 +20,6 @@ class _LoginMediumState extends State<LoginMedium> {
   // Controladores del TextField
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
-  // Mostrar / Ocultar contraseña
-  bool _isObscure = true;
 
   @override
   void dispose() {
@@ -61,40 +61,9 @@ class _LoginMediumState extends State<LoginMedium> {
                         child: SizedBox(
                           width: 350,
                           child: Center(
-                              child: TextFormField(
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                              child: DagdaTextField(
+                            content: AppLocalizations.of(context).email,
                             controller: _emailController,
-                            textInputAction: TextInputAction.next,
-                            keyboardType: TextInputType.emailAddress,
-                            maxLines: 1,
-                            decoration: InputDecoration(
-                              errorMaxLines: 3,
-                              errorBorder: const OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.red, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              border: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black, width: 1.5),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10))),
-                              labelText: AppLocalizations.of(context).email,
-                              labelStyle: const TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
                             validator: (value) =>
                                 checkMail(value.toString(), context),
                           )),
@@ -105,54 +74,9 @@ class _LoginMediumState extends State<LoginMedium> {
                         child: SizedBox(
                           width: 350,
                           child: Center(
-                            child: TextFormField(
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              obscureText: _isObscure,
-                              textInputAction: TextInputAction.next,
-                              keyboardType: TextInputType.visiblePassword,
-                              autocorrect: false,
+                            child: DagdaObscuredTextField(
+                              content: AppLocalizations.of(context).password,
                               controller: _passController,
-                              maxLines: 1,
-                              decoration: InputDecoration(
-                                  errorMaxLines: 3,
-                                  errorBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.red, width: 1.5),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black, width: 1.5),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black, width: 1.5),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  border: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black, width: 1.5),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  labelText:
-                                      AppLocalizations.of(context).password,
-                                  labelStyle: const TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                  suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _isObscure
-                                            ? Icons.visibility
-                                            : Icons.visibility_off,
-                                        color: Colors.black,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isObscure = !_isObscure;
-                                        });
-                                      })),
                               validator: (value) =>
                                   checkPasswordWithSpecialCharacters(
                                       value.toString(), context),
@@ -204,18 +128,13 @@ class _LoginMediumState extends State<LoginMedium> {
                   height: 10,
                 ),
                 DagdaOutlinedButton(
-                    colour: Colors.black,
                     title: AppLocalizations.of(context).login,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         login(_emailController.text, _passController.text,
                             context);
                       }
-                    },
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    borderRadius: 10,
-                    borderWidth: 2),
+                    }),
                 const SizedBox(
                   height: 10,
                 ),

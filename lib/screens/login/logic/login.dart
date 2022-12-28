@@ -35,6 +35,7 @@ void senPasswordResetEmail(String email, BuildContext context) async {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
     // ignore: use_build_context_synchronously
     Navigator.pop(context);
+    Navigator.pop(context);
     infoDialog(context, AppLocalizations.of(context).attention,
         AppLocalizations.of(context).forgotPasswordEmailSent);
   } on FirebaseAuthException catch (e) {
