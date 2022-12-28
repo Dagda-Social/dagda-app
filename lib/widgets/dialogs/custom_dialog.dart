@@ -1,23 +1,12 @@
-import 'package:dagda/widgets/buttons/buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-actionDialog(BuildContext context, String title, String content, String action,
-    Function actionFunction) {
-  AlertDialog alert = AlertDialog(
+actionDialog(BuildContext context, Widget child) {
+  // Create dialog with title, content and a single button to close the dialog
+  Dialog alert = Dialog(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10.0),
     ),
-    title: Text(title),
-    content: Text(content),
-    actions: <Widget>[
-      DagdaOutlinedButton(
-          title: AppLocalizations.of(context).cancel,
-          onPressed: () => Navigator.pop(context),),
-      DagdaOutlinedButton(
-          title: action,
-          onPressed: () => actionFunction(),)
-    ],
+    child: SingleChildScrollView(child: child),
   );
   showDialog(
     context: context,

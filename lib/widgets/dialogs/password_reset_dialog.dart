@@ -2,6 +2,7 @@ import 'package:dagda/screens/login/logic/login.dart';
 import 'package:dagda/screens/register/logic/form.dart';
 import 'package:dagda/widgets/buttons/filled_button.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
+import 'package:dagda/widgets/textfield/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -53,33 +54,9 @@ passwordResetDialog(BuildContext context) {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: SizedBox(
                   width: 350,
-                  child: TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: DagdaTextField(
+                    content: AppLocalizations.of(context).email,
                     controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    maxLines: 1,
-                    decoration: InputDecoration(
-                      errorMaxLines: 3,
-                      errorBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red, width: 1.5),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 1.5),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 1.5),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      border: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.black, width: 1.5),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      labelText: AppLocalizations.of(context).email,
-                      labelStyle: const TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
                     validator: (value) => checkMail(value.toString(), context),
                   ),
                 ),
