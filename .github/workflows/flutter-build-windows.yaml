@@ -1,7 +1,5 @@
 name: Flutter build for windows
-on:
-  pull_request:
-    types: [opened, reopened, edited, review_requested, ready_for_review, auto_merge_disabled, auto_merge_enabled, converted_to_draft]
+'on': pull_request
 jobs:
  build:
    runs-on: windows-latest
