@@ -11,3 +11,9 @@ jobs:
      - run: flutter config --enable-windows-desktop
      - run: flutter gen-l10n --use-deferred-loading
      - run: flutter build windows
+     - name: Push to release
+       uses: ncipollo/release-action@v1
+       with:
+         artifacts: "build/windows/"
+         tag: v0.0.${{ github.run_number}}
+         token: ${{ secrets.TOKEN}}
