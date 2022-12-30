@@ -1,4 +1,4 @@
-name: Flutter build for android
+name: Flutter build
 'on': pull_request
 jobs:
  build:
@@ -17,6 +17,6 @@ jobs:
      - name: Push to release
        uses: ncipollo/release-action@v1
        with:
-         artifacts: "build/app/outputs/release/app-release.apk"
+         artifacts: "build/app/outputs/flutter-apk/app-debug.apk"
          tag: v0.0.${{ github.run_number}}
          token: ${{ secrets.TOKEN}}
