@@ -1,4 +1,4 @@
-name: Flutter build for windows
+name: Flutter build for android
 'on': pull_request
 jobs:
  build:
@@ -10,10 +10,10 @@ jobs:
          channel: 'beta'
      - run: flutter config --enable-windows-desktop
      - run: flutter gen-l10n --use-deferred-loading
-     - run: flutter build windows
+     - run: flutter build apk
      - name: Push to release
        uses: ncipollo/release-action@v1
        with:
-         artifacts: "build/windows/"
+         artifacts: "build/android/"
          tag: v0.0.${{ github.run_number}}
          token: ${{ secrets.TOKEN}}

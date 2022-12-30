@@ -27,7 +27,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -52,14 +55,6 @@ class DefaultFirebaseOptions {
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAYCNHMFPCVYsE8_gRPfwrsGWCAKKrvNzY',
     appId: '1:410863550136:android:5e65036623c40f07d3fe4d',
-    messagingSenderId: '410863550136',
-    projectId: 'dagda-social-network',
-    storageBucket: 'dagda-social-network.appspot.com',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAYCNHMFPCVYsE8_gRPfwrsGWCAKKrvNzY',
-    appId: '1:410863550136:windows:5e65036623c40f07d3fe4d',
     messagingSenderId: '410863550136',
     projectId: 'dagda-social-network',
     storageBucket: 'dagda-social-network.appspot.com',
