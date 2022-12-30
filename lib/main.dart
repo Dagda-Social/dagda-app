@@ -15,6 +15,7 @@ final FirebaseAuth auth = FirebaseAuth.instance;
 
 Future<void> main() async {
   configureUrl();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,6 +27,7 @@ Future<void> main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+
   runApp(const MyApp());
 }
 
