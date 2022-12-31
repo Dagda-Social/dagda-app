@@ -1,4 +1,4 @@
-package com.example.web
+package social.dagda.web
 
 import io.flutter.embedding.android.FlutterActivity
 

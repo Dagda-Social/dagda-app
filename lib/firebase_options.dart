@@ -54,7 +54,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAYCNHMFPCVYsE8_gRPfwrsGWCAKKrvNzY',
-    appId: '1:410863550136:android:5e65036623c40f07d3fe4d',
+    appId: '1:410863550136:android:5334c104bb18278ad3fe4d',
     messagingSenderId: '410863550136',
     projectId: 'dagda-social-network',
     storageBucket: 'dagda-social-network.appspot.com',
@@ -62,21 +62,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC7XMh6r2UbAW3QQcXRHT4LftjchXUZjC8',
-    appId: '1:410863550136:ios:24839e8d5c7eefc1d3fe4d',
+    appId: '1:410863550136:ios:17ad73af827d488ed3fe4d',
     messagingSenderId: '410863550136',
     projectId: 'dagda-social-network',
     storageBucket: 'dagda-social-network.appspot.com',
-    iosClientId: '410863550136-o9jd739qfrivrqcordcinlngdvm364jo.apps.googleusercontent.com',
-    iosBundleId: 'com.example.web',
+    iosClientId: '410863550136-8btq2v6bf834975epj4s5lu0tis8ht1c.apps.googleusercontent.com',
+    iosBundleId: 'social.dagda.app',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC7XMh6r2UbAW3QQcXRHT4LftjchXUZjC8',
-    appId: '1:410863550136:ios:24839e8d5c7eefc1d3fe4d',
+    appId: '1:410863550136:ios:17ad73af827d488ed3fe4d',
     messagingSenderId: '410863550136',
     projectId: 'dagda-social-network',
     storageBucket: 'dagda-social-network.appspot.com',
-    iosClientId: '410863550136-o9jd739qfrivrqcordcinlngdvm364jo.apps.googleusercontent.com',
-    iosBundleId: 'com.example.web',
+    iosClientId: '410863550136-8btq2v6bf834975epj4s5lu0tis8ht1c.apps.googleusercontent.com',
+    iosBundleId: 'social.dagda.app',
   );
 }

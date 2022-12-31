@@ -1,0 +1,88 @@
+name: Flutter build apk
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+ version:
+   name: Create version number
+   runs-on: ubuntu-latest
+   steps:
+     - uses: actions/checkout@v3
+       with:
+        fetch-depth: 0
+     - name: Install GitVersion
+       uses: gittools/actions/gitversion/setup@v0.9.15
+       with:
+         versionSpec: "5.x"
+         includePrerelease: true
+     - name: Use GitVersion
+       id: gitversion
+       uses: gittools/actions/gitversion/execute@v0.9.15
+     - name: Create version.txt with nuGetVersion
+       run: echo ${{ steps.gitversion.outputs.nuGetVersion  }} > version.txt
+     - name: Upload version.txt
+       uses: actions/upload-artifact@v2
+       with:
+         name: gitversion
+         path: version.txt
+
+ build:
+    name: Create Android Build
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v3
+     - name: Get version.txt
+       uses: actions/download-artifact@v2
+       with:
+         name: gitversion
+      # 3
+     - name: Create new file without newline char from version.txt
+       run: tr -d '\n' < version.txt > version1.txt
+      # 4
+     - name: Read version
+       id: version
+       uses: juliangruber/read-file-action@v1
+       with:
+         path: version1.txt
+      # 5
+    # - name: Update version in YAML
+     #  run: sed -i 's/99.99.99+99/${{ steps.version.outputs.content }}+${{ github.run_number }}/g' pubspec.yaml
+      # 6
+     - name: Download Android keystore
+       id: android_keystore
+       uses: timheuer/base64-to-file@v1.0.3
+       with:
+         fileName: upload-keystore.jks
+         encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      # 7
+     - name: Create key.properties
+       run: |
+        echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" >> android/key.properties
+        echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
+        echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
+        echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+       shell: bash
+      # Configure java
+     - name: Setup java
+       uses: actions/setup-java@v2
+       with:
+        distribution: 'zulu'
+        java-version: '18'
+        cache: 'gradle'
+      # Configure flutter
+     - name: Configure Flutter
+       uses: subosito/flutter-action@v2
+       with:
+         channel: 'stable'
+         cache: true
+     - run: flutter gen-l10n --use-deferred-loading
+     - run: flutter build apk --release --build-name=${{ steps.version.outputs.content }}+${{ github.run_number }}
+     - name: Push to release
+       uses: ncipollo/release-action@v1
+       with:
+         artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+         tag: ${{ steps.version.outputs.content }}+${{ github.run_number }}
+         token: ${{ secrets.TOKEN}}
