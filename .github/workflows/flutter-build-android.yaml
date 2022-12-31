@@ -1,5 +1,9 @@
 name: Flutter build apk
-'on': pull_request
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
  version:
    name: Create version number
