@@ -27,7 +27,7 @@ jobs:
  build:
     name: Create Android Build
     needs: version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
      - name: Get version.txt
        uses: actions/download-artifact@v2
@@ -55,10 +55,11 @@ jobs:
       # 7
      - name: Create key.properties
        run: |
-         echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
-         echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
-         echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
-         echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+        ls -a
+        echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
+        echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
+        echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
+        echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
        shell: bash
       # Configure java
      - name: Setup java
