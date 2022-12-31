@@ -56,7 +56,6 @@ jobs:
       # 7
      - name: Create key.properties
        run: |
-        echo ${{ secrets.ANDROID_KEYSTORE_PASSWORD}}
         echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
         echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
         echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
