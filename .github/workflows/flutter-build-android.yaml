@@ -56,10 +56,10 @@ jobs:
      - name: Create key.properties
        run: |
          touch android/key.properties
-         echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" >> android/key.properties
-         echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
-         echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
-         echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+         echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" >> ~/android/key.properties
+         echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> ~/android/key.properties
+         echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> ~/android/key.properties
+         echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> ~/android/key.properties
        shell: bash
       # Configure java
      - name: Setup java
