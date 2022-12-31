@@ -60,7 +60,6 @@ jobs:
         echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
         echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
         echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-        cat android/key.properties
        shell: bash
       # Configure java
      - name: Setup java
