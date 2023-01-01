@@ -81,10 +81,6 @@ jobs:
          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
          tag: ${{ steps.version.outputs.content }}
          token: ${{ secrets.TOKEN}}
-     - name: Fail randomly
-       run: |
-        cat README.md
-        exit $((RANDOM % 2))        
      - name: Message success
        if: ${{ success() }}
        uses: actions/github-script@v4
@@ -94,7 +90,9 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: 'Deployment succeeded! ✅',
+            body: 'Deployment succeeded! ✅ ${{ steps.version.outputs.content }}
+            https://github.com/Dagda-Social/dagda-app/releases/tag/+${{ steps.version.outputs.content }}
+            ',
           });          
      - name: Message failure
        if: ${{ failure() }}
