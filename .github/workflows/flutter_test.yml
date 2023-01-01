@@ -13,13 +13,10 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
       - run: flutter pub get
       - run: flutter gen-l10n --use-deferred-loading
       - run: flutter test
-      - name: Fail randomly
-        run: |
-         cat README.md
-         exit $((RANDOM % 2))        
       - name: Message success
         if: ${{ success() }}
         uses: actions/github-script@v4
