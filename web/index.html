@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <base href="$FLUTTER_BASE_HREF">
 
@@ -17,8 +17,6 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>dagda - Social Network</title>
   <link rel="manifest" href="manifest.json">
 
   <script>
@@ -107,7 +105,7 @@
       }).then(function(app) {
         window.setTimeout(function() {
           loading.remove();
-        },0);
+        },2000);
       });
     });
     // add  MetaSEO JS functions here
