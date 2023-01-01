@@ -1,0 +1,14 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "social.dagda.web",
+        "sha256_cert_fingerprints": [
+          "7F:55:C5:1B:36:9E:C4:D8:EF:B4:AE:66:E7:03:BD:EF:66:AE:DC:A6:72:6A:A6:DE:10:69:C6:44:20:24:72:C7"
+        ]
+      }
+    }
+  ]
