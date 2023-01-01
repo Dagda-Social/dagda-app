@@ -16,3 +16,29 @@ jobs:
       - run: flutter pub get
       - run: flutter gen-l10n --use-deferred-loading
       - run: flutter test
+      - name: Fail randomly
+        run: |
+         cat README.md
+         exit $((RANDOM % 2))        
+      - name: Message success
+        if: ${{ success() }}
+        uses: actions/github-script@v4
+        with:
+         script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Test succeeded! ✅',
+          });          
+      - name: Message failure
+        if: ${{ failure() }}
+        uses: actions/github-script@v4
+        with:
+         script: |
+          github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'Test failed! ❌',
+          }); 
