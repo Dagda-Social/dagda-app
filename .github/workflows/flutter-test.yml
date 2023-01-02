@@ -1,6 +1,9 @@
 name: Flutter Test
 on:
-  workflow_call:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 jobs:
   test:
     name: Flutter tests
