@@ -1,13 +1,13 @@
 name: Flutter build apk
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_run:
+    workflows:
+      - "Flutter Test"
+    types:
+      - completed
 jobs:
  version:
    name: Create version number
-   needs: test
    runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v3
