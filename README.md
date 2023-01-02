@@ -1,5 +1,5 @@
 <p align="center">
-<img src="assets/icon/icon.png" width="" alt="MyFoodieJournal logo" title="MyFoodieJournal">
+<img src="assets/icon/icon.png" width="200px" alt="MyFoodieJournal logo" title="MyFoodieJournal">
 </p>
 
 # dagda - Social Network
