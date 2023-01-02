@@ -126,7 +126,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: 'Deployment succeeded! ✅ ${{ steps.version.outputs.content }}
-            https://github.com/Dagda-Social/dagda-app/releases/tag/+${{ steps.version.outputs.content }}
+            https://github.com/Dagda-Social/dagda-app/releases/tag/${{ steps.version.outputs.content }}
             ',
           });          
      - name: Message failure
