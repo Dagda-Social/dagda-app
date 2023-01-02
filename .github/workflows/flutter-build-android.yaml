@@ -1,8 +1,7 @@
 name: Flutter build apk
 on:
   workflow_run:
-    workflows:
-      - "Flutter Test"
+    workflows: ["Flutter Test"]
     types:
       - completed
 jobs:
