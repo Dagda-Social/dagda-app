@@ -1,3 +1,4 @@
+import 'package:dagda/screens/nav_screen/nav_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -5,24 +6,42 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../screens/screens.dart';
 
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
 GoRouter router = GoRouter(
     routes: [
-      GoRoute(
-          path: '/',
-          redirect: (context, state) {
-            if (FirebaseAuth.instance.currentUser == null) {
-              return '/login';
-            }
-            return null;
-          },
-          pageBuilder: (context, state) {
-            return MaterialPage(
-              child: Title(
-                  title: AppLocalizations.of(context).dagdaSocial,
-                  color: Colors.black,
-                  child: const MyHomePage()),
+      ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) {
+            return Scaffold(
+              body: NavScreen(child: child),
             );
-          }),
+          },
+          routes: [
+            GoRoute(
+                path: '/home',
+                redirect: (context, state) {
+                  if (FirebaseAuth.instance.currentUser == null) {
+                    return '/login';
+                  }
+                  return null;
+                },
+                pageBuilder: (context, state) {
+                  return MaterialPage(
+                    child: Title(
+                        title: AppLocalizations.of(context).dagdaSocial,
+                        color: Colors.black,
+                        child: const MyHomePage()),
+                  );
+                }),
+            GoRoute(
+                path: '/search',
+                pageBuilder: (context, state) =>
+                    const MaterialPage<void>(child: Scaffold())),
+            GoRoute(
+                path: '/profile',
+                pageBuilder: (context, state) =>
+                    const MaterialPage<void>(child: Scaffold())),
+          ]),
       GoRoute(
           path: '/register',
           redirect: (context, state) {
@@ -39,6 +58,10 @@ GoRouter router = GoRouter(
                   child: const Register()),
             );
           }),
+      GoRoute(
+        path: '/',
+        redirect: (context, state) => '/home',
+      ),
       GoRoute(
           path: '/login',
           redirect: (context, state) {

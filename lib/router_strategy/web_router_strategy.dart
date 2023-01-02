@@ -1,5 +1,6 @@
-import 'package:dagda/screens/home/home_page.dart' deferred as home;
+import 'package:dagda/screens/home/home_screen.dart' deferred as home;
 import 'package:dagda/screens/login/login.dart' deferred as login;
+import 'package:dagda/screens/nav_screen/nav_screen.dart';
 import 'package:dagda/screens/profile/profile.dart' deferred as profile;
 import 'package:dagda/screens/register/register.dart' deferred as register;
 import 'package:dagda/screens/base_page/base_page.dart' deferred as base;
@@ -10,45 +11,69 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:meta_seo/meta_seo.dart';
 
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
 GoRouter router = GoRouter(
     routes: [
-      GoRoute(
-          path: '/',
-          redirect: (context, state) {
-            if (FirebaseAuth.instance.currentUser == null) {
-              return '/login';
-            }
-            return null;
-          },
-          pageBuilder: (context, state) {
-            MetaSEO metaSEO = MetaSEO(
-                ogTitle: AppLocalizations.of(context).dagdaSocial,
-                description:
-                    '${AppLocalizations.of(context).buildingNextGeneration}, ${AppLocalizations.of(context).joinUs}',
-                ogImage: 'https://dagda.social/assets/images/logo.png',
-                keywords: AppLocalizations.of(context).appKeywords);
-
-            metaSEO.seoOGImage();
-            metaSEO.seoDescription();
-            metaSEO.seoOGTitle();
-            metaSEO.seoKeywords();
-
-            return MaterialPage(
-              child: Title(
-                  title: AppLocalizations.of(context).dagdaSocial,
-                  color: Colors.black,
-                  child: FutureBuilder(
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        return home.MyHomePage();
-                      } else {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    },
-                    future: home.loadLibrary(),
-                  )),
+      ShellRoute(
+          navigatorKey: _shellNavigatorKey,
+          builder: (context, state, child) {
+            return Scaffold(
+              body: NavScreen(child: child),
             );
-          }),
+          },
+          routes: [
+            GoRoute(
+                path: '/home',
+                redirect: (context, state) {
+                  if (FirebaseAuth.instance.currentUser == null) {
+                    return '/login';
+                  }
+                  return null;
+                },
+                pageBuilder: (context, state) {
+                  MetaSEO metaSEO = MetaSEO(
+                      ogTitle: AppLocalizations.of(context).dagdaSocial,
+                      description:
+                          '${AppLocalizations.of(context).buildingNextGeneration}, ${AppLocalizations.of(context).joinUs}',
+                      ogImage: 'https://dagda.social/assets/images/logo.png',
+                      keywords: AppLocalizations.of(context).appKeywords);
+
+                  metaSEO.seoOGImage();
+                  metaSEO.seoDescription();
+                  metaSEO.seoOGTitle();
+                  metaSEO.seoKeywords();
+
+                  return MaterialPage(
+                    child: Title(
+                        title: AppLocalizations.of(context).dagdaSocial,
+                        color: Colors.black,
+                        child: FutureBuilder(
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return home.MyHomePage();
+                            } else {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                          },
+                          future: home.loadLibrary(),
+                        )),
+                  );
+                }),
+            GoRoute(
+                path: '/search',
+                pageBuilder: (context, state) =>
+                    const MaterialPage<void>(child: Scaffold())),
+            GoRoute(
+                path: '/profile',
+                pageBuilder: (context, state) =>
+                    const MaterialPage<void>(child: Scaffold())),
+          ]),
+      GoRoute(
+        path: '/',
+        redirect: (context, state) => '/home',
+      ),
       GoRoute(
           path: '/register',
           redirect: (context, state) {
