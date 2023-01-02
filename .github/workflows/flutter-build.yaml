@@ -6,9 +6,15 @@ on:
     branches: [ "main" ]
 jobs:
  test:
-   uses: .github/workflows/flutter-test.yaml
+  name: jobs
+  runs-on: ubuntu-latest
+  steps:       
+    - uses: actions/checkout@v3
+    - name: Flutter test
+      uses: ./.github/workflows/flutter-test.yaml
  version:
    name: Create version number
+   needs: test
    runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v3
