@@ -7,7 +7,7 @@ on:
 jobs:
  test:
   name: jobs
-  uses: ./.github/workflows/flutter-test.yaml
+  uses: ./.github/workflows/flutter-test.yaml@master
  version:
    name: Create version number
    needs: test
