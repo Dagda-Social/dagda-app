@@ -43,7 +43,7 @@ jobs:
       - run: flutter gen-l10n --use-deferred-loading
       - run: flutter test
       - name: Message success
-        if: ${{ success() }}
+        if: ${{ github.event.pull_request && success() }}
         uses: actions/github-script@v4
         with:
          script: |
@@ -54,7 +54,7 @@ jobs:
             body: 'Test succeeded! ✅',
           });          
       - name: Message failure
-        if: ${{ failure() }}
+        if: ${{ github.event.pull_request && failure() }}
         uses: actions/github-script@v4
         with:
          script: |
