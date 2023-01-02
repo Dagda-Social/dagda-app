@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 jobs:
  test:
-   uses: ./.github/workflows/flutter-test.yaml
+   uses: .github/workflows/flutter-test.yaml
  version:
    name: Create version number
    runs-on: ubuntu-latest
