@@ -114,7 +114,7 @@ jobs:
        uses: ncipollo/release-action@v1
        with:
          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
-         tag: ${{ steps.version.outputs.content }}
+         tag: ${{ steps.version.outputs.content }}+${{ github.run_number }}
          token: ${{ secrets.TOKEN}}
      - name: Message success
        if: ${{ success() }}
@@ -126,7 +126,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: 'Deployment succeeded! ✅ ${{ steps.version.outputs.content }}
-            https://github.com/Dagda-Social/dagda-app/releases/tag/${{ steps.version.outputs.content }}
+            https://github.com/Dagda-Social/dagda-app/releases/tag/${{ steps.version.outputs.content }}+${{ github.run_number }}
             ',
           });          
      - name: Message failure
