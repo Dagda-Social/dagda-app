@@ -36,8 +36,6 @@ class _NavScreenState extends State<NavScreen> {
 
   // callback used to navigate to the desired tab
   void _onItemTapped(BuildContext context, int tabIndex) {
-    print('tabIndex: $tabIndex');
-    print(tabs[tabIndex].initialLocation);
     if (tabIndex != _currentIndex) {
       // go to the initial location of the selected tab (by index)
       context.go(tabs[tabIndex].initialLocation);

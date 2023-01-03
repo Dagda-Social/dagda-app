@@ -36,7 +36,7 @@ GoRouter router = GoRouter(
             GoRoute(
                 path: '/search',
                 pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: Scaffold())),
+                    const MaterialPage<void>(child: SearchPage())),
             GoRoute(
                 path: '/profile',
                 pageBuilder: (context, state) =>

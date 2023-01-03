@@ -5,6 +5,7 @@ import 'package:dagda/screens/profile/profile.dart' deferred as profile;
 import 'package:dagda/screens/register/register.dart' deferred as register;
 import 'package:dagda/screens/base_page/base_page.dart' deferred as base;
 import 'package:dagda/screens/not_found.dart' deferred as not_found;
+import 'package:dagda/screens/screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -64,7 +65,7 @@ GoRouter router = GoRouter(
             GoRoute(
                 path: '/search',
                 pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: Scaffold())),
+                    const MaterialPage<void>(child: SearchPage())),
             GoRoute(
                 path: '/profile',
                 pageBuilder: (context, state) =>
