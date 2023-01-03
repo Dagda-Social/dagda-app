@@ -94,11 +94,10 @@ jobs:
         name: android-release
         path: build/app/outputs/bundle/release/app-release.aab
      - name: Push to release
-       if: ${{ github.event.pull_request }}
        uses: ncipollo/release-action@v1
        with:
          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
-         tag: v${{ steps.version.outputs.content }}
+         tag: v${{ steps.version.outputs.content }}+${{ github.run_number}}
          token: ${{ secrets.TOKEN}}
      - name: Message success
        if: ${{  github.event.pull_request && success() }}
@@ -109,7 +108,7 @@ jobs:
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: 'Deployment succeeded! ✅ \n ${{ steps.version.outputs.content }} \n https://github.com/Dagda-Social/dagda-app/releases/tag/${{ steps.version.outputs.content }}',
+            body: 'Deployment succeeded! ✅ ',
           });          
      - name: Message failure
        if: ${{  github.event.pull_request && failure() }}
@@ -125,6 +124,7 @@ jobs:
  deploy:
     name: Deploy Android Build
     needs: build
+    if: ${{ github.event.pull_request}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -132,17 +132,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: android-release
-    - name: Release Build to internal track
-      if: ${{ github.event.pull_request}}
-      uses: r0adkll/upload-google-play@v1
-      with:
-        serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
-        packageName: social.dagda.web
-        releaseFiles: app-release.aab
-        track: internal
-        status: completed
     - name: Release Build to alpha track
-      if: ${{ github.event.pull_request}}
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
