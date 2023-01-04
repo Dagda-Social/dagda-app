@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Comfortaa',
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: Colors.white, primary: Colors.black),
+            .copyWith(secondary: Colors.white, primary: Colors.white),
         scrollbarTheme: ScrollbarThemeData(
           thumbColor: MaterialStateProperty.all(Colors.black),
           radius: const Radius.circular(10),

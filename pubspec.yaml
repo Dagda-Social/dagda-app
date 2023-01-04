@@ -37,6 +37,8 @@ dependencies:
   flutter_markdown: ^0.6.13
   url_launcher: ^6.1.7
   firebase_dynamic_links: ^5.0.11
+  dynamic_color: ^1.5.4
+  material_color_utilities: ^0.1.5
 
 dev_dependencies:
   flutter_test:

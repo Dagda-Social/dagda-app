@@ -16,17 +16,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.white,
-            expandedHeight: 200,
             title: Text(
               AppLocalizations.of(context).appName,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontSize: 34),
+                  fontSize: 34,
+                  fontFamily: 'Comfortaa'),
             ),
-            floating: true,
-            centerTitle: false,
             actions: [
               Container(
                 margin: const EdgeInsets.all(6.0),

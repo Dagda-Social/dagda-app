@@ -83,14 +83,19 @@ class _NavScreenState extends State<NavScreen> {
               labelType: NavigationRailLabelType.all,
               elevation: 10,
               backgroundColor: Colors.white,
-              leading: FloatingActionButton(
-                  backgroundColor: Colors.black,
-                  onPressed: () {},
-                  tooltip: 'Add',
-                  elevation: 10,
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: const Icon(Icons.add)),
+              leading: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  FloatingActionButton(
+                      backgroundColor: Colors.black,
+                      onPressed: () {},
+                      tooltip: 'Add',
+                      elevation: 10,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
+                      child: const Icon(Icons.add)),
+                ],
+              ),
               selectedIconTheme: const IconThemeData(color: Colors.black),
               unselectedIconTheme:
                   const IconThemeData(color: Colors.grey, opacity: 0.5),

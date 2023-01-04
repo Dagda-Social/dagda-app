@@ -124,7 +124,7 @@ jobs:
  deploy:
     name: Deploy Android Build
     needs: build
-    if: ${{ github.event.pull_request}}
+    if: ${{ github.event.push}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
