@@ -7,10 +7,10 @@ import 'package:go_router/go_router.dart';
 import 'package:universal_io/io.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void login(String email, String password, BuildContext context) async {
+login(String email, String password, BuildContext context) async {
   try {
     loadingDialog(context);
-    final credentials = await FirebaseAuth.instance
+    await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
     Navigator.pop(context);
     context.go('/');
@@ -27,13 +27,12 @@ void login(String email, String password, BuildContext context) async {
   }
 }
 
-void senPasswordResetEmail(String email, BuildContext context) async {
+senPasswordResetEmail(String email, BuildContext context) async {
   try {
     loadingDialog(context);
     await FirebaseAuth.instance
         .setLanguageCode(Platform.localeName.substring(0, 2));
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-    // ignore: use_build_context_synchronously
     Navigator.pop(context);
     Navigator.pop(context);
     infoDialog(context, AppLocalizations.of(context).attention,

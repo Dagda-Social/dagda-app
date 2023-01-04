@@ -93,8 +93,7 @@ class _LoginLargeState extends State<LoginLarge> {
                             content: AppLocalizations.of(context).password,
                             controller: _passController,
                             validator: (value) =>
-                                checkPasswordWithSpecialCharacters(
-                                    value.toString(), context),
+                                checkEmptyPassword(value, context),
                           ),
                         ),
                       ),

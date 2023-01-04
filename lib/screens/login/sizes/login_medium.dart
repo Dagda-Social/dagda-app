@@ -75,12 +75,10 @@ class _LoginMediumState extends State<LoginMedium> {
                           width: 350,
                           child: Center(
                             child: DagdaObscuredTextField(
-                              content: AppLocalizations.of(context).password,
-                              controller: _passController,
-                              validator: (value) =>
-                                  checkPasswordWithSpecialCharacters(
-                                      value.toString(), context),
-                            ),
+                                content: AppLocalizations.of(context).password,
+                                controller: _passController,
+                                validator: (value) =>
+                                    checkEmptyPassword(value, context)),
                           ),
                         ),
                       ),

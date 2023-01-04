@@ -26,11 +26,8 @@ GoRouter router = GoRouter(
                   return null;
                 },
                 pageBuilder: (context, state) {
-                  return MaterialPage(
-                    child: Title(
-                        title: AppLocalizations.of(context).dagdaSocial,
-                        color: Colors.black,
-                        child: const MyHomePage()),
+                  return const MaterialPage(
+                    child: MyHomePage(),
                   );
                 }),
             GoRoute(
@@ -92,7 +89,7 @@ GoRouter router = GoRouter(
       GoRoute(
         path: '/privacy-policy',
         pageBuilder: (context, state) {
-          return MaterialPage<void>(
+          return const MaterialPage<void>(
             child: BasePage(
               contentType: 'privacy-policy',
             ),
@@ -102,7 +99,7 @@ GoRouter router = GoRouter(
       GoRoute(
         path: '/terms-of-service',
         pageBuilder: (context, state) {
-          return MaterialPage<void>(
+          return const MaterialPage<void>(
             child: BasePage(
               contentType: "terms-of-service",
             ),
@@ -112,7 +109,7 @@ GoRouter router = GoRouter(
       GoRoute(
         path: '/about',
         pageBuilder: (context, state) {
-          return MaterialPage<void>(
+          return const MaterialPage<void>(
             child: BasePage(
               contentType: "about",
             ),

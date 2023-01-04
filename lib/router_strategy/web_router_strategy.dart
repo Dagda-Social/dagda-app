@@ -44,24 +44,9 @@ GoRouter router = GoRouter(
                   metaSEO.seoOGTitle();
                   metaSEO.seoKeywords();
 
-                  return MaterialPage(
-                    child: Title(
-                        title: AppLocalizations.of(context).dagdaSocial,
-                        color: Colors.black,
-                        child: FutureBuilder(
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              return home.MyHomePage();
-                            } else {
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            }
-                          },
-                          future: home.loadLibrary(),
-                        )),
-                  );
-                }),
+                  return const MaterialPage(child: MyHomePage());
+                }
+                ),
             GoRoute(
                 path: '/search',
                 pageBuilder: (context, state) =>
@@ -334,4 +319,5 @@ GoRouter router = GoRouter(
         ),
       );
     },
-    initialLocation: '/');
+    initialLocation: '/'
+    );

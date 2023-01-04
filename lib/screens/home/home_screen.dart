@@ -13,14 +13,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.black,
-          onPressed: () {},
-          tooltip: AppLocalizations.of(context).appName,
-          elevation: 10,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: const Icon(Icons.add)),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
