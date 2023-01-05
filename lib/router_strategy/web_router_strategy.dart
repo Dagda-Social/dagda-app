@@ -45,16 +45,27 @@ GoRouter router = GoRouter(
                   metaSEO.seoKeywords();
 
                   return const MaterialPage(child: MyHomePage());
-                }
-                ),
+                }),
             GoRoute(
                 path: '/search',
                 pageBuilder: (context, state) =>
                     const MaterialPage<void>(child: SearchPage())),
             GoRoute(
                 path: '/profile',
-                pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: Scaffold())),
+                pageBuilder: (context, state) => MaterialPage<void>(
+                        child: FutureBuilder(
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done) {
+                          return profile.Profile(
+                            id: 'd4viddf',
+                          );
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      },
+                      future: profile.loadLibrary(),
+                    ))),
           ]),
       GoRoute(
         path: '/',
@@ -64,7 +75,7 @@ GoRouter router = GoRouter(
           path: '/register',
           redirect: (context, state) {
             if (FirebaseAuth.instance.currentUser != null) {
-              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+              return '/home';
             }
             return null;
           },
@@ -103,7 +114,7 @@ GoRouter router = GoRouter(
           path: '/login',
           redirect: (context, state) {
             if (FirebaseAuth.instance.currentUser != null) {
-              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+              return '/home';
             }
             return null;
           },
@@ -319,5 +330,4 @@ GoRouter router = GoRouter(
         ),
       );
     },
-    initialLocation: '/'
-    );
+    initialLocation: '/');

@@ -36,14 +36,16 @@ GoRouter router = GoRouter(
                     const MaterialPage<void>(child: SearchPage())),
             GoRoute(
                 path: '/profile',
-                pageBuilder: (context, state) =>
-                    const MaterialPage<void>(child: Scaffold())),
+                pageBuilder: (context, state) => const MaterialPage<void>(
+                        child: Profile(
+                      id: 'd4viddf',
+                    ))),
           ]),
       GoRoute(
           path: '/register',
           redirect: (context, state) {
             if (FirebaseAuth.instance.currentUser != null) {
-              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+              return '/home';
             }
             return null;
           },
@@ -63,7 +65,7 @@ GoRouter router = GoRouter(
           path: '/login',
           redirect: (context, state) {
             if (FirebaseAuth.instance.currentUser != null) {
-              return '/@${FirebaseAuth.instance.currentUser!.displayName}';
+              return '/home';
             }
             return null;
           },

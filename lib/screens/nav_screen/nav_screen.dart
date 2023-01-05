@@ -1,5 +1,4 @@
 import 'package:dagda/screens/nav_screen/nav_bar_item.dart';
-import 'package:dagda/widgets/buttons/filled_button.dart';
 import 'package:dagda/widgets/tabbar/custom_tab_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +27,39 @@ class _NavScreenState extends State<NavScreen> {
         icon: Icon(Icons.person_rounded),
         label: 'Profile'),
   ];
+  static const railMedium = [
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/home',
+        icon: Icon(Icons.home_rounded),
+        label: 'Home'),
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/search',
+        icon: Icon(Icons.search_rounded),
+        label: 'Search'),
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/profile',
+        icon: Icon(Icons.person_rounded),
+        label: 'Profile'),
+  ];
+
+  static const railBig = [
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/home',
+        icon: Icon(Icons.home_rounded),
+        label: 'Home'),
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/search',
+        icon: Icon(Icons.search_rounded),
+        label: 'Search'),
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/profile',
+        icon: Icon(Icons.person_rounded),
+        label: 'Profile'),
+    ScaffoldWithNavBarTabItem(
+        initialLocation: '/message',
+        icon: Icon(Icons.message_rounded),
+        label: 'Message'),
+  ];
 
   int get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
 
@@ -50,9 +82,10 @@ class _NavScreenState extends State<NavScreen> {
   Widget build(BuildContext context) {
     final double additionalBottomPadding =
         MediaQuery.of(context).padding.bottom;
-    return LayoutBuilder(builder: (BuildContext, boxConstraints) {
+    return LayoutBuilder(builder: (buildContext, boxConstraints) {
       if (boxConstraints.maxWidth < 600) {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: widget.child,
           floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.black,
@@ -80,12 +113,12 @@ class _NavScreenState extends State<NavScreen> {
         return Scaffold(
             body: Row(children: [
           NavigationRail(
+              backgroundColor: Colors.white,
               labelType: NavigationRailLabelType.all,
               elevation: 10,
-              backgroundColor: Colors.white,
               leading: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   FloatingActionButton(
                       backgroundColor: Colors.black,
                       onPressed: () {},
@@ -96,20 +129,18 @@ class _NavScreenState extends State<NavScreen> {
                       child: const Icon(Icons.add)),
                 ],
               ),
-              selectedIconTheme: const IconThemeData(color: Colors.black),
-              unselectedIconTheme:
-                  const IconThemeData(color: Colors.grey, opacity: 0.5),
+              useIndicator: true,
+              indicatorColor: Colors.black,
               selectedLabelTextStyle: const TextStyle(
                   color: Colors.black, fontWeight: FontWeight.bold),
               unselectedLabelTextStyle: const TextStyle(
                   color: Colors.grey, fontWeight: FontWeight.bold),
-              destinations: tabs
+              destinations: railMedium
                   .map((e) => NavigationRailDestination(
                       icon: e.icon, label: Text(e.label!)))
                   .toList(),
               selectedIndex: _currentIndex,
               onDestinationSelected: (index) => _onItemTapped(context, index)),
-          const VerticalDivider(thickness: 1, width: 1),
           Expanded(child: widget.child)
         ]));
       } else {
@@ -117,9 +148,8 @@ class _NavScreenState extends State<NavScreen> {
             body: Row(children: [
           NavigationRail(
             extended: true,
-            labelType: NavigationRailLabelType.none,
-            elevation: 10,
             backgroundColor: Colors.white,
+            elevation: 10,
             leading: Text(
               AppLocalizations.of(context)!.appName,
               style: const TextStyle(
@@ -128,17 +158,15 @@ class _NavScreenState extends State<NavScreen> {
                   fontSize: 34),
             ),
             selectedIconTheme: const IconThemeData(color: Colors.black),
-            unselectedIconTheme:
-                const IconThemeData(color: Colors.grey, opacity: 0.5),
             selectedLabelTextStyle: const TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
             unselectedLabelTextStyle: const TextStyle(
                 color: Colors.grey, fontWeight: FontWeight.bold),
-            destinations: tabs
+            destinations: railBig
                 .map((e) => NavigationRailDestination(
                     icon: e.icon,
                     label: Text(e.label!),
-                    padding: EdgeInsets.all(2.0)))
+                    padding: const EdgeInsets.all(2.0)))
                 .toList(),
             selectedIndex: _currentIndex,
             onDestinationSelected: (index) => _onItemTapped(context, index),
@@ -146,7 +174,7 @@ class _NavScreenState extends State<NavScreen> {
               padding: const EdgeInsets.only(top: 24.0),
               child: FloatingActionButton.extended(
                 onPressed: () {},
-                label: Text('Add Dag'),
+                label: const Text('Add Dag'),
                 icon: const Icon(Icons.add),
                 backgroundColor: Colors.black,
                 elevation: 10,

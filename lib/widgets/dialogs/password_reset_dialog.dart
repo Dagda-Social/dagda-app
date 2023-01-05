@@ -16,9 +16,12 @@ passwordResetDialog(BuildContext context) {
       borderRadius: BorderRadius.circular(10.0),
     ),
     child: SingleChildScrollView(
-      child: SizedBox(
-        height: 360,
-        width: 400,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minHeight: 400,
+          minWidth: 400,
+          maxWidth: 400,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
