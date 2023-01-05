@@ -24,7 +24,7 @@ class DagdaButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: onPressed as void Function()?,
         style: ElevatedButton.styleFrom(
-          minimumSize: Size(100, 50),
+          minimumSize: const Size(100, 50),
           backgroundColor: color,
           textStyle: TextStyle(
               color: textColor, fontSize: fontSize, fontWeight: fontWeight),

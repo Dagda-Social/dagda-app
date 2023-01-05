@@ -24,15 +24,15 @@ class LocaleProvider extends ChangeNotifier {
   }
 
   void setLocaleInitial(Locale locale) {
-    String _language = 'en';
-    Locale _locale = Locale.fromSubtags(languageCode: _language);
-    L10n.all.forEach((element) {
+    String language = 'en';
+    Locale locale = Locale.fromSubtags(languageCode: language);
+    for (var element in L10n.all) {
       if (locale.toString().contains(element.toString())) {
-        _locale = element;
+        locale = element;
       }
-    });
+    }
 
-    setLocale(_locale);
+    setLocale(locale);
     notifyListeners();
   }
 
@@ -44,14 +44,14 @@ class LocaleProvider extends ChangeNotifier {
 
   Future<String> getSavedLanguage() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    String _language = sharedPreferences.getString('language') ?? '';
-    return _language;
+    String language = sharedPreferences.getString('language') ?? '';
+    return language;
   }
 
   Future<bool> getIsLanguage() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    bool _language = sharedPreferences.getBool('savedLanguage') ?? false;
-    return _language;
+    bool language = sharedPreferences.getBool('savedLanguage') ?? false;
+    return language;
   }
 }
 
@@ -62,6 +62,6 @@ Future<void> saveLanguage(Locale locale) async {
 
 Future<String> getSavedLanguage() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  String _language = sharedPreferences.getString('language') ?? '';
-  return _language;
+  String language = sharedPreferences.getString('language') ?? '';
+  return language;
 }

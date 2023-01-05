@@ -5,13 +5,14 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NavScreen extends StatefulWidget {
-  NavScreen({Key? key, required this.child}) : super(key: key);
+  const NavScreen({Key? key, required this.child}) : super(key: key);
   final Widget child;
 
   @override
   State<NavScreen> createState() => _NavScreenState();
 }
 
+// Path: lib/screens/nav_screen/nav_screen.dart
 class _NavScreenState extends State<NavScreen> {
   static const tabs = [
     ScaffoldWithNavBarTabItem(
@@ -60,24 +61,32 @@ class _NavScreenState extends State<NavScreen> {
         icon: Icon(Icons.message_rounded),
         label: 'Message'),
   ];
+// check if the current page is a large screen page
+  bool _isLargeScrenPage = false;
 
   int get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
-
+// get the index of the tab based on the current location
   int _locationToTabIndex(String location) {
     final index =
         tabs.indexWhere((t) => location.startsWith(t.initialLocation));
+// if index not found (-1), set _isLargeScrenPage to true
+    if (index < 0) {
+      _isLargeScrenPage = true;
+    } else {
+      _isLargeScrenPage = false;
+    }
     // if index not found (-1), return 0
     return index < 0 ? 0 : index;
   }
 
   // callback used to navigate to the desired tab
   void _onItemTapped(BuildContext context, int tabIndex) {
-    if (tabIndex != _currentIndex) {
+    if (tabIndex != _currentIndex || _isLargeScrenPage) {
       // go to the initial location of the selected tab (by index)
       context.go(tabs[tabIndex].initialLocation);
     }
   }
-
+// build the scaffold based on the screen size
   @override
   Widget build(BuildContext context) {
     final double additionalBottomPadding =
@@ -151,7 +160,7 @@ class _NavScreenState extends State<NavScreen> {
             backgroundColor: Colors.white,
             elevation: 10,
             leading: Text(
-              AppLocalizations.of(context)!.appName,
+              AppLocalizations.of(context).appName,
               style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

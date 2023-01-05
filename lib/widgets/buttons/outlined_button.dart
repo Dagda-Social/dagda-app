@@ -23,8 +23,7 @@ class DagdaOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        minimumSize: const Size(100, 50),
-        primary: colour,
+        foregroundColor: colour, minimumSize: const Size(100, 50),
         side: BorderSide(color: colour, width: borderWidth),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
