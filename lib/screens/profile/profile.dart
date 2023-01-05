@@ -1,4 +1,5 @@
 import 'package:dagda/widgets/buttons/buttons.dart';
+import 'package:dagda/widgets/search/search.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
@@ -7,29 +8,74 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfileInfo(tag: id),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return LayoutBuilder(builder: (buildContext, constraints) {
+      if (constraints.maxWidth > 600) {
+        return Scaffold(
+          body: SafeArea(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DagdaOutlinedButton(title: 'Follow', onPressed: () {}),
-                const SizedBox(
-                  width: 20,
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      ProfileInfo(tag: id),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          DagdaOutlinedButton(
+                              title: 'Follow', onPressed: () {}),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          DagdaOutlinedButton(
+                              title: 'Message', onPressed: () {}),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                DagdaOutlinedButton(title: 'Message', onPressed: () {}),
+                Expanded(
+                  child: Column(
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      const SearchWidget(),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ],
-        ),
-      )),
-    );
+          ),
+        );
+      } else {
+        return Scaffold(
+          body: SafeArea(
+              child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ProfileInfo(tag: id),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DagdaOutlinedButton(title: 'Follow', onPressed: () {}),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    DagdaOutlinedButton(title: 'Message', onPressed: () {}),
+                  ],
+                ),
+              ],
+            ),
+          )),
+        );
+      }
+    });
   }
 }
 
@@ -141,7 +187,6 @@ class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
       height: 210,
       child: Stack(
         // ignore: prefer_const_literals_to_create_immutables
@@ -150,7 +195,6 @@ class ProfileWidget extends StatelessWidget {
               child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
-              width: double.infinity,
               height: 160,
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),

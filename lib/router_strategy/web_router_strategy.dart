@@ -1,4 +1,3 @@
-import 'package:dagda/screens/home/home_screen.dart' deferred as home;
 import 'package:dagda/screens/login/login.dart' deferred as login;
 import 'package:dagda/screens/nav_screen/nav_screen.dart';
 import 'package:dagda/screens/profile/profile.dart' deferred as profile;
@@ -48,10 +47,22 @@ GoRouter router = GoRouter(
                 }),
             GoRoute(
                 path: '/search',
+                redirect: (context, state) {
+                  if (FirebaseAuth.instance.currentUser == null) {
+                    return '/login';
+                  }
+                  return null;
+                },
                 pageBuilder: (context, state) =>
                     const MaterialPage<void>(child: SearchPage())),
             GoRoute(
                 path: '/profile',
+                redirect: (context, state) {
+                  if (FirebaseAuth.instance.currentUser == null) {
+                    return '/login';
+                  }
+                  return null;
+                },
                 pageBuilder: (context, state) => MaterialPage<void>(
                         child: FutureBuilder(
                       builder: (context, snapshot) {
@@ -164,22 +175,26 @@ GoRouter router = GoRouter(
             metaSEO.seoOGTitle();
             metaSEO.seoKeywords();
 
-            return MaterialPage<void>(
-              child: Title(
-                  title: '${state.params['idProfile']} - dagda',
-                  color: Colors.black,
-                  child: FutureBuilder(
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        return profile.Profile(
+            return MaterialPage(
+              child: LayoutBuilder(builder: (buildContext, constraints) {
+                if (constraints.minWidth > 600) {
+                  return NavScreen(
+                    child: Title(
+                        title: '${state.params['idProfile']} - dagda',
+                        color: Colors.black,
+                        child: Profile(
                           id: state.params['idProfile'].toString(),
-                        );
-                      } else {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                    },
-                    future: profile.loadLibrary(),
-                  )),
+                        )),
+                  );
+                } else {
+                  return Title(
+                      title: '${state.params['idProfile']} - dagda',
+                      color: Colors.black,
+                      child: Profile(
+                        id: state.params['idProfile'].toString(),
+                      ));
+                }
+              }),
             );
           }),
       GoRoute(

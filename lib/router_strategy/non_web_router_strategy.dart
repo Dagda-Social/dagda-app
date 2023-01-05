@@ -81,11 +81,26 @@ GoRouter router = GoRouter(
           name: 'profile',
           path: '/@:idProfile',
           pageBuilder: (context, state) {
-            return MaterialPage<void>(
-              child: Title(
-                  title: '${state.params['idProfile']} - dagda',
-                  color: Colors.black,
-                  child: Profile(id: state.params['idProfile'].toString())),
+            return MaterialPage(
+              child: LayoutBuilder(builder: (buildContext, constraints) {
+                if (constraints.minWidth > 600) {
+                  return NavScreen(
+                    child: Title(
+                        title: '${state.params['idProfile']} - dagda',
+                        color: Colors.black,
+                        child: Profile(
+                          id: state.params['idProfile'].toString(),
+                        )),
+                  );
+                } else {
+                  return Title(
+                      title: '${state.params['idProfile']} - dagda',
+                      color: Colors.black,
+                      child: Profile(
+                        id: state.params['idProfile'].toString(),
+                      ));
+                }
+              }),
             );
           }),
       GoRoute(
