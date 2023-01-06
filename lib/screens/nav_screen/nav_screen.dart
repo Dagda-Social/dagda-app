@@ -86,6 +86,7 @@ class _NavScreenState extends State<NavScreen> {
       context.go(tabs[tabIndex].initialLocation);
     }
   }
+
 // build the scaffold based on the screen size
   @override
   Widget build(BuildContext context) {
@@ -121,35 +122,44 @@ class _NavScreenState extends State<NavScreen> {
       } else if (boxConstraints.maxWidth < 1200) {
         return Scaffold(
             body: Row(children: [
-          NavigationRail(
-              backgroundColor: Colors.white,
-              labelType: NavigationRailLabelType.all,
-              elevation: 10,
-              leading: Column(
-                children: [
-                  const SizedBox(height: 30),
-                  FloatingActionButton(
-                      backgroundColor: Colors.black,
-                      onPressed: () {},
-                      tooltip: 'Add',
-                      elevation: 10,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      child: const Icon(Icons.add)),
-                ],
+          SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: boxConstraints.maxHeight),
+              child: IntrinsicHeight(
+                child: NavigationRail(
+                    backgroundColor: Colors.white,
+                    labelType: NavigationRailLabelType.all,
+                    elevation: 10,
+                    leading: Column(
+                      children: [
+                        const SizedBox(height: 30),
+                        FloatingActionButton(
+                            backgroundColor: Colors.black,
+                            onPressed: () {},
+                            tooltip: 'Add',
+                            elevation: 10,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20))),
+                            child: const Icon(Icons.add)),
+                      ],
+                    ),
+                    useIndicator: true,
+                    indicatorColor: Colors.black,
+                    selectedLabelTextStyle: const TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                    unselectedLabelTextStyle: const TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.bold),
+                    destinations: railMedium
+                        .map((e) => NavigationRailDestination(
+                            icon: e.icon, label: Text(e.label!)))
+                        .toList(),
+                    selectedIndex: _currentIndex,
+                    onDestinationSelected: (index) =>
+                        _onItemTapped(context, index)),
               ),
-              useIndicator: true,
-              indicatorColor: Colors.black,
-              selectedLabelTextStyle: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
-              unselectedLabelTextStyle: const TextStyle(
-                  color: Colors.grey, fontWeight: FontWeight.bold),
-              destinations: railMedium
-                  .map((e) => NavigationRailDestination(
-                      icon: e.icon, label: Text(e.label!)))
-                  .toList(),
-              selectedIndex: _currentIndex,
-              onDestinationSelected: (index) => _onItemTapped(context, index)),
+            ),
+          ),
           Expanded(child: widget.child)
         ]));
       } else {
@@ -199,3 +209,4 @@ class _NavScreenState extends State<NavScreen> {
     });
   }
 }
+

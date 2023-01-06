@@ -1,6 +1,8 @@
+import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:dagda/widgets/buttons/buttons.dart';
 import 'package:dagda/widgets/search/search.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Profile extends StatelessWidget {
   final String id;
@@ -9,37 +11,93 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (buildContext, constraints) {
-      if (constraints.maxWidth > 600) {
+      if (constraints.maxWidth > 800) {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: SafeArea(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 2,
-                  child: Column(
-                    children: [
-                      ProfileInfo(tag: id),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  child: Stack(children: [
+                    Positioned(
+                      child: ListView(
                         children: [
-                          DagdaOutlinedButton(
-                              title: 'Follow', onPressed: () {}),
+                          ProfileInfo(tag: id),
                           const SizedBox(
-                            width: 20,
+                            height: 20,
                           ),
-                          DagdaOutlinedButton(
-                              title: 'Message', onPressed: () {}),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DagdaOutlinedButton(
+                                  title: 'Follow',
+                                  onPressed: () => bottomSheetFollow(
+                                      context,
+                                      [
+                                        for (var i = 0; i < 20; i++)
+                                          CheckboxListTile(
+                                            value: false,
+                                            onChanged: (value) {},
+                                            title: Text('Item $i'),
+                                            subtitle: Text('Subtitle $i'),
+                                          )
+                                      ],
+                                      'Hide categories')),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              DagdaOutlinedButton(
+                                  title: 'Message', onPressed: () {}),
+                            ],
+                          ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                    // button back
+                    Positioned(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                                onPressed: () {
+                                  if (GoRouter.of(context).location !=
+                                      '/profile') {
+                                    try {
+                                      GoRouter.of(context).pop();
+                                    } finally {
+                                      context.go('/');
+                                    }
+                                  }
+                                },
+                                icon: Icon(
+                                  Icons.arrow_back_rounded,
+                                  color: GoRouter.of(context).location ==
+                                          '/profile'
+                                      ? Colors.transparent
+                                      : Colors.white,
+                                )),
+                          ),
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.more_vert,
+                                  color: Colors.white,
+                                )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ]),
                 ),
                 Expanded(
-                  child: Column(
+                  child: ListView(
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const SearchWidget(),
@@ -52,26 +110,84 @@ class Profile extends StatelessWidget {
         );
       } else {
         return Scaffold(
+          backgroundColor: Colors.white,
           body: SafeArea(
               child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ProfileInfo(tag: id),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(children: [
+              Positioned(
+                child: Column(
                   children: [
-                    DagdaOutlinedButton(title: 'Follow', onPressed: () {}),
+                    ProfileInfo(tag: id),
                     const SizedBox(
-                      width: 20,
+                      height: 20,
                     ),
-                    DagdaOutlinedButton(title: 'Message', onPressed: () {}),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        DagdaOutlinedButton(
+                            title: 'Follow',
+                            onPressed: () => bottomSheetFollow(
+                                context,
+                                [
+                                  for (var i = 0; i < 20; i++)
+                                    CheckboxListTile(
+                                      value: false,
+                                      onChanged: (value) {},
+                                      title: Text('Item $i'),
+                                      subtitle: Text('Subtitle $i'),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                    )
+                                ],
+                                'Hide categories')),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        DagdaOutlinedButton(title: 'Message', onPressed: () {}),
+                      ],
+                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              // button back
+              Positioned(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                          onPressed: () {
+                            if (GoRouter.of(context).location != '/profile') {
+                              try {
+                                GoRouter.of(context).pop();
+                              } finally {
+                                context.go('/');
+                              }
+                            }
+                          },
+                          icon: Icon(
+                            Icons.arrow_back_rounded,
+                            color: GoRouter.of(context).location == '/profile'
+                                ? Colors.transparent
+                                : Colors.white,
+                          )),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.more_vert,
+                            color: Colors.white,
+                          )),
+                    )
+                  ],
+                ),
+              ),
+            ]),
           )),
         );
       }

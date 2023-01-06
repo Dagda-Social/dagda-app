@@ -39,6 +39,7 @@ dependencies:
   firebase_dynamic_links: ^5.0.11
   dynamic_color: ^1.5.4
   material_color_utilities: ^0.1.5
+  modal_bottom_sheet: ^2.1.2
 
 dev_dependencies:
   flutter_test:
