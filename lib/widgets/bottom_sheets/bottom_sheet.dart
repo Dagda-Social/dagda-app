@@ -58,11 +58,13 @@ Future<dynamic> bottomSheetFollow(
                           backgroundColor: Colors.white,
                           automaticallyImplyLeading: false,
                           pinned: true,
-                          elevation: 0,
+                          elevation: 2,
+                          toolbarHeight: 60,
                           centerTitle: false,
                           shape: const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.vertical(top: Radius.circular(20)),
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(10),
+                                bottom: Radius.circular(10)),
                           ),
                           title: Text(
                             title,
@@ -73,14 +75,40 @@ Future<dynamic> bottomSheetFollow(
                             ),
                           ),
                         ),
-                        SliverList(delegate: SliverChildListDelegate(children)),
-                        const SliverPadding(
-                            padding: EdgeInsets.only(bottom: 30))
+                        SliverFillRemaining(
+                            hasScrollBody: true,
+                            child: Scrollbar(
+                              
+                              showTrackOnHover: true,
+                              child: ListView.builder(
+                                  controller: controller,
+                                  itemCount: children.length + 1,
+                                  itemBuilder: (context, i) {
+                                    if (i == children.length) {
+                                      return Container(
+                                        height: 10,
+                                      );
+                                    }
+                                    return children[i];
+                                  }),
+                            ))
                       ],
                     ),
                   ),
                   bottomNavigationBar: Container(
-                    color: Colors.white,
+                    decoration: const BoxDecoration(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20)),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 10,
+                          spreadRadius: 0,
+                          offset: Offset(0, -5),
+                        )
+                      ],
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 20, right: 20, bottom: 30, top: 10),

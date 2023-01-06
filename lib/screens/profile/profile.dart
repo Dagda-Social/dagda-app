@@ -1,5 +1,6 @@
 import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:dagda/widgets/buttons/buttons.dart';
+import 'package:dagda/widgets/follow_check/follow_check.dart';
 import 'package:dagda/widgets/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -37,11 +38,16 @@ class Profile extends StatelessWidget {
                                       context,
                                       [
                                         for (var i = 0; i < 20; i++)
-                                          CheckboxListTile(
-                                            value: false,
-                                            onChanged: (value) {},
-                                            title: Text('Item $i'),
-                                            subtitle: Text('Subtitle $i'),
+                                          DagdaFollowCheck(
+                                            title: Text(
+                                              'Category $i',
+                                              style: const TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                            onChanged: (value) =>
+                                                print('Category $i : $value'),
                                           )
                                       ],
                                       'Hide categories')),
@@ -130,14 +136,16 @@ class Profile extends StatelessWidget {
                                 context,
                                 [
                                   for (var i = 0; i < 20; i++)
-                                    CheckboxListTile(
-                                      value: false,
-                                      onChanged: (value) {},
-                                      title: Text('Item $i'),
-                                      subtitle: Text('Subtitle $i'),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
+                                    DagdaFollowCheck(
+                                      title: Text(
+                                        'Category $i',
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      onChanged: (value) =>
+                                          print('Category $i : $value'),
                                     )
                                 ],
                                 'Hide categories')),
