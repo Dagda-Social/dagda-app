@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: L10n.all,
       theme: ThemeData(
+        useMaterial3: true,
         fontFamily: 'Comfortaa',
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: Colors.white, primary: Colors.white),

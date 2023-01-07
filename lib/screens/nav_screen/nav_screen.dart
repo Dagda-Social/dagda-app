@@ -55,11 +55,7 @@ class _NavScreenState extends State<NavScreen> {
     ScaffoldWithNavBarTabItem(
         initialLocation: '/profile',
         icon: Icon(Icons.person_rounded),
-        label: 'Profile'),
-    ScaffoldWithNavBarTabItem(
-        initialLocation: '/message',
-        icon: Icon(Icons.message_rounded),
-        label: 'Message'),
+        label: 'Profile')
   ];
 // check if the current page is a large screen page
   bool _isLargeScrenPage = false;
@@ -121,92 +117,109 @@ class _NavScreenState extends State<NavScreen> {
         );
       } else if (boxConstraints.maxWidth < 1200) {
         return Scaffold(
+            backgroundColor: Colors.white,
+            body: Row(children: [
+              SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints:
+                      BoxConstraints(minHeight: boxConstraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: NavigationRail(
+                        backgroundColor:
+                            const Color.fromARGB(255, 255, 255, 255),
+                        labelType: NavigationRailLabelType.all,
+                        elevation: 10,
+                        leading: Column(
+                          children: [
+                            const SizedBox(height: 30),
+                            FloatingActionButton(
+                                backgroundColor: Colors.black,
+                                onPressed: () {},
+                                tooltip: 'Add',
+                                elevation: 10,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: const Icon(Icons.add)),
+                          ],
+                        ),
+                        useIndicator: true,
+                        indicatorColor: Colors.black,
+                        selectedLabelTextStyle: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                        unselectedLabelTextStyle: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
+                        destinations: railMedium
+                            .map((e) => NavigationRailDestination(
+                                icon: e.icon, label: Text(e.label!)))
+                            .toList(),
+                        selectedIndex: _currentIndex,
+                        onDestinationSelected: (index) =>
+                            _onItemTapped(context, index)),
+                  ),
+                ),
+              ),
+              Expanded(child: widget.child)
+            ]));
+      } else {
+        return Scaffold(
             body: Row(children: [
           SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(minHeight: boxConstraints.maxHeight),
               child: IntrinsicHeight(
                 child: NavigationRail(
-                    backgroundColor: Colors.white,
-                    labelType: NavigationRailLabelType.all,
-                    elevation: 10,
-                    leading: Column(
-                      children: [
-                        const SizedBox(height: 30),
-                        FloatingActionButton(
-                            backgroundColor: Colors.black,
-                            onPressed: () {},
-                            tooltip: 'Add',
-                            elevation: 10,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: const Icon(Icons.add)),
-                      ],
+                  backgroundColor: Colors.white,
+                  extended: true,
+                  elevation: 10,
+                  leading: Text(
+                    AppLocalizations.of(context).appName,
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 34),
+                  ),
+                  indicatorColor: Colors.black,
+                  selectedIconTheme: const IconThemeData(color: Colors.white),
+                  selectedLabelTextStyle: const TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
+                  unselectedLabelTextStyle: const TextStyle(
+                      color: Colors.grey, fontWeight: FontWeight.bold),
+                  destinations: railBig
+                      .map((e) => NavigationRailDestination(
+                          icon: e.icon,
+                          label: Text(e.label!),
+                          padding: const EdgeInsets.all(2.0)))
+                      .toList(),
+                  selectedIndex: _currentIndex,
+                  onDestinationSelected: (index) =>
+                      _onItemTapped(context, index),
+                  trailing: Padding(
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: FloatingActionButton.extended(
+                      onPressed: () {},
+                      label: const Text('Add Dag'),
+                      icon: const Icon(Icons.add),
+                      backgroundColor: Colors.black,
+                      elevation: 10,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
-                    useIndicator: true,
-                    indicatorColor: Colors.black,
-                    selectedLabelTextStyle: const TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.bold),
-                    unselectedLabelTextStyle: const TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold),
-                    destinations: railMedium
-                        .map((e) => NavigationRailDestination(
-                            icon: e.icon, label: Text(e.label!)))
-                        .toList(),
-                    selectedIndex: _currentIndex,
-                    onDestinationSelected: (index) =>
-                        _onItemTapped(context, index)),
+                  ),
+                ),
               ),
             ),
           ),
-          Expanded(child: widget.child)
-        ]));
-      } else {
-        return Scaffold(
-            body: Row(children: [
-          NavigationRail(
-            extended: true,
-            backgroundColor: Colors.white,
-            elevation: 10,
-            leading: Text(
-              AppLocalizations.of(context).appName,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 34),
-            ),
-            selectedIconTheme: const IconThemeData(color: Colors.black),
-            selectedLabelTextStyle: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
-            unselectedLabelTextStyle: const TextStyle(
-                color: Colors.grey, fontWeight: FontWeight.bold),
-            destinations: railBig
-                .map((e) => NavigationRailDestination(
-                    icon: e.icon,
-                    label: Text(e.label!),
-                    padding: const EdgeInsets.all(2.0)))
-                .toList(),
-            selectedIndex: _currentIndex,
-            onDestinationSelected: (index) => _onItemTapped(context, index),
-            trailing: Padding(
-              padding: const EdgeInsets.only(top: 24.0),
-              child: FloatingActionButton.extended(
-                onPressed: () {},
-                label: const Text('Add Dag'),
-                icon: const Icon(Icons.add),
-                backgroundColor: Colors.black,
-                elevation: 10,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-              ),
-            ),
-          ),
-          const VerticalDivider(thickness: 1, width: 1),
-          Expanded(child: widget.child)
+          Expanded(
+              child: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: widget.child))
         ]));
       }
     });
   }
 }
-
