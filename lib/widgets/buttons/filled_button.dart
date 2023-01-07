@@ -7,7 +7,7 @@ class DagdaButton extends StatelessWidget {
       this.textColor = Colors.white,
       required this.title,
       required this.onPressed,
-      this.fontSize = 14,
+      this.fontSize = 18,
       this.fontWeight = FontWeight.bold,
       this.borderRadius = 10});
 
@@ -35,7 +35,10 @@ class DagdaButton extends StatelessWidget {
         child: Text(
           title,
           style: TextStyle(
-              color: textColor, fontSize: fontSize, fontWeight: fontWeight),
+              color: textColor,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              fontFamily: 'Montserrat'),
         ));
   }
 }

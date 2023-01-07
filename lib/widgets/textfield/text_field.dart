@@ -5,7 +5,9 @@ class DagdaTextField extends StatelessWidget {
       {Key? key,
       required this.controller,
       required this.content,
-      required this.validator})
+      required this.validator,
+      this.keyboardType = TextInputType.emailAddress,
+      this.textInputAction = TextInputAction.next})
       : super(key: key);
 
   final String content;
@@ -14,13 +16,18 @@ class DagdaTextField extends StatelessWidget {
 
   final Function validator;
 
+  final TextInputType keyboardType;
+
+  final TextInputAction textInputAction;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
-      textInputAction: TextInputAction.next,
-      keyboardType: TextInputType.emailAddress,
+      textInputAction: textInputAction,
+      keyboardType: keyboardType,
+      autocorrect: true,
+      
       maxLines: 1,
       decoration: InputDecoration(
         errorMaxLines: 3,
