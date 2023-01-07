@@ -17,7 +17,7 @@ Future<dynamic> bottomSheet(BuildContext context, List<Widget> children) {
             expand: false,
             initialChildSize: 0.4,
             minChildSize: 0.2,
-            maxChildSize: 0.8,
+            maxChildSize: 0.4,
             builder: (context, controller) {
               return ListView(controller: controller, children: children);
             });
@@ -78,7 +78,6 @@ Future<dynamic> bottomSheetFollow(
                         SliverFillRemaining(
                             hasScrollBody: true,
                             child: Scrollbar(
-                              
                               showTrackOnHover: true,
                               child: ListView.builder(
                                   controller: controller,

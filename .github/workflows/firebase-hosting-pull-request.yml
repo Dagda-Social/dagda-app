@@ -12,7 +12,7 @@ jobs:
       - run: sudo snap install flutter --classic
       - run: flutter config --enable-web
       - run: flutter gen-l10n --use-deferred-loading
-      - run: flutter build web -t lib/main.dart --web-renderer html --release
+      - run: flutter build web -t lib/main.dart --release
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

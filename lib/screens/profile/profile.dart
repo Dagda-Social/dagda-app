@@ -1,4 +1,3 @@
-import 'package:dagda/screens/profile/profile_design.dart';
 import 'package:dagda/screens/profile/profile_design_v2.dart';
 import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:dagda/widgets/buttons/buttons.dart';
