@@ -39,6 +39,8 @@ dependencies:
   dynamic_color: ^1.5.4
   material_color_utilities: ^0.1.5
   linkfy_text: ^1.1.5
+  build_runner: ^2.3.3
+  json_serializable: ^6.5.4
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +53,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: "^0.11.0"
+  json_annotation: ^4.7.0
+
 
 flutter_icons:
   ios: true

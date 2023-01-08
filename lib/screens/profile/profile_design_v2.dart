@@ -223,8 +223,8 @@ class ProfileInfo2 extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 20, right: 20),
+         Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: DagdaText(
             text:
                 'Lorem ipsum dolor @daviddf sit https://dagda.social/privacy-policy #consectetur.  david@gmail.com pulvinar venenatis et nisl odio libero odio. Cras ut blandit ultricies pulvinar mauris bibendum convallis id nibh sollicitudin.',

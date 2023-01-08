@@ -76,21 +76,19 @@ Future<dynamic> bottomSheetFollow(
                           ),
                         ),
                         SliverFillRemaining(
-                            hasScrollBody: true,
-                            child: Scrollbar(
-                              showTrackOnHover: true,
-                              child: ListView.builder(
-                                  controller: controller,
-                                  itemCount: children.length + 1,
-                                  itemBuilder: (context, i) {
-                                    if (i == children.length) {
-                                      return Container(
-                                        height: 10,
-                                      );
-                                    }
-                                    return children[i];
-                                  }),
-                            ))
+                          hasScrollBody: true,
+                          child: ListView.builder(
+                              controller: controller,
+                              itemCount: children.length + 1,
+                              itemBuilder: (context, i) {
+                                if (i == children.length) {
+                                  return Container(
+                                    height: 10,
+                                  );
+                                }
+                                return children[i];
+                              }),
+                        )
                       ],
                     ),
                   ),

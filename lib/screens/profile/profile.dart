@@ -45,7 +45,7 @@ class Profile extends StatelessWidget {
                                         if (GoRouter.of(context).location !=
                                             '/profile') {
                                           try {
-                                            Navigator.of(context).pop();
+                                            context.pop();
                                           } finally {
                                             context.go('/');
                                           }
