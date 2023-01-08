@@ -1,7 +1,4 @@
 import 'package:dagda/screens/profile/profile_design_v2.dart';
-import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
-import 'package:dagda/widgets/buttons/buttons.dart';
-import 'package:dagda/widgets/follow_check/follow_check.dart';
 import 'package:dagda/widgets/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -48,7 +45,7 @@ class Profile extends StatelessWidget {
                                         if (GoRouter.of(context).location !=
                                             '/profile') {
                                           try {
-                                            GoRouter.of(context).pop();
+                                            Navigator.of(context).pop();
                                           } finally {
                                             context.go('/');
                                           }

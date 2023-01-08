@@ -20,7 +20,6 @@ dependencies:
   flutter_localizations: 
     sdk: flutter
   intl: ^0.17.0
-  seo_renderer: ^0.6.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -39,6 +38,7 @@ dependencies:
   firebase_dynamic_links: ^5.0.11
   dynamic_color: ^1.5.4
   material_color_utilities: ^0.1.5
+  linkfy_text: ^1.1.5
 
 dev_dependencies:
   flutter_test:

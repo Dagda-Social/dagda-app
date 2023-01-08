@@ -2,6 +2,7 @@ import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:dagda/widgets/buttons/icon_button.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
 import 'package:dagda/widgets/follow_check/follow_check.dart';
+import 'package:dagda/widgets/textbox/DagdaText.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWidget2 extends StatelessWidget {
@@ -224,13 +225,10 @@ class ProfileInfo2 extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.only(left: 20, right: 20),
-          child: Text(
-              'Lorem ipsum dolor sit amet consectetur. Nunc aliquam pulvinar venenatis et nisl odio libero odio. Cras ut blandit ultricies pulvinar mauris bibendum convallis id nibh sollicitudin.',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-              )),
+          child: DagdaText(
+            text:
+                'Lorem ipsum dolor @daviddf sit https://dagda.social/privacy-policy #consectetur.  david@gmail.com pulvinar venenatis et nisl odio libero odio. Cras ut blandit ultricies pulvinar mauris bibendum convallis id nibh sollicitudin.',
+          ),
         ),
         const SizedBox(
           height: 20,
