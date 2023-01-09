@@ -3,14 +3,14 @@ import 'package:dagda/data/enum.dart';
 
 User daviddf = User.fromJson({
   'id': 1,
-  'name': 'David Dominguez',
+  'name': 'David Dominguez Fondo',
   'creationDate': '2021-01-01T00:00:00.000Z',
   'public': true,
   'role': [Role.admin, Role.user],
   'userStatus': UserStatus.active,
   'usertag': 'daviddf',
   'profileImage': 'https://i.imgur.com/uVJna65.jpeg',
-  'badge': ['verfied', 'sponsor', 'developer'],
+  'badge': ['verified', 'sponsor', 'developer'],
   'biography':
       'I am a software developer. I love to code and I love to learn new things.',
   'url': 'https://daviddf.com',

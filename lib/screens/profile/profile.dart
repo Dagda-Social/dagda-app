@@ -38,12 +38,6 @@ class _ProfileState extends State<Profile> {
   }
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (buildContext, constraints) {
       if (constraints.maxWidth > 800) {

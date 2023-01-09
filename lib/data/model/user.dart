@@ -5,11 +5,11 @@ class User {
   String name;
   DateTime creationDate;
   bool public;
-  Enum role;
+  List<Role> role;
   UserStatus userStatus;
   String usertag;
   String? profileImage;
-  String? badge;
+  List<String>? badge;
   String biography;
   String? url;
   String? profileBanner;
@@ -33,19 +33,19 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
+      id: json['id'].toString(),
       name: json['name'],
-      creationDate: json['creation_date'],
-      public: json['public'],
+      creationDate: DateTime.parse(json['creationDate']),
+      public: json['public'] as bool,
       role: json['role'],
-      userStatus: json['user_status'],
+      userStatus: json['userStatus'],
       usertag: json['usertag'],
-      profileImage: json['profile_image'],
+      profileImage: json['profileImage'],
       badge: json['badge'],
       biography: json['biography'],
       url: json['url'],
-      profileBanner: json['profile_banner'],
-      birthdate: json['birthdate'],
+      profileBanner: json['profileBanner'],
+      birthdate: DateTime.parse(json['birthdate']).toString(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dagda/data/model/user.dart';
+import 'package:dagda/widgets/badge/badge.dart';
 import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:dagda/widgets/buttons/icon_button.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
@@ -7,6 +8,7 @@ import 'package:dagda/widgets/follow_check/follow_check.dart';
 import 'package:dagda/widgets/textbox/DagdaText.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ProfileWidget2 extends StatelessWidget {
   ProfileWidget2({
     Key? key,
@@ -110,6 +112,7 @@ class ProfileWidget2 extends StatelessWidget {
                 child: Image(
                   width: 120,
                   height: 120,
+                  fit: BoxFit.cover,
                   image: CachedNetworkImageProvider(user.profileImage!),
                 ),
               ),
@@ -135,91 +138,43 @@ class ProfileInfo2 extends StatelessWidget {
       children: [
         ProfileWidget2(user: user),
         Padding(
-          padding: const EdgeInsets.only(left: 40, right: 40),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                user.name,
-                style: const TextStyle(
-                  fontFamily: 'Rubik',
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
+          padding: const EdgeInsets.only(left: 16, right: 24),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Text(
+                  user.name,
+                  style: const TextStyle(
+                    fontFamily: 'Rubik',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.start,
                 ),
-              ),
-              Wrap(
-                children: [
-                  GestureDetector(
-                    onTap: () => bottomSheet(
-                      context,
-                      [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Align(
-                            alignment: Alignment.center,
-                            child: Icon(
-                              Icons.verified_rounded,
-                              color: Colors.blue,
-                              size: 80,
-                            )),
-                        const Padding(
-                          padding:
-                              EdgeInsets.only(left: 8.0, right: 8.0, top: 16),
-                          child: Text(
-                            'This Account is Verified',
-                            style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding:
-                              EdgeInsets.only(left: 8.0, right: 8.0, top: 16),
-                          child: Text(
-                            'This account is verified by Dagda. This means that Dagda has confirmed that this is the authentic account of the person or organization that it represents.',
-                            style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.verified,
-                        color: Colors.blue,
-                        size: 20,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 6,
-                  ),
-                ],
-              ),
-            ],
+                for (var i = 0; i < user.badge!.length; i++)
+                  Badge(badge: user.badge![i]),
+              ],
+            ),
           ),
         ),
         const SizedBox(
           height: 6,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 40, right: 40),
+          padding: const EdgeInsets.only(left: 16, right: 40),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                user.usertag,
+                '@${user.usertag}',
                 style: const TextStyle(
-                  fontFamily: 'Rubik',
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontFamily: 'Rubik',
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87),
               ),
             ],
           ),
