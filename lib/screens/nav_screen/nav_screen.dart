@@ -60,9 +60,9 @@ class _NavScreenState extends State<NavScreen> {
 // check if the current page is a large screen page
   bool _isLargeScrenPage = false;
 
-  int get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
+  int? get _currentIndex => _locationToTabIndex(GoRouter.of(context).location);
 // get the index of the tab based on the current location
-  int _locationToTabIndex(String location) {
+  int? _locationToTabIndex(String location) {
     final index =
         tabs.indexWhere((t) => location.startsWith(t.initialLocation));
 // if index not found (-1), set _isLargeScrenPage to true
@@ -72,7 +72,7 @@ class _NavScreenState extends State<NavScreen> {
       _isLargeScrenPage = false;
     }
     // if index not found (-1), return 0
-    return index < 0 ? 0 : index;
+    return index < 0 ? null : index;
   }
 
   // callback used to navigate to the desired tab
@@ -108,7 +108,7 @@ class _NavScreenState extends State<NavScreen> {
                   minHeight:
                       kBottomNavigationBarHeight + additionalBottomPadding),
               child: CustomTabBar(
-                selectedIndex: _currentIndex,
+                selectedIndex: _currentIndex!,
                 onTap: (index) => _onItemTapped(context, index),
                 tabs: tabs,
               ),
