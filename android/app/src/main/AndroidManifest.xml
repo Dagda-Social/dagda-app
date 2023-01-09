@@ -4,7 +4,7 @@
     <application
         android:label="dagda"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher_round">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -36,7 +36,7 @@
             <category android:name="android.intent.category.DEFAULT" />
             <category android:name="android.intent.category.BROWSABLE" />
             <data android:scheme="http" android:host="dagda.social" />
-            <data android:scheme="https" />
+            <data android:scheme="https" android:host="dagda.social"/>
         </intent-filter>
 
         </activity>

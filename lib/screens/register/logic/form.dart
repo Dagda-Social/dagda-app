@@ -11,6 +11,14 @@ checkMail(String mail, BuildContext context) {
   }
 }
 
+checkEmptyPassword(String password, BuildContext context) {
+  if (password.isEmpty) {
+    return AppLocalizations.of(context).enterPassword;
+  } else {
+    return null;
+  }
+}
+
 checkPasswordWithSpecialCharacters(String password, BuildContext context) {
   if (password.isEmpty) {
     return AppLocalizations.of(context).enterPassword;

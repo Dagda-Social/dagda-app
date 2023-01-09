@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class BasePageMedium extends StatefulWidget {
+class BasePageMedium extends StatelessWidget {
   BasePageMedium({Key? key, required this.title, required this.content})
       : super(key: key);
   String title;
   String content;
 
-  @override
-  State<BasePageMedium> createState() => _BasePageMediumState();
-}
-
-class _BasePageMediumState extends State<BasePageMedium> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,9 +74,9 @@ class _BasePageMediumState extends State<BasePageMedium> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: BasePageContent(
-                            title: widget.title, content: widget.content),
+                            title: title, content: content),
                       ),
-                      BasePageFooter(),
+                      const BasePageFooter(),
                     ],
                   ),
                 ),

@@ -20,9 +20,6 @@ class _LoginSmallState extends State<LoginSmall> {
   // Controladores del TextField
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
-  // Mostrar / Ocultar contraseña
-  bool _isObscure = true;
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -77,12 +74,10 @@ class _LoginSmallState extends State<LoginSmall> {
                           width: 350,
                           child: Center(
                             child: DagdaObscuredTextField(
-                              content: AppLocalizations.of(context).password,
-                              controller: _passController,
-                              validator: (value) =>
-                                  checkPasswordWithSpecialCharacters(
-                                      value.toString(), context),
-                            ),
+                                content: AppLocalizations.of(context).password,
+                                controller: _passController,
+                                validator: (value) =>
+                                    checkEmptyPassword(value, context)),
                           ),
                         ),
                       ),

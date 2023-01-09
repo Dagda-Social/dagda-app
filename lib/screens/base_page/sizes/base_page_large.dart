@@ -3,18 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class BasePageLarge extends StatefulWidget {
+class BasePageLarge extends StatelessWidget {
   BasePageLarge({Key? key, required this.title, required this.content})
       : super(key: key);
   String title;
   String content;
 
-  @override
-  State<BasePageLarge> createState() => _BasePageLargeState();
-}
-
-class _BasePageLargeState extends State<BasePageLarge> {
   final ScrollController controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,8 +76,8 @@ class _BasePageLargeState extends State<BasePageLarge> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       BasePageContent(
-                          title: widget.title, content: widget.content),
-                      BasePageFooter(),
+                          title: title, content: content),
+                      const BasePageFooter(),
                     ],
                   ),
                 ),

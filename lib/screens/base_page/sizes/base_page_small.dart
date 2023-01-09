@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class BasePageSmall extends StatefulWidget {
+class BasePageSmall extends StatelessWidget {
   BasePageSmall({Key? key, required this.title, required this.content})
       : super(key: key);
   String title;
   String content;
 
-  @override
-  State<BasePageSmall> createState() => _BasePageSmallState();
-}
-
-class _BasePageSmallState extends State<BasePageSmall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,8 +72,8 @@ class _BasePageSmallState extends State<BasePageSmall> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       BasePageContent(
-                          title: widget.title, content: widget.content),
-                      BasePageFooter(),
+                          title: title, content: content),
+                      const BasePageFooter(),
                     ],
                   ),
                 ),

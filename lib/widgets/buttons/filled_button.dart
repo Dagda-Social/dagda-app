@@ -7,7 +7,7 @@ class DagdaButton extends StatelessWidget {
       this.textColor = Colors.white,
       required this.title,
       required this.onPressed,
-      this.fontSize = 14,
+      this.fontSize = 18,
       this.fontWeight = FontWeight.bold,
       this.borderRadius = 10});
 
@@ -21,20 +21,24 @@ class DagdaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      minWidth: 100,
-      height: 50,
-      onPressed: onPressed as void Function()?,
-      color: color,
-      textColor: textColor,
-      child: Text(
-        title,
-        style: TextStyle(
-            color: textColor, fontSize: fontSize, fontWeight: fontWeight),
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderRadius),
-      ),
-    );
+    return ElevatedButton(
+        onPressed: onPressed as void Function()?,
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size(100, 50),
+          backgroundColor: color,
+          textStyle: TextStyle(
+              color: textColor, fontSize: fontSize, fontWeight: fontWeight),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+        ),
+        child: Text(
+          title,
+          style: TextStyle(
+              color: textColor,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              fontFamily: 'Montserrat'),
+        ));
   }
 }
