@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dagda/data/model/user.dart';
 import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:dagda/widgets/buttons/icon_button.dart';
 import 'package:dagda/widgets/buttons/outlined_button.dart';
@@ -6,10 +8,11 @@ import 'package:dagda/widgets/textbox/DagdaText.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWidget2 extends StatelessWidget {
-  const ProfileWidget2({
+  ProfileWidget2({
     Key? key,
+    required this.user,
   }) : super(key: key);
-
+  User user;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -34,13 +37,13 @@ class ProfileWidget2 extends StatelessWidget {
                           spreadRadius: 4,
                         )
                       ]),
-                  child: const ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                     child: Image(
                       width: double.infinity,
                       fit: BoxFit.cover,
                       height: 160,
-                      image: AssetImage('images/profile_banner.jpg'),
+                      image: CachedNetworkImageProvider(user.profileBanner!),
                     ),
                   ),
                 ),
@@ -50,7 +53,8 @@ class ProfileWidget2 extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       DagdaIconButton(
-                          icon: Icon(Icons.message_rounded), onPressed: () {}),
+                          icon: const Icon(Icons.message_rounded),
+                          onPressed: () {}),
                       const SizedBox(
                         width: 10,
                       ),
@@ -103,10 +107,10 @@ class ProfileWidget2 extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: const Image(
+                child: Image(
                   width: 120,
                   height: 120,
-                  image: AssetImage('images/profileIcon.png'),
+                  image: CachedNetworkImageProvider(user.profileImage!),
                 ),
               ),
             ),
@@ -118,25 +122,25 @@ class ProfileWidget2 extends StatelessWidget {
 }
 
 class ProfileInfo2 extends StatelessWidget {
-  const ProfileInfo2({
+  ProfileInfo2({
     Key? key,
-    required this.tag,
+    required this.user,
   }) : super(key: key);
-  final String tag;
+  User user;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       verticalDirection: VerticalDirection.down,
       children: [
-        const ProfileWidget2(),
+        ProfileWidget2(user: user),
         Padding(
           padding: const EdgeInsets.only(left: 40, right: 40),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                tag,
+                user.name,
                 style: const TextStyle(
                   fontFamily: 'Rubik',
                   fontSize: 26,
@@ -210,7 +214,7 @@ class ProfileInfo2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                '@$tag',
+                user.usertag,
                 style: const TextStyle(
                   fontFamily: 'Rubik',
                   fontSize: 16,
@@ -223,11 +227,10 @@ class ProfileInfo2 extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-         Padding(
+        Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: DagdaText(
-            text:
-                'Lorem ipsum dolor @daviddf sit https://dagda.social/privacy-policy #consectetur.  david@gmail.com pulvinar venenatis et nisl odio libero odio. Cras ut blandit ultricies pulvinar mauris bibendum convallis id nibh sollicitudin.',
+            text: user.biography,
           ),
         ),
         const SizedBox(
