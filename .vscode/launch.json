@@ -35,6 +35,12 @@
             "deviceId": "iphone"
         },
         {
+            "name": "iPad",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "ipad"
+        },
+        {
             "name": "Chrome",
             "request": "launch",
             "type": "dart",
@@ -45,6 +51,10 @@
         {
             "name": "All Devices",
             "configurations": ["Chrome", "web", "iPhone"],
+        },
+        {
+            "name": "All mobile",
+            "configurations": ["iPhone", "iPad","web"],
         }
     ]
 }

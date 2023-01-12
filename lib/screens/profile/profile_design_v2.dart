@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dagda/data/mockupdata/user_mockup.dart';
 import 'package:dagda/data/model/user.dart';
 import 'package:dagda/widgets/badge/badge.dart';
 import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
@@ -7,6 +8,7 @@ import 'package:dagda/widgets/buttons/outlined_button.dart';
 import 'package:dagda/widgets/follow_check/follow_check.dart';
 import 'package:dagda/widgets/textbox/DagdaText.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
 class ProfileWidget2 extends StatelessWidget {
@@ -49,39 +51,52 @@ class ProfileWidget2 extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      DagdaIconButton(
-                          icon: const Icon(Icons.message_rounded),
-                          onPressed: () {}),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      DagdaOutlinedButton(
-                          title: 'Follow',
-                          onPressed: () => bottomSheetFollow(
-                              context,
-                              [
-                                for (var i = 0; i < 20; i++)
-                                  DagdaFollowCheck(
-                                    title: Text(
-                                      'Category $i',
-                                      style: const TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16),
-                                    ),
-                                    onChanged: (value) =>
-                                        print('Category $i : $value'),
-                                  )
-                              ],
-                              'Hide categories')),
-                    ],
+                if (GoRouter.of(context).location != '/profile' ||
+                    user.usertag != 'daviddf')
+                  Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        DagdaIconButton(
+                            icon: const Icon(Icons.message_rounded),
+                            onPressed: () {}),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        DagdaOutlinedButton(
+                            title: 'Follow',
+                            onPressed: () => bottomSheetFollow(
+                                context,
+                                [
+                                  for (var i = 0; i < categories.length; i++)
+                                    DagdaFollowCheck(
+                                      title: Text(
+                                        categories[i].name,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      onChanged: (value) =>
+                                          print('Category $i : $value'),
+                                    )
+                                ],
+                                'Hide categories')),
+                      ],
+                    ),
+                  )
+                else
+                  Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        DagdaOutlinedButton(
+                            title: 'Edit profile', onPressed: () {}),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           )),
@@ -238,6 +253,9 @@ class ProfileInfo2 extends StatelessWidget {
               ],
             ),
           ],
+        ),
+        const SizedBox(
+          height: 20,
         ),
       ],
     );
