@@ -96,7 +96,7 @@ jobs:
      - name: Push to release
        uses: ncipollo/release-action@v1
        with:
-         artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+         artifacts: "build/app/outputs/flutter-apk/app-release.apk, build/app/outputs/bundle/release/app-release.aab"
          tag: v${{ steps.version.outputs.content }}+${{ github.run_number}}
          token: ${{ secrets.TOKEN}}
      - name: Message success
