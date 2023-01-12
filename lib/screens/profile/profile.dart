@@ -19,7 +19,7 @@ class Profile extends StatefulWidget {
 
 Future<User> getUser(String id) async {
   final response = await http.get(
-    Uri.parse('https://dagda-api.herokuapp.com/api/users/$id'),
+    Uri.parse('https://api.dagda.social/api/users/$id'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
