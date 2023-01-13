@@ -4,6 +4,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  issue_comment:                                     
+    types: [created]
 jobs:
  version:
    name: Create version number
@@ -45,6 +47,7 @@ jobs:
  build:
     name: Create Android Build
     needs: test
+    if: ${{ github.event.push || contains(github.event.comment.body, '/build')}}
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
