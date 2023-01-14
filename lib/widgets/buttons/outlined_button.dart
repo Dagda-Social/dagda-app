@@ -6,7 +6,7 @@ class DagdaOutlinedButton extends StatelessWidget {
       this.colour = Colors.black,
       required this.title,
       required this.onPressed,
-      this.fontSize = 14,
+      this.fontSize = 18,
       this.fontWeight = FontWeight.bold,
       this.borderRadius = 10,
       this.borderWidth = 2});
@@ -23,8 +23,8 @@ class DagdaOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
+        foregroundColor: colour,
         minimumSize: const Size(100, 50),
-        primary: colour,
         side: BorderSide(color: colour, width: borderWidth),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
@@ -34,7 +34,11 @@ class DagdaOutlinedButton extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-            color: colour, fontSize: fontSize, fontWeight: fontWeight),
+          fontFamily: 'Montserrat',
+          color: colour,
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+        ),
       ),
     );
   }

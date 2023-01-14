@@ -20,7 +20,6 @@ dependencies:
   flutter_localizations: 
     sdk: flutter
   intl: ^0.17.0
-  seo_renderer: ^0.6.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -37,6 +36,14 @@ dependencies:
   flutter_markdown: ^0.6.13
   url_launcher: ^6.1.7
   firebase_dynamic_links: ^5.0.11
+  dynamic_color: ^1.5.4
+  material_color_utilities: ^0.1.5
+  linkfy_text: ^1.1.5
+  build_runner: ^2.3.3
+  json_serializable: ^6.5.4
+  http: ^0.13.5
+  cached_network_image: ^3.2.3
+  flutter_staggered_grid_view: ^0.6.2
 
 dev_dependencies:
   flutter_test:
@@ -49,9 +56,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: "^0.11.0"
+  json_annotation: ^4.7.0
+
 
 flutter_icons:
-  android: "launcher_icon"
   ios: true
   image_path: "assets/icon/icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
@@ -66,7 +74,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  assets:
+    - images/
   fonts:
     - family: Comfortaa
       fonts:
