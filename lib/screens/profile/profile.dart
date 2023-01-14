@@ -5,6 +5,7 @@ import 'package:dagda/data/mockupdata/user_mockup.dart';
 import 'package:dagda/data/model/user.dart';
 import 'package:dagda/screens/profile/profile_design_v2.dart';
 import 'package:dagda/widgets/search/search.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
@@ -19,13 +20,18 @@ class Profile extends StatefulWidget {
 }
 
 Future<User> getUser(String id) async {
+  if (kIsWeb) return daviddf;
+
   final response = await http.get(
-    Uri.parse('https://pre-api.dagda.social/api/users/$id'),
+    Uri.parse('https://pre-api.dagda.social/'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
+      'Cors': 'Access-Control-Allow-Origin',
     },
   );
+  print('response.statusCode: ${response.statusCode}');
   if (response.statusCode == 200) {
+    print('200 ok');
     return User.fromJson(jsonDecode(response.body));
   } else {
     return daviddf;
@@ -53,6 +59,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
             future: getUser(widget.id),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                print(
+                    'snapshot.data!.id: ${snapshot.data!.id} widget.id: ${widget.id}');
+
                 return SafeArea(
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +69,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                       Expanded(
                         flex: 2,
                         child: ProfilePage(
-                          user: snapshot.data as User,
+                          user: snapshot.data as User ?? daviddf,
                         ),
                       ),
                       Expanded(
@@ -74,16 +83,17 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                     ],
                   ),
                 );
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
               }
+              print(
+                  'snapshot.data!.id: ${snapshot.data!.id} widget.id: ${widget.id}');
               return SafeArea(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       flex: 2,
-                      child: ProfilePage(user: snapshot.data as User),
+                      child:
+                          ProfilePage(user: snapshot.data as User ?? daviddf),
                     ),
                     Expanded(
                       child: ListView(
@@ -107,11 +117,11 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
               future: getUser(widget.id),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return ProfilePage(user: snapshot.data as User);
+                  return ProfilePage(user: snapshot.data as User ?? daviddf);
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }
-                return ProfilePage(user: snapshot.data as User);
+                return ProfilePage(user: snapshot.data as User ?? daviddf);
               },
             ),
           ),
