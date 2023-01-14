@@ -108,7 +108,7 @@ class _NavScreenState extends State<NavScreen> {
                   minHeight:
                       kBottomNavigationBarHeight + additionalBottomPadding),
               child: CustomTabBar(
-                selectedIndex: _currentIndex!,
+                selectedIndex: _currentIndex ?? 0,
                 onTap: (index) => _onItemTapped(context, index),
                 tabs: tabs,
               ),

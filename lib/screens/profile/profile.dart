@@ -220,7 +220,7 @@ class _ProfilePageState extends State<ProfilePage>
                     collapseMode: CollapseMode.pin,
                     centerTitle: false,
                     title: AnimatedOpacity(
-                      duration: Duration(milliseconds: 100),
+                      duration: const Duration(milliseconds: 100),
                       opacity: top <= 100 ? 1 : 0,
                       child: Text(
                         daviddf.name,
@@ -256,9 +256,10 @@ class _ProfilePageState extends State<ProfilePage>
           SliverAppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
-            elevation: 0,
+            elevation: 10,
             pinned: true,
             surfaceTintColor: Colors.white,
+            collapsedHeight: 65,
             title: TabBar(
               isScrollable: true,
               controller: _tabController,
@@ -267,8 +268,8 @@ class _ProfilePageState extends State<ProfilePage>
               labelColor: Colors.white,
               unselectedLabelColor: Colors.black,
               indicatorSize: TabBarIndicatorSize.tab,
-              labelStyle: TextStyle(fontSize: 20),
-              labelPadding: EdgeInsets.only(left: 40, right: 40),
+              labelStyle: const TextStyle(fontSize: 20),
+              labelPadding: const EdgeInsets.only(left: 40, right: 40),
               indicator: BoxDecoration(
                   color: Colors.black, borderRadius: BorderRadius.circular(12)),
               tabs: [
