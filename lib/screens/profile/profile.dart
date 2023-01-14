@@ -268,7 +268,7 @@ class _ProfilePageState extends State<ProfilePage>
               labelColor: Colors.white,
               unselectedLabelColor: Colors.black,
               indicatorSize: TabBarIndicatorSize.tab,
-              labelStyle: const TextStyle(fontSize: 20),
+              labelStyle: const TextStyle(fontSize: 16),
               labelPadding: const EdgeInsets.only(left: 40, right: 40),
               indicator: BoxDecoration(
                   color: Colors.black, borderRadius: BorderRadius.circular(12)),
@@ -287,55 +287,59 @@ class _ProfilePageState extends State<ProfilePage>
         children: [
           for (var i = 0; i < userCategories.length + 1; i++)
             Container(
+                color: Colors.white,
+                padding: const EdgeInsets.only(top: 16),
                 child: (GridView.custom(
-              physics: const ClampingScrollPhysics(),
-              shrinkWrap: true,
-              gridDelegate: SliverWovenGridDelegate.count(
-                pattern: [
-                  const WovenGridTile(1),
-                  const WovenGridTile(5 / 7,
-                      crossAxisRatio: 0.9,
-                      alignment: AlignmentDirectional.centerEnd),
-                ],
-                crossAxisCount: 2,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
-              ),
-              childrenDelegate: SliverChildBuilderDelegate(
-                childCount: 40,
-                (BuildContext context, int index) {
-                  return Container(
-                    margin: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 5,
-                      ),
-                      boxShadow: const [
-                        BoxShadow(
-                          spreadRadius: 2,
-                          blurRadius: 10,
-                          color: Colors.black12,
-                          offset: Offset(0, 4),
-                        )
-                      ],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image(
-                        width: index % 2 == 0 ? 120 : 100,
-                        height: index % 2 == 0 ? 100 : 120,
-                        fit: BoxFit.cover,
-                        image: const CachedNetworkImageProvider(
-                            'https://picsum.photos/200/300'),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            )))
+                  physics: const ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  padding:
+                      const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                  gridDelegate: SliverWovenGridDelegate.count(
+                    pattern: [
+                      const WovenGridTile(1),
+                      const WovenGridTile(5 / 7,
+                          crossAxisRatio: 0.9,
+                          alignment: AlignmentDirectional.centerEnd),
+                    ],
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 4,
+                    crossAxisSpacing: 4,
+                  ),
+                  childrenDelegate: SliverChildBuilderDelegate(
+                    childCount: 40,
+                    (BuildContext context, int index) {
+                      return Container(
+                        margin: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 5,
+                          ),
+                          boxShadow: const [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 4,
+                              color: Colors.black12,
+                              offset: Offset(0, 4),
+                            )
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image(
+                            width: index % 2 == 0 ? 120 : 100,
+                            height: index % 2 == 0 ? 100 : 120,
+                            fit: BoxFit.cover,
+                            image: const CachedNetworkImageProvider(
+                                'https://picsum.photos/200/300'),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                )))
         ],
       ),
     );
