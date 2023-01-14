@@ -83,6 +83,13 @@ UserCategory userCategory1 = UserCategory.fromJson({
   'category': category1,
 });
 
+UserCategory userCategory2 = UserCategory.fromJson({
+  'id': 2,
+  'public': true,
+  'user': daviddf,
+  'category': category2,
+});
+
 PostCategory postCategory1 = PostCategory.fromJson({
   'id': 1,
   'post': post,
@@ -108,7 +115,7 @@ PostCategory postCategory4 = PostCategory.fromJson({
 });
 List<Post> posts = [post, post2, post3];
 List<Category> categories = [category1, category2, category3];
-List<UserCategory> userCategories = [userCategory1];
+List<UserCategory> userCategories = [userCategory1, userCategory2];
 List<PostCategory> postCategories = [
   postCategory1,
   postCategory2,
