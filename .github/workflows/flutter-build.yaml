@@ -47,7 +47,7 @@ jobs:
  build:
     name: Create Android Build
     needs: test
-    if: ${{ github.event.push || contains(github.event.comment.body, '/build')}}
+    if: ${{ github.event.push || github.event.merge || contains(github.event.comment.body, '/build')}}
     runs-on: ubuntu-latest
     steps:
      - name: Message success
@@ -138,7 +138,7 @@ jobs:
  deploy:
     name: Deploy Android Build
     needs: build
-    if: ${{ github.event.push}}
+    if: ${{ github.event.push || github.event.merge}}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
