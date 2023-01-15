@@ -37,7 +37,6 @@ class DagdaText extends StatelessWidget {
       textStyle: const TextStyle(
         fontFamily: 'Rubik',
         fontSize: 14,
-        fontWeight: FontWeight.bold,
       ),
       linkStyle: const TextStyle(
         fontFamily: 'Rubik',

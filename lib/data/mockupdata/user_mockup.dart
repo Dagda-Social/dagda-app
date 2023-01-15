@@ -24,7 +24,8 @@ Post post = Post.fromJson({
   'status': PostStatus.active,
   'contentType': ContentType.post,
   'creationDate': '2021-01-01T00:00:00.000Z',
-  'content': 'Hello World!',
+  'content':
+      'Hello World! This is a post example. :) #example #post #hello @dagda.social @daviddf https://github.com/Dagda-Social',
   'isTopLevel': true
 });
 
@@ -49,6 +50,29 @@ Post post3 = Post.fromJson({
   'content': {
     'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
+  'isTopLevel': true
+});
+
+Post post4 = Post.fromJson({
+  'id': 4,
+  'user': daviddf,
+  'status': PostStatus.active,
+  'contentType': ContentType.image,
+  'creationDate': '2021-01-01T00:00:00.000Z',
+  'content': {
+    'url': 'https://i.imgur.com/uVJna65.jpeg',
+  },
+  'isTopLevel': true
+});
+
+Post post5 = Post.fromJson({
+  'id': 5,
+  'user': daviddf,
+  'status': PostStatus.active,
+  'contentType': ContentType.post,
+  'creationDate': '2021-01-01T00:00:00.000Z',
+  'content':
+      'Hello World! This is a post example. :) #example #post #hello @dagda.social @daviddf https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   'isTopLevel': true
 });
 
@@ -113,7 +137,7 @@ PostCategory postCategory4 = PostCategory.fromJson({
   'post': post3,
   'category': category2,
 });
-List<Post> posts = [post, post2, post3];
+List<Post> posts = [post, post2, post3, post4, post5];
 List<Category> categories = [category1, category2, category3];
 List<UserCategory> userCategories = [userCategory1, userCategory2];
 List<PostCategory> postCategories = [

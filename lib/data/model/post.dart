@@ -25,10 +25,10 @@ class Post {
       id: json['id'],
       user: json['user'],
       status: json['status'],
-      contentType: json['content_type'],
-      creationDate: json['creation_date'],
-      content: json['content'],
-      isTopLevel: json['is_top_level'],
+      contentType: json['contentType'],
+      creationDate: DateTime.parse(json['creationDate']),
+      content: json['content'].toString(),
+      isTopLevel: json['isTopLevel'],
     );
   }
 }

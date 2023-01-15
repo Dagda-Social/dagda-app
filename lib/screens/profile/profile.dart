@@ -22,14 +22,7 @@ class Profile extends StatefulWidget {
 Future<User> getUser(String id) async {
   if (kIsWeb) return daviddf;
 
-  final response = await http.get(
-    Uri.parse('https://pre-api.dagda.social/'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Cors': 'Access-Control-Allow-Origin',
-    },
-  );
-  print('response.statusCode: ${response.statusCode}');
+  final response = await makeRequest();
   if (response.statusCode == 200) {
     print('200 ok');
     return User.fromJson(jsonDecode(response.body));
@@ -38,7 +31,17 @@ Future<User> getUser(String id) async {
   }
 }
 
-class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
+Future<http.Response> makeRequest() async {
+  return http.get(
+    Uri.parse('https://pre-api.dagda.social/'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      'Cors': 'Access-Control-Allow-Origin',
+    },
+  );
+}
+
+class _ProfileState extends State<Profile> with TickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
   late TabController _tabController;
   @override
@@ -223,6 +226,22 @@ class _ProfilePageState extends State<ProfilePage>
             flexibleSpace: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
                 var top = constraints.biggest.height;
+
+                /// The [FlexibleSpaceBar] is a widget that can be used as the top
+                /// widget of an [AppBar] in a [Scaffold] to create a collapsing app
+                /// bar. The [FlexibleSpaceBar] is also used as the [title] in a
+                /// [SliverAppBar] to create a collapsing app bar.
+                ///
+                /// The [FlexibleSpaceBar] typically contains a [FlexibleSpaceBar.title]
+                /// widget, which is displayed in the middle of the [FlexibleSpaceBar]
+                /// when it is collapsed. It also contains a [FlexibleSpaceBar.background]
+                /// widget, which is stacked behind the [FlexibleSpaceBar.title] and
+                /// whose height is determined by the [FlexibleSpaceBarSettings.currentExtent].
+                /// The [FlexibleSpaceBar.title] widget is displayed at the top of
+                /// the [FlexibleSpaceBar] when it is expanded.
+                ///
+                /// The [FlexibleSpaceBar] is typically used with a [SliverAppBar],
+                /// which is configured to create a collapsing app bar.
                 return FlexibleSpaceBar(
                     background: ProfileInfo2(
                       user: widget.user,
@@ -243,8 +262,12 @@ class _ProfilePageState extends State<ProfilePage>
               },
             ),
             actions: [
+              // This code is used to display a more options button in the top right of a card.
+              // The button is a rounded rectangle with a vertical three dot icon in the center.
+              // When the button is pressed, a menu will open with more options.
+
               Padding(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.only(top: 16.0, right: 18.0),
                 child: Container(
                   width: 40,
                   height: 40,
@@ -252,13 +275,15 @@ class _ProfilePageState extends State<ProfilePage>
                       color: Colors.black.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(10)),
                   child: IconButton(
-                      padding: const EdgeInsets.all(4),
-                      onPressed: () {},
-                      icon: const Icon(
-                        size: 24,
-                        Icons.more_vert,
-                        color: Colors.white,
-                      )),
+                    padding: const EdgeInsets.all(4),
+                    onPressed: () {},
+                    icon: const Icon(
+                      size: 24,
+                      Icons.more_vert,
+                      color: Colors.white,
+                    ),
+                    tooltip: 'More options',
+                  ),
                 ),
               ),
             ],

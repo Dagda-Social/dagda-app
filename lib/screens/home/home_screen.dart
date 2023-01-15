@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dagda/widgets/buttons/icon_button.dart';
+import 'package:dagda/data/enum.dart';
+import 'package:dagda/data/mockupdata/user_mockup.dart';
+import 'package:dagda/widgets/post/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -47,11 +49,15 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Expanded(
                   child: Container(
-                      margin: const EdgeInsets.only(
-                          left: 20.0, right: 20.0, bottom: 20),
                       child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: ((context, index) => Container(
+                          itemCount: posts.length,
+                          padding: EdgeInsets.only(top: 20),
+                          itemBuilder: ((context, index) {
+                            if (posts[index].contentType == ContentType.post)
+                              return UserPost(
+                                  key: ValueKey(posts[index].id),
+                                  post: posts[index]);
+                            return Container(
                               margin: const EdgeInsets.only(bottom: 20.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,22 +91,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                               fontSize: 20,
                                               fontFamily: 'Comfortaa'),
                                         ),
+                                        // Create a new Text widget with the following properties.
                                         Text(
+                                          // The text to display.
                                           'Dagda is a social network./n nikapsihdpashdipasdkjfasñkfasd',
                                           style: const TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.normal,
-                                              fontSize: 16,
-                                              fontFamily: 'Comfortaa'),
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 16,
+                                            fontFamily: 'Comfortaa',
+                                          ),
                                         ),
-                                        
                                       ],
                                     ),
                                   ),
                                 ],
                               ),
-                            )),
-                      )),
+                            );
+                          }))),
                 ),
               ],
             ),
