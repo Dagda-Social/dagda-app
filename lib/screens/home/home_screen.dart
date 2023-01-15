@@ -57,57 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               return UserPost(
                                   key: ValueKey(posts[index].id),
                                   post: posts[index]);
-                            return Container(
-                              margin: const EdgeInsets.only(bottom: 20.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 20.0),
-                                    height: 40,
-                                    width: 40,
-                                    child: const ClipRRect(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      child: Image(
-                                        width: double.infinity,
-                                        fit: BoxFit.cover,
-                                        height: 160,
-                                        image: CachedNetworkImageProvider(
-                                            'https://picsum.photos/200/300'),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'daviddf',
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                              fontFamily: 'Comfortaa'),
-                                        ),
-                                        // Create a new Text widget with the following properties.
-                                        Text(
-                                          // The text to display.
-                                          'Dagda is a social network./n nikapsihdpashdipasdkjfasñkfasd',
-                                          style: const TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.normal,
-                                            fontSize: 16,
-                                            fontFamily: 'Comfortaa',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
+                            return Container();
                           }))),
                 ),
               ],
