@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dagda/data/enum.dart';
 import 'package:dagda/data/mockupdata/user_mockup.dart';
 import 'package:dagda/widgets/post/post.dart';
