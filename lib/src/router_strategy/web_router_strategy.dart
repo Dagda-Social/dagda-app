@@ -31,17 +31,19 @@ GoRouter router = GoRouter(
                   return null;
                 },
                 pageBuilder: (context, state) {
-                  MetaSEO metaSEO = MetaSEO(
-                      ogTitle: AppLocalizations.of(context).dagdaSocial,
-                      description:
-                          '${AppLocalizations.of(context).buildingNextGeneration}, ${AppLocalizations.of(context).joinUs}',
-                      ogImage: 'https://dagda.social/assets/images/logo.png',
-                      keywords: AppLocalizations.of(context).appKeywords);
+                  MetaSEO metaSEO = MetaSEO();
 
-                  metaSEO.seoOGImage();
-                  metaSEO.seoDescription();
-                  metaSEO.seoOGTitle();
-                  metaSEO.seoKeywords();
+                  metaSEO.seoOGImage(
+                      'https://dagda.social/assets/images/logo.png');
+                  metaSEO.seoDescription(
+                      '${AppLocalizations.of(context).buildingNextGeneration}, ${AppLocalizations.of(context).joinUs}');
+                  metaSEO.seoOGTitle(
+                      '${AppLocalizations.of(context).login} - ${AppLocalizations.of(context).dagdaSocial}');
+                  metaSEO.seoKeywords(AppLocalizations.of(context).appKeywords);
+                  metaSEO.seoTwitterTitle(
+                      ' ${AppLocalizations.of(context).dagdaSocial}');
+                  metaSEO.seoTwitterDescription(
+                      '${AppLocalizations.of(context).buildingNextGeneration}, ${AppLocalizations.of(context).joinUs}');
 
                   return const MaterialPage(child: MyHomePage());
                 }),
@@ -91,19 +93,19 @@ GoRouter router = GoRouter(
             return null;
           },
           pageBuilder: (context, state) {
-            MetaSEO metaSEO = MetaSEO(
-                ogTitle:
-                    '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).register}',
-                description:
-                    '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-                ogImage: 'https://dagda.social/assets/images/logo.png',
-                keywords:
-                    "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).register}");
+            MetaSEO metaSEO = MetaSEO();
 
-            metaSEO.seoOGImage();
-            metaSEO.seoDescription();
-            metaSEO.seoOGTitle();
-            metaSEO.seoKeywords();
+            metaSEO.seoOGImage('https://dagda.social/assets/images/logo.png');
+            metaSEO.seoDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+            metaSEO.seoOGTitle(
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).register}');
+            metaSEO.seoKeywords(
+                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).register}");
+            metaSEO.seoTwitterTitle(
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).register}');
+            metaSEO.seoTwitterDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
 
             return MaterialPage<void>(
               child: Title(
@@ -130,19 +132,21 @@ GoRouter router = GoRouter(
             return null;
           },
           pageBuilder: (context, state) {
-            MetaSEO metaSEO = MetaSEO(
-                ogTitle:
-                    '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).login}',
-                description:
-                    '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-                ogImage: 'https://dagda.social/assets/images/logo.png',
-                keywords:
-                    "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).login}");
+            MetaSEO metaSEO = MetaSEO();
 
-            metaSEO.seoOGImage();
-            metaSEO.seoDescription();
-            metaSEO.seoOGTitle();
-            metaSEO.seoKeywords();
+            metaSEO.seoOGImage('https://dagda.social/assets/images/logo.png');
+            metaSEO.seoDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+            metaSEO.seoOGTitle(
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).login}');
+            metaSEO.seoKeywords(
+                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).login}");
+            metaSEO.seoTwitterTitle(
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).login}');
+            metaSEO.seoTwitterDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+            metaSEO
+                .seoTwitterImage('https://dagda.social/assets/images/logo.png');
 
             return MaterialPage<void>(
               child: Title(
@@ -164,16 +168,19 @@ GoRouter router = GoRouter(
           name: 'profile',
           path: '/@:idProfile',
           pageBuilder: (context, state) {
-            MetaSEO metaSEO = MetaSEO(
-              ogTitle: '${state.params['idProfile']} - dagda',
-              description:
-                  '${state.params['idProfile']} ${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-              keywords:
-                  '${AppLocalizations.of(context).appKeywords}, ${state.params['idProfile'].toString()}',
-            );
+            MetaSEO metaSEO = MetaSEO();
 
-            metaSEO.seoOGTitle();
-            metaSEO.seoKeywords();
+            metaSEO.seoOGTitle('${state.params['idProfile']} - dagda');
+            metaSEO.seoKeywords(
+                '${AppLocalizations.of(context).appKeywords}, ${state.params['idProfile'].toString()}');
+            metaSEO.seoDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+            metaSEO.seoOGImage('https://dagda.social/assets/images/logo.png');
+            metaSEO
+                .seoTwitterImage('https://dagda.social/assets/images/logo.png');
+            metaSEO.seoTwitterTitle('${state.params['idProfile']} - dagda');
+            metaSEO.seoTwitterDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
 
             return MaterialPage(
               child: LayoutBuilder(builder: (buildContext, constraints) {
@@ -200,20 +207,19 @@ GoRouter router = GoRouter(
       GoRoute(
         path: '/privacy-policy',
         pageBuilder: (context, state) {
-          MetaSEO metaSEO = MetaSEO(
-            ogTitle:
-                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).privacyPolicy}',
-            description:
-                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-            ogImage: 'https://dagda.social/assets/images/logo.png',
-            keywords:
-                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).privacyPolicy}",
-          );
+          MetaSEO metaSEO = MetaSEO();
 
-          metaSEO.seoOGImage();
-          metaSEO.seoDescription();
-          metaSEO.seoOGTitle();
-          metaSEO.seoKeywords();
+          metaSEO.seoDescription(
+              '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+          metaSEO.seoOGTitle(
+              '${AppLocalizations.of(context).privacyPolicy} - ${AppLocalizations.of(context).appName}');
+          metaSEO.seoKeywords(
+              "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).privacyPolicy}");
+          metaSEO.seoAuthor('dagda - Social Network');
+          metaSEO.seoTwitterTitle(
+              '${AppLocalizations.of(context).privacyPolicy} - ${AppLocalizations.of(context).appName}');
+          metaSEO.seoTwitterDescription(
+              '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
 
           return MaterialPage<void>(
               child: FutureBuilder(
@@ -231,20 +237,19 @@ GoRouter router = GoRouter(
       GoRoute(
           path: '/terms-of-service',
           pageBuilder: (context, state) {
-            MetaSEO metaSEO = MetaSEO(
-              ogTitle:
-                  '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).termsOfService}',
-              description:
-                  '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-              ogImage: 'https://dagda.social/assets/images/logo.png',
-              keywords:
-                  "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).termsOfService}",
-            );
+            MetaSEO metaSEO = MetaSEO();
 
-            metaSEO.seoOGImage();
-            metaSEO.seoDescription();
-            metaSEO.seoOGTitle();
-            metaSEO.seoKeywords();
+            metaSEO.seoAuthor('dagda - Social Network');
+            metaSEO.seoTwitterTitle(
+                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).termsOfService}');
+            metaSEO.seoTwitterDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+            metaSEO
+                .seoTwitterImage('https://dagda.social/assets/images/logo.png');
+            metaSEO.seoKeywords(
+                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).termsOfService}");
+            metaSEO.seoOGDescription(
+                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
 
             return MaterialPage<void>(
               child: FutureBuilder(
@@ -268,20 +273,19 @@ GoRouter router = GoRouter(
       GoRoute(
         path: '/about',
         pageBuilder: (context, state) {
-          MetaSEO metaSEO = MetaSEO(
-            ogTitle:
-                '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).about}',
-            description:
-                '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-            ogImage: 'https://dagda.social/assets/images/logo.png',
-            keywords:
-                "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).about}",
-          );
+          MetaSEO metaSEO = MetaSEO();
 
-          metaSEO.seoOGImage();
-          metaSEO.seoDescription();
-          metaSEO.seoOGTitle();
-          metaSEO.seoKeywords();
+          metaSEO.seoAuthor('dagda - Social Network');
+          metaSEO.seoTwitterTitle(
+              '${AppLocalizations.of(context).appName} - ${AppLocalizations.of(context).about}');
+          metaSEO.seoTwitterDescription(
+              '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+          metaSEO
+              .seoTwitterImage('https://dagda.social/assets/images/logo.png');
+          metaSEO.seoKeywords(
+              "${AppLocalizations.of(context).appKeywords},${AppLocalizations.of(context).about}");
+          metaSEO.seoOGDescription(
+              '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
 
           return MaterialPage<void>(
             child: FutureBuilder(
@@ -318,17 +322,17 @@ GoRouter router = GoRouter(
           }),
     ],
     errorBuilder: (context, state) {
-      MetaSEO metaSEO = MetaSEO(
-        ogTitle: '404 - Not Found',
-        description:
-            '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}',
-        ogImage: 'https://dagda.social/assets/images/logo.png',
-        keywords: "${AppLocalizations.of(context).appKeywords},404",
-      );
-      metaSEO.seoOGImage();
-      metaSEO.seoDescription();
-      metaSEO.seoOGTitle();
-      metaSEO.seoKeywords();
+      MetaSEO metaSEO = MetaSEO();
+      metaSEO.seoOGTitle('404 - Not Found');
+      metaSEO.seoOGDescription(
+          '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+      metaSEO.seoOGImage('https://dagda.social/assets/images/logo.png');
+      metaSEO.seoKeywords("${AppLocalizations.of(context).appKeywords},404");
+      metaSEO.seoAuthor('dagda - Social Network');
+      metaSEO.seoTwitterTitle('404 - Not Found');
+      metaSEO.seoTwitterDescription(
+          '${AppLocalizations.of(context).buildingNextGeneration} ${AppLocalizations.of(context).joinUs}');
+      metaSEO.seoTwitterImage('https://dagda.social/assets/images/logo.png');
 
       return Title(
         title: '404 - Not Found',

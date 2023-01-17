@@ -3,7 +3,7 @@ import 'package:universal_io/io.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../localizations/l10n.dart';
+import '../../l10n/l10n.dart';
 
 class LocaleProvider extends ChangeNotifier {
   Locale _locale = Locale.fromSubtags(languageCode: Platform.localeName);

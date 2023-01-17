@@ -5,7 +5,7 @@ import 'router_strategy/non_web_router_strategy.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'localizations/l10n.dart';
+import '../l10n/l10n.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
