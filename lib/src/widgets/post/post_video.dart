@@ -15,6 +15,7 @@ class UserVideo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
         margin: const EdgeInsets.only(bottom: 20.0, left: 10, right: 10),
         decoration: BoxDecoration(
             color: Colors.white,
@@ -138,6 +139,7 @@ class UserVideo extends StatelessWidget {
                 ),
               ),
             ),
+
           ],
         ));
   }
