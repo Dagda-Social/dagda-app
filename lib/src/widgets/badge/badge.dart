@@ -2,12 +2,14 @@ import 'package:dagda/src/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class Badge extends StatelessWidget {
-  const Badge({
+  Badge({
     Key? key,
     required this.badge,
+    this.iconSize = 24,
   }) : super(key: key);
 
   final String badge;
+  double iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,7 @@ class Badge extends StatelessWidget {
         context,
         [
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Align(
               alignment: Alignment.center,
@@ -80,7 +82,7 @@ class Badge extends StatelessWidget {
         child: Icon(
           _badgeIcon,
           color: _badgeColor,
-          size: 24,
+          size: iconSize,
         ),
       ),
     );
