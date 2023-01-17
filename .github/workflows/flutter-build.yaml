@@ -42,6 +42,7 @@ jobs:
           channel: 'stable'
           cache: true
       - run: flutter pub get
+      - run: flutter gen-l10n --use-deferred-loading
       - run: flutter test
  build:
     name: Create Android Build
