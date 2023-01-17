@@ -44,6 +44,9 @@ dependencies:
   http: ^0.13.5
   cached_network_image: ^3.2.3
   flutter_staggered_grid_view: ^0.6.2
+  link_preview_generator: ^1.2.0
+  flick_video_player: ^0.5.0
+  video_player: ^2.4.10
 
 dev_dependencies:
   flutter_test:
