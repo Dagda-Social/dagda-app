@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'src/app.dart';
 import 'src/urlStrategy/nonweb_rul_strategy.dart'
-    if (dart.library.html) './urlStrategy/web_url_strategy.dart';
+    if (dart.library.html) 'src/urlStrategy/web_url_strategy.dart';
 
 final FirebaseAuth auth = FirebaseAuth.instance;
 
