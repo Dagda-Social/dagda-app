@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dagda/src/screens/screens.dart';
 import 'package:dagda/src/widgets/badge/badge.dart';
 import 'package:dagda/src/widgets/textbox/DagdaText.dart';
 import 'package:flutter/foundation.dart';
@@ -64,7 +65,10 @@ class _UserPostState extends State<UserPost> {
             GestureDetector(
               onTap: () {
                 if (kIsWeb) context.go('/@${widget.post.user.usertag}');
-                context.push('/@${widget.post.user.usertag}');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Profile(
+                          id: widget.post.user.usertag,
+                        )));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -72,8 +76,8 @@ class _UserPostState extends State<UserPost> {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(right: 20.0),
-                    height: 50,
-                    width: 50,
+                    height: 40,
+                    width: 40,
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: Image(
@@ -102,15 +106,22 @@ class _UserPostState extends State<UserPost> {
                                 for (var i = 0;
                                     i < widget.post.user.badge!.length;
                                     i++)
-                                  Badge(badge: widget.post.user.badge![i]),
-                                Text(
-                                  '@${widget.post.user.usertag}',
-                                  style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w300),
-                                ),
+                                  Badge(
+                                    badge: widget.post.user.badge![i],
+                                    iconSize: 20,
+                                  ),
                               ]),
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              '@${widget.post.user.usertag}',
+                              style: const TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.w300),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -121,13 +132,25 @@ class _UserPostState extends State<UserPost> {
             DagdaText(text: widget.post.content),
             const SizedBox(height: 10),
             if (_links.isNotEmpty)
-              LinkPreviewGenerator(
-                link: _links[0],
-                bodyMaxLines: 1,
-                linkPreviewStyle: LinkPreviewStyle.large,
-                showBody: true,
-                showGraphic: true,
-                removeElevation: true,
+              Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                child: LinkPreviewGenerator(
+                  link: _links[0],
+                  bodyMaxLines: 3,
+                  linkPreviewStyle: LinkPreviewStyle.small,
+                  showBody: true,
+                  showGraphic: true,
+                  removeElevation: true,
+                  showTitle: true,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
               ),
             const SizedBox(height: 20),
             Text(

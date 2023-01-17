@@ -30,12 +30,12 @@ User dagda = User.fromJson({
   'role': [Role.admin, Role.user],
   'userStatus': UserStatus.active,
   'usertag': 'dagda.social',
-  'profileImage': 'https://i.imgur.com/uVJna65.jpeg',
+  'profileImage': 'https://picsum.photos/200/300',
   'badge': ['verified'],
   'biography':
       ' Dagda is a social network that is being developed by David Dominguez Fondo.',
   'url': 'https://dagda.social',
-  'profileBanner': 'https://i.imgur.com/zEpTSB9.jpeg',
+  'profileBanner': 'https://picsum.photos/200/300',
   'birthdate': '1990-01-01T00:00:00.000Z'
 });
 Post post = Post.fromJson({
@@ -67,7 +67,9 @@ Post post3 = Post.fromJson({
   'status': PostStatus.active,
   'contentType': ContentType.podcast,
   'creationDate': '2021-01-01T00:00:00.000Z',
-  'content': { 'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',},
+  'content': {
+    'url': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  },
   'isTopLevel': true
 });
 
