@@ -1,5 +1,5 @@
-import 'package:dagda/src/widgets/buttons/buttons.dart';
-import 'package:dagda/src/widgets/buttons/filled_button.dart';
+import 'package:dagda/widgets/buttons/buttons.dart';
+import 'package:dagda/widgets/buttons/filled_button.dart';
 import 'package:flutter/material.dart';
 
 Future<dynamic> bottomSheet(BuildContext context, List<Widget> children) {

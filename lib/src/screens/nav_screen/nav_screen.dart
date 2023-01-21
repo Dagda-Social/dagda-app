@@ -1,5 +1,5 @@
 import 'package:dagda/src/screens/nav_screen/nav_bar_item.dart';
-import 'package:dagda/src/widgets/tabbar/custom_tab_bar.dart';
+import 'package:dagda/widgets/tabbar/custom_tab_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

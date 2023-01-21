@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/mockupdata/user_mockup.dart';
 import '../../data/model/user.dart';
-import 'package:dagda/src/widgets/badge/badge.dart';
-import 'package:dagda/src/widgets/bottom_sheets/bottom_sheet.dart';
-import 'package:dagda/src/widgets/buttons/icon_button.dart';
-import 'package:dagda/src/widgets/buttons/outlined_button.dart';
-import 'package:dagda/src/widgets/follow_check/follow_check.dart';
-import 'package:dagda/src/widgets/textbox/DagdaText.dart';
+import 'package:dagda/widgets/badge/badge.dart';
+import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
+import 'package:dagda/widgets/buttons/icon_button.dart';
+import 'package:dagda/widgets/buttons/outlined_button.dart';
+import 'package:dagda/widgets/follow_check/follow_check.dart';
+import 'package:dagda/widgets/textbox/DagdaText.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

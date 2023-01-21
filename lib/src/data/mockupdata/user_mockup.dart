@@ -125,9 +125,9 @@ Category category2 = Category.fromJson({
 
 Category category3 = Category.fromJson({
   'id': 3,
-  'name': 'Porn',
-  'description': 'This category is for all content that is NSFW.',
-  'nsfw': true,
+  'name': 'portfolio',
+  'description': 'This category is my portfolio',
+  'nsfw': false,
   'creator': daviddf,
 });
 

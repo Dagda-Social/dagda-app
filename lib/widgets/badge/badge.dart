@@ -1,4 +1,4 @@
-import 'package:dagda/src/widgets/bottom_sheets/bottom_sheet.dart';
+import 'package:dagda/widgets/bottom_sheets/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class Badge extends StatelessWidget {

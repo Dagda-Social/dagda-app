@@ -1,10 +1,10 @@
 part of 'bottom_navigation_bloc.dart';
 
-abstract class BottomNavigationBlocState extends Equatable {
-  const BottomNavigationBlocState();
+abstract class BottomNavigationState extends Equatable {
+  const BottomNavigationState();
   
   @override
   List<Object> get props => [];
 }
 
-class BottomNavigationBlocInitial extends BottomNavigationBlocState {}
+class BottomNavigationInitial extends BottomNavigationState {}

@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dagda/src/screens/screens.dart';
-import 'package:dagda/src/widgets/badge/badge.dart';
-import 'package:dagda/src/widgets/textbox/DagdaText.dart';
+import 'package:dagda/widgets/badge/badge.dart';
+import 'package:dagda/widgets/textbox/DagdaText.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:link_preview_generator/link_preview_generator.dart';
 
-import '../../data/data.dart';
+import '../../src/data/data.dart';
 
 class UserPost extends StatefulWidget {
   const UserPost({super.key, required this.post});

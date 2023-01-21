@@ -1,8 +1,8 @@
-import 'package:dagda/src/widgets/post/post_video.dart';
+import 'package:dagda/widgets/post/post_video.dart';
 
 import '../../data/enum.dart';
 import '../../data/mockupdata/user_mockup.dart';
-import '../../widgets/post/post.dart';
+import '../../../widgets/post/post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

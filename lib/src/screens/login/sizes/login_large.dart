@@ -1,10 +1,10 @@
 import 'package:dagda/src/screens/login/logic/login.dart';
-import 'package:dagda/src/widgets/dialogs/password_reset_dialog.dart';
+import 'package:dagda/widgets/dialogs/password_reset_dialog.dart';
 import 'package:dagda/src/screens/register/logic/form.dart';
-import 'package:dagda/src/widgets/buttons/outlined_button.dart';
-import 'package:dagda/src/widgets/dialogs/dialogs.dart';
-import 'package:dagda/src/widgets/textfield/obscured_text_field.dart';
-import 'package:dagda/src/widgets/textfield/text_field.dart';
+import 'package:dagda/widgets/buttons/outlined_button.dart';
+import 'package:dagda/widgets/dialogs/dialogs.dart';
+import 'package:dagda/widgets/textfield/obscured_text_field.dart';
+import 'package:dagda/widgets/textfield/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';

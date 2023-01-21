@@ -1,4 +1,4 @@
-import 'package:dagda/src/widgets/buttons/buttons.dart';
+import 'package:dagda/widgets/buttons/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

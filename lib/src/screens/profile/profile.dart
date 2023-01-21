@@ -5,7 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../../data/mockupdata/user_mockup.dart';
 import '../../data/model/user.dart';
 import 'package:dagda/src/screens/profile/profile_design_v2.dart';
-import 'package:dagda/src/widgets/search/search.dart';
+import 'package:dagda/widgets/search/search.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

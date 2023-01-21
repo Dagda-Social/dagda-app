@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dagda/src/screens/screens.dart';
-import 'package:dagda/src/widgets/badge/badge.dart';
+import 'package:dagda/widgets/badge/badge.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../data/data.dart';
+import '../../src/data/data.dart';
 
 class UserVideo extends StatelessWidget {
   const UserVideo({super.key, required this.post});
